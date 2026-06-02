@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" fill="none" aria-hidden="true">
+  <g transform="translate(2.0000 3.0000)">
+    <path d="M6 5H4V12C4 13.1 4.9 14 6 14H15V12H6V5Z" fill="#1F1F1F"/>
+    <path d="M18 0H10C8.9 0 8 0.9 8 2V8C8 9.1 8.9 10 10 10H18C19.1 10 20 9.1 20 8V2C20 0.9 19.1 0 18 0ZM18 8H10V4H18V8Z" fill="#1F1F1F"/>
+    <path d="M2 9H0V16C0 17.1 0.9 18 2 18H11V16H2V9Z" fill="#1F1F1F"/>
+  </g>
+</svg>

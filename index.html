@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Xiankun Li — UX Designer at IBM · Red Hat. Portfolio showcasing enterprise open-source product design." />
+  <title>Xiankun Li — UX Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500&family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Home">
+        <span class="logo-mark">XL</span>
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="#about" data-nav="about"></a>
+        <a href="#work" data-nav="work"></a>
+        <a href="#contact" data-nav="contact"></a>
+      </nav>
+      <div class="lang-switch is-en">
+        <button
+          type="button"
+          class="lang-switch__control"
+          id="lang-switch"
+          role="switch"
+          aria-checked="true"
+          aria-label="Switch to Chinese"
+        >
+          <span class="lang-switch__label lang-switch__label--en">EN</span>
+          <span class="lang-switch__track" aria-hidden="true">
+            <span class="lang-switch__thumb"></span>
+          </span>
+          <span class="lang-switch__label lang-switch__label--zh">中文</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero / Intro -->
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="hero-eyebrow reveal" data-i18n="heroRole"></p>
+          <h1 class="hero-title reveal" id="hero-title" data-i18n="heroName"></h1>
+          <ul class="hero-meta reveal" aria-label="Contact shortcuts">
+            <li>
+              <a href="tel:+8615522107271">
+                <span class="contact-icon contact-icon--badge" aria-hidden="true">
+                  <img src="assets/icons/phone-blue.svg" alt="">
+                </span>
+                15522107271
+              </a>
+            </li>
+            <li>
+              <a href="mailto:xiankun_li1205@163.com">
+                <span class="contact-icon contact-icon--badge" aria-hidden="true">
+                  <img src="assets/icons/mail-blue.svg" alt="">
+                </span>
+                xiankun_li1205@163.com
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/xiankun-li-uxd" target="_blank" rel="noopener noreferrer">
+                <span class="contact-icon contact-icon--badge" aria-hidden="true">
+                  <img src="assets/icons/linkedin-blue.svg" alt="">
+                </span>
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+          <p class="hero-tagline reveal" data-i18n="heroTagline"></p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary btn-primary--wide" href="#work" data-i18n="heroCta"></a>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="hero-orbit" id="hero-orbit">
+            <span class="orbit-ring ring-1" aria-hidden="true"></span>
+            <span class="orbit-ring ring-2" aria-hidden="true"></span>
+            <span class="orbit-ring ring-3" aria-hidden="true"></span>
+            <span class="orbit-core">
+              <span class="orbit-core__label"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About — CV layout -->
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" class="visually-hidden" data-i18n="aboutTitle"></h2>
+
+        <div class="cv-sheet reveal">
+          <div class="cv-columns">
+            <div class="cv-col cv-col--experience">
+              <h3 class="cv-col-heading" data-i18n="experienceTitle"></h3>
+              <div id="cv-experience"></div>
+            </div>
+            <div class="cv-col cv-col--education">
+              <h3 class="cv-col-heading" data-i18n="educationTitle"></h3>
+              <div id="cv-education"></div>
+            </div>
+          </div>
+
+          <div class="cv-bottom">
+            <div class="cv-col">
+              <h3 class="cv-col-heading" data-i18n="skillsTitle"></h3>
+              <ul id="skills-list" class="cv-list"></ul>
+            </div>
+            <div class="cv-col">
+              <h3 class="cv-col-heading" data-i18n="toolsTitle"></h3>
+              <ul id="tools-list" class="cv-list"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="work section" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 id="work-title" data-i18n="workTitle"></h2>
+          <p class="section-subtitle" data-i18n="workSubtitle"></p>
+        </div>
+
+        <div class="work-grid reveal" id="work-grid"></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-card reveal">
+          <h2 id="contact-title" data-i18n="contactTitle"></h2>
+          <p class="section-subtitle" data-i18n="contactSubtitle"></p>
+          <ul class="contact-links">
+            <li>
+              <span class="contact-label">Email</span>
+              <a href="mailto:xiankun_li1205@163.com">
+                <span class="contact-icon contact-icon--badge" aria-hidden="true">
+                  <img src="assets/icons/mail.svg" alt="">
+                </span>
+                xiankun_li1205@163.com
+              </a>
+            </li>
+            <li>
+              <span class="contact-label" data-i18n="phoneLabel">Phone</span>
+              <a href="tel:+8615522107271">
+                <span class="contact-icon contact-icon--badge" aria-hidden="true">
+                  <img src="assets/icons/phone.svg" alt="">
+                </span>
+                15522107271
+              </a>
+            </li>
+            <li>
+              <span class="contact-label">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/xiankun-li-uxd" target="_blank" rel="noopener noreferrer">
+                <span class="contact-icon contact-icon--badge" aria-hidden="true">
+                  <img src="assets/icons/linkedin.svg" alt="">
+                </span>
+                xiankun-li-uxd
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-i18n="footerCopy"></p>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/case-index.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

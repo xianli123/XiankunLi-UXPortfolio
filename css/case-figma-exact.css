@@ -1,0 +1,15 @@
+/* Figma 1:1 — native 1920px frame, proportional scale only */
+
+.cs-figma-exact {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  line-height: 0;
+}
+
+.cs-figma-exact__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}

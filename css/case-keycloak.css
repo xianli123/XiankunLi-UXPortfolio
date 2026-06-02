@@ -1,0 +1,271 @@
+/* Keycloak case — Red Hat blog article reproduction */
+
+.case-page__main .rh-blog {
+  --rh-red: #ee0000;
+  --rh-green: #1f883d;
+  --rh-text: #151515;
+  --rh-muted: #4d4d4d;
+  --rh-border: #d2d2d2;
+  --rh-quote-bg: #f5f5f5;
+  --rh-related-bg: #fafafa;
+  max-width: 52rem;
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 2.5rem) 4rem;
+  font-family: "Red Hat Text", "Noto Sans SC", system-ui, sans-serif;
+  color: var(--rh-text);
+  line-height: 1.7;
+}
+
+.rh-blog__header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--rh-border);
+}
+
+.rh-blog__brand {
+  font-family: "Red Hat Display", "Noto Sans SC", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--rh-red);
+  margin: 0 0 1rem;
+  text-transform: none;
+}
+
+.rh-blog__title {
+  font-family: "Red Hat Display", "Noto Sans SC", sans-serif;
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+  color: var(--rh-text);
+}
+
+.rh-blog__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  font-size: 0.9375rem;
+  color: var(--rh-muted);
+  margin-bottom: 1rem;
+}
+
+.rh-blog__meta-sep {
+  color: var(--rh-border);
+}
+
+.rh-blog__meta-author {
+  font-weight: 500;
+  color: var(--rh-text);
+}
+
+.rh-blog__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.rh-blog__category {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--rh-text);
+  text-decoration: none;
+  border: 1px solid var(--rh-border);
+  border-radius: 2px;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.rh-blog__category:hover {
+  border-color: var(--rh-accent, var(--rh-green));
+  color: var(--rh-accent, var(--rh-green));
+}
+
+.rh-blog__body > * + * {
+  margin-top: 1.25rem;
+}
+
+.rh-blog__h2 {
+  font-family: "Red Hat Display", "Noto Sans SC", sans-serif;
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 2.5rem 0 1rem;
+  padding-top: 0.5rem;
+  color: var(--rh-text);
+}
+
+.rh-blog__h3 {
+  font-family: "Red Hat Display", "Noto Sans SC", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 2rem 0 0.75rem;
+  color: var(--rh-text);
+}
+
+.rh-blog__p {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  margin: 0;
+  color: var(--rh-text);
+}
+
+.rh-blog__quote {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--rh-accent, var(--rh-green));
+  background: var(--rh-quote-bg);
+}
+
+.rh-blog__quote p {
+  margin: 0 0 0.5rem;
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.rh-blog__quote cite {
+  display: block;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--rh-muted);
+}
+
+.rh-blog__related {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--rh-related-bg);
+  border-left: 3px solid var(--rh-border);
+}
+
+.rh-blog__related p {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.rh-blog__related a {
+  color: var(--rh-accent, var(--rh-green));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rh-blog__related a:hover {
+  color: #0066cc;
+}
+
+.rh-blog__figure {
+  margin: 1.75rem 0;
+}
+
+.rh-blog__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rh-border);
+  background: #fff;
+}
+
+.rh-blog__figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--rh-muted);
+}
+
+.rh-blog__figure-full {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--rh-muted);
+}
+
+.rh-blog__figure-full a {
+  color: var(--rh-accent, var(--rh-green));
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.rh-blog__figure-license {
+  font-size: 0.8125rem;
+}
+
+.rh-blog__list {
+  margin: 0;
+  padding-left: 1.35rem;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.rh-blog__list li + li {
+  margin-top: 0.5rem;
+}
+
+.rh-blog__ack {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rh-border);
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--rh-muted);
+}
+
+.rh-blog__author {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rh-border);
+}
+
+.rh-blog__author-title {
+  font-family: "Red Hat Display", "Noto Sans SC", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+
+.rh-blog__author-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.rh-blog__author-bio {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--rh-muted);
+  margin: 0 0 0.75rem;
+}
+
+.rh-blog__author-link a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--rh-accent, var(--rh-green));
+}
+
+.rh-blog__footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rh-border);
+}
+
+.rh-blog__source {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--rh-accent, var(--rh-green));
+  text-decoration: none;
+}
+
+.rh-blog__source:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .case-page__main .rh-blog {
+    padding-inline: 2.5rem;
+  }
+}

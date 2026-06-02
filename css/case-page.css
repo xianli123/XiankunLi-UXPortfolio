@@ -1,0 +1,326 @@
+/* Case study detail page — full-width layout for Figma reproduction */
+
+.case-page-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.case-page-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-h);
+  gap: var(--space-lg);
+}
+
+.case-page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.case-page-back:hover {
+  color: var(--color-text);
+}
+
+.case-page-back svg {
+  flex-shrink: 0;
+}
+
+.case-page__main {
+  width: 100%;
+  background: #fff;
+}
+
+.case-page__main .fc {
+  max-width: 1920px;
+  margin-inline: auto;
+}
+
+.case-page__main .case-study {
+  max-width: 960px;
+  margin-inline: auto;
+  padding: var(--space-2xl) var(--space-xl);
+}
+
+.case-page__main .rh-blog {
+  max-width: none;
+}
+
+.case-page-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-xl) var(--space-3xl);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.case-page-nav__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+  max-width: 45%;
+}
+
+.case-page-nav__link:hover {
+  color: var(--color-brand);
+}
+
+.case-page__error {
+  padding: var(--space-3xl);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.case-page-footer {
+  padding-block: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* Chinese copy — Noto Sans SC + home-page rhythm (English unchanged) */
+html:lang(zh) .case-page__main {
+  /* Slightly deeper than home .cv-desc muted, still lighter than --color-text */
+  --color-text-zh-body: color-mix(in srgb, var(--color-text-muted) 72%, var(--color-text));
+}
+
+html:lang(zh) .case-page__main :is(.fc, .fc *, .rh-blog, .rh-blog *) {
+  font-family: var(--font-zh);
+}
+
+html:lang(zh) .case-page__main :is(.fc-code__pre, .fc-event-table__prop) {
+  font-family: "Red Hat Mono", "SF Mono", ui-monospace, monospace;
+}
+
+/* English quote copy — Red Hat Text (Noto only for surrounding Chinese UI) */
+html:lang(zh) .case-page__main :is(
+  .fc-quote__text,
+  .fc-feedback-featured__quote p,
+  .fc-feedback__text,
+  .fc-usability__quote-text,
+  .fc-usability__featured-text,
+  .fc-deploy-testimonial__text,
+  .rh-blog__quote p
+) {
+  font-family: var(--font-en);
+}
+
+/* Loosen tracking on headings (override Red Hat negative letter-spacing) */
+html:lang(zh) .case-page__main .fc :where(
+  h1,
+  h2,
+  h3,
+  h4,
+  [class*="__title"],
+  [class*="__heading"],
+  [class*="__headline"],
+  [class*="-title"],
+  [class*="__subtitle"],
+  [class*="__label"],
+  [class*="__badge-text"],
+  [class*="__question"]
+) {
+  letter-spacing: 0.02em;
+}
+
+html:lang(zh) .case-page__main .fc .fc-model-challenge__panel--reverse .fc-model-challenge__answer > p:first-child {
+  letter-spacing: 0.02em;
+}
+
+html:lang(zh) .case-page__main .rh-blog :where(
+  h1,
+  h2,
+  h3,
+  .rh-blog__title,
+  .rh-blog__h2,
+  .rh-blog__h3,
+  .rh-blog__brand
+) {
+  letter-spacing: 0.02em;
+}
+
+/* Match home heading weight (600) on primary titles */
+html:lang(zh) .case-page__main .fc :where(
+  h1,
+  h2,
+  h3,
+  .fc-hero__title,
+  .fc-section__title,
+  .fc-usability__page-title,
+  .fc-deploy-bd-ui__title
+) {
+  font-weight: 600;
+}
+
+html:lang(zh) .case-page__main .rh-blog__title,
+html:lang(zh) .case-page__main .rh-blog__h2 {
+  font-weight: 600;
+}
+
+/* Body copy — match home .cv-desc (400 + muted gray, line-height 1.75) */
+html:lang(zh) .case-page__main .fc :where(
+  .fc-section__body,
+  .fc-section__body--sm,
+  .fc-section__intro,
+  .fc-card-grid__text,
+  .fc-journey__step-body,
+  .fc-journey__phase,
+  .fc-role-reveal__concept-desc,
+  .fc-role-reveal__decision-text,
+  .fc-rbac-assign__desc,
+  .fc-usability__body,
+  .fc-model-design__lead,
+  .fc-model-design__icon-row-text,
+  .fc-model-design__goal-text,
+  .fc-quote__text,
+  .fc-model-persona__body
+) {
+  font-weight: 400;
+  color: var(--color-text-zh-body);
+  line-height: 1.75;
+}
+
+html:lang(zh) .case-page__main .fc :where(
+  .fc-section__body,
+  .fc-section__intro,
+  .fc-journey__step-body,
+  .fc-rbac-assign__desc,
+  .fc-usability__body,
+  .fc-model-design__lead
+) strong {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Hero on dark stage — keep white, do not use muted body color */
+html:lang(zh) .case-page__main .fc-hero__tagline {
+  color: var(--fc-white);
+  line-height: 1.65;
+}
+
+/* Deployment hero — keep zh tagline left of illustration (visual starts at 977px) */
+html:lang(zh) .case-page__main .fc-hero--deployment .fc-hero__copy .fc-hero__tagline {
+  max-width: calc(780 * var(--u));
+}
+
+html:lang(zh) .case-page__main .rh-blog__p {
+  font-weight: 400;
+  color: var(--color-text-zh-body);
+  line-height: 1.75;
+}
+
+html:lang(zh) .case-page__main .rh-blog__p strong {
+  font-weight: 600;
+  color: var(--rh-text);
+}
+
+/* Card height follows Chinese copy — no stretch / min-height gaps (EN unchanged) */
+/* .fc-card-grid / .fc-stats keep stretch so column dividers stay equal height */
+html:lang(zh) .case-page__main .fc :is(
+  .fc-usability__role-strip,
+  .fc-usability__stats,
+  .fc-usability__quote-grid
+) {
+  align-items: flex-start;
+}
+
+html:lang(zh) .case-page__main .fc :is(
+  [class*="__grid"],
+  .fc-quotes,
+  .fc-role-cards,
+  .fc-issues__grid,
+  .fc-journey__steps,
+  .fc-role-reveal__decision-grid,
+  .fc-model-context__cards,
+  .fc-metrics__grid
+) {
+  align-items: start;
+}
+
+html:lang(zh) .case-page__main .fc :is(
+  .fc-quote,
+  .fc-feedback__card,
+  .fc-usability__quote-card,
+  .fc-role-card,
+  .fc-issue-card,
+  .fc-journey__card,
+  .fc-model-context__card
+) {
+  min-height: unset;
+  height: auto;
+  align-self: start;
+}
+
+html:lang(zh) .case-page__main .fc .fc-deploy-objectives {
+  align-items: stretch;
+}
+
+html:lang(zh) .case-page__main .fc .fc-deploy-objective-card {
+  align-self: stretch;
+  min-height: unset;
+  padding: calc(12 * var(--u));
+}
+
+html:lang(zh) .case-page__main .fc .fc-deploy-objective-card img {
+  width: calc(40 * var(--u));
+  height: calc(40 * var(--u));
+  margin-bottom: calc(12 * var(--u));
+}
+
+html:lang(zh) .case-page__main .fc .fc-deploy-objective-card p {
+  font-size: calc(22 * var(--u));
+  line-height: calc(32 * var(--u));
+}
+
+html:lang(zh) .case-page__main .fc .fc-deploy-bd-labels__row {
+  align-items: stretch;
+  min-height: unset;
+}
+
+html:lang(zh) .case-page__main .fc .fc-deploy-bd-labels__card {
+  height: auto;
+  align-self: stretch;
+}
+
+html:lang(zh) .case-page__main .fc .fc-deploy-bd-labels__card-inner {
+  height: auto;
+}
+
+/* Flex stat / pain rows — equal columns + matching divider height (zh) */
+html:lang(zh) .case-page__main .fc :is(.fc-card-grid, .fc-stats) {
+  align-items: stretch;
+}
+
+html:lang(zh) .case-page__main .fc :is(.fc-card-grid__cell, .fc-stats__item) {
+  align-self: stretch;
+  min-height: 100%;
+}
+
+html:lang(zh) .case-page__main .fc :is(
+  .fc-feedback__text,
+  .fc-usability__quote-text
+) {
+  flex: 0 1 auto;
+}
+
+html:lang(zh) .case-page__main .fc :is(
+  .fc-usability__role-strip,
+  .fc-usability__stats
+) {
+  min-height: unset;
+}
