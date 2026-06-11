@@ -3,10 +3,24 @@
 本文档记录本项目从零搭建至今的主要改动，便于后续维护与迭代。
 
 **项目路径：** `Portfolio web`  
+**GitHub：** [xianli123/XiankunLi-UXPortfolio](https://github.com/xianli123/XiankunLi-UXPortfolio)  
 **技术栈：** 静态 HTML / CSS / JavaScript（无构建工具）  
 **设计参考：** [Figma — Resume / Portfolio](https://www.figma.com/design/AfUwiYGdcEeyKOVrOoQ31o/Resume---Portfolio?node-id=3796-25071)
 
+### 最近工作速览（Agent 会话 · 2026-06-08）
+
+| 章节 | 内容 |
+|------|------|
+| [§25.11](#2511-案例详情页--仅展示-v22026-06-08) | 详情页隐藏 V1、自动跳转 V2、移除顶栏版本切换 |
+| [§25.10](#2510-首页-about--设计项目产品外链2026-06-08) | About「设计项目」产品名外链 + 悬停变蓝 |
+| [§25.9](#259-rbac-v2--中文版排版与文案微调2026-06-08) | RBAC V2 中文版：设计目标卡高度、技术调研引言/间距、竞品调研卡片高度 |
+| [§25](#25-案例页-v1v2-拆分与-openshift-ai-v2-页面2026-06-11) | 四案例 V1/V2 拆分、版本切换器、RBAC / Model Details / Deployment V2 实现 |
+| §25.4 | RBAC V2 Role assignment 四挑战、图片裁剪、Hi-fi 间距与标题居中、Usability 精简 |
+| [§17](#17-validated-models-details--hero-开头区域2026-06-02) | Model Details 案例页 Hero：Figma 布局、插图去黑底、防压扁 |
+| [§24](#24-github-仓库初始化与推送2026-06-02) | 初始化 Git、首次提交并推送到 GitHub |
+
 ---
+
 
 ## 1. 项目初始搭建
 
@@ -191,7 +205,7 @@ Hero 区块图标尺寸：`1.3em`
 
 - Figma MCP 导出的资源 URL 有效期约 7 天；图标已保存为本地 SVG，不依赖远程链接
 - 项目当前为静态站点，直接打开 `index.html` 或通过本地 HTTP 服务访问即可
-- 尚未初始化 Git 仓库（截至文档编写时）
+- Git 仓库已初始化并推送到 [GitHub](https://github.com/xianli123/XiankunLi-UXPortfolio)（见 §24）
 
 ---
 
@@ -224,17 +238,19 @@ Hero 区块图标尺寸：`1.3em`
 
 首页案例 Tab 仍由 `js/i18n.js` + `js/app.js` 驱动；各案例另有独立详情页：
 
-| 页面 | 路径 | 说明 |
+| 页面 | 路径（当前） | 说明 |
 |------|------|------|
-| RBAC | `cases/rbac.html` | OpenShift AI — RBAC 完整案例 |
-| Model Details | `cases/model-details.html` | Validated Model's Details |
-| Deployment Tracking | `cases/deployment-tracking.html` | AI Model Deployment Tracking |
-| Keycloak | `cases/keycloak.html` | Composite Role — Red Hat 博客正文复现 |
+| RBAC | `cases/rbac-v1.html` / `cases/rbac-v2.html` | OpenShift AI — RBAC（V2 见 §25） |
+| Model Details | `cases/model-details-v1.html` / `cases/model-details-v2.html` | Validated Model's Details（V2 见 §25） |
+| Deployment Tracking | `cases/deployment-tracking-v1.html` / `cases/deployment-tracking-v2.html` | AI Model Deployment Tracking（V2 见 §25） |
+| Keycloak | `cases/keycloak-v1.html` / `cases/keycloak-v2.html` | Composite Role — Red Hat 博客正文复现 |
 
-**渲染栈（OpenShift 系案例）：**
+> 2026-06-11 起案例页按 **V1 / V2** 拆分；首页工作卡片链至 V1。旧路径 `cases/rbac.html` 等已删除，详见 [§25](#25-案例页-v1v2-拆分与-openshift-ai-v2-页面2026-06-11)。
+
+**渲染栈（OpenShift 系案例 · 以 V1 为例）：**
 
 ```
-cases/rbac.html
+cases/rbac-v1.html
   → js/case-openshift-roles-mapping.js   # Define new roles 表格
   → js/case-openshift-role-reveal.js   # Role reveal（若页面引用）
   → js/case-openshift-role-assignment.js # Design the role assignment process（C1–C4）
@@ -245,19 +261,28 @@ cases/rbac.html
   → js/case-page.js
   → css/case-openshift.css
 
-cases/model-details.html
+cases/model-details-v1.html
   → js/case-openshift-model-details.js  # Research / IA / Design 等区块数据
   → js/case-openshift-data.js + mockups + openshift.js + case-page.js
 
-cases/deployment-tracking.html
+cases/model-details-v2.html
+  → 同上 + case-openshift-model-details-v2.js + case-openshift-model-details-v2.css
+
+cases/deployment-tracking-v1.html
   → js/case-openshift-deployment.js  # Design breakdown / Trade-offs / Extension 等
   → js/case-openshift-data.js + mockups + openshift.js + case-page.js
+
+cases/deployment-tracking-v2.html
+  → 同上 + case-openshift-deployment-v2.js + case-openshift-deployment-v2.css
+
+cases/rbac-v2.html
+  → 在 V1 栈基础上 + case-openshift-rbac-v2.js + case-openshift-rbac-v2.css
 ```
 
 **Keycloak 详情页：**
 
 ```
-cases/keycloak.html
+cases/keycloak-v1.html
   → js/case-keycloak-article.js    # 博客全文（中英）
   → js/case-keycloak.js            # Red Hat Blog 版式渲染
   → css/case-keycloak.css
@@ -1106,19 +1131,295 @@ python3 -m http.server 8765
 
 ---
 
+## 24. GitHub 仓库初始化与推送（2026-06-02）
+
+**远程仓库：** [https://github.com/xianli123/XiankunLi-UXPortfolio](https://github.com/xianli123/XiankunLi-UXPortfolio)
+
+本地项目原先未纳入版本控制；按用户要求初始化 Git 并推送完整站点代码。
+
+### 24.1 操作摘要
+
+| 步骤 | 说明 |
+|------|------|
+| 新建 `.gitignore` | 忽略 `.DS_Store`、`.env*`、`.cursor/`、`.agent-transcripts/` |
+| `git init` | 在 `Portfolio web/` 初始化仓库 |
+| 首次提交 | `48d7186` — 364 个文件，约 126MB（含案例 PNG/SVG 资源） |
+| 远程 | `origin` → `https://github.com/xianli123/XiankunLi-UXPortfolio.git` |
+| 推送 | `main` 分支已跟踪 `origin/main`，与远程同步 |
+
+### 24.2 提交说明
+
+```
+Initial commit: Xiankun Li UX portfolio site.
+
+Static HTML/CSS/JS portfolio with OpenShift AI case studies (RBAC, Model Details,
+Deployment Tracking), Keycloak article page, bilingual i18n, and Figma-aligned layouts.
+```
+
+### 24.3 仓库内容概览
+
+```
+index.html + cases/*-v1.html       # 首页与案例详情页（V1 入口；V2 见 §25）
+css/                               # styles、case-openshift、case-page、*-v2.css 等
+js/                                # i18n、case-openshift*、case-naming、case-page 等
+assets/cases/                      # OpenShift / Keycloak 案例资源（含 *-v2/）
+docs/model-details-hero-work.md    # §17 Hero 工作附录
+CHANGELOG.md                       # 本文档
+scripts/                           # Figma 导出辅助脚本
+```
+
+### 24.4 本地协作命令
+
+```bash
+cd "Portfolio web"
+git status
+git pull origin main
+git push origin main
+python3 -m http.server 8765   # 本地预览
+```
+
+若远程已有 README 等无关历史，可使用：
+
+```bash
+git pull origin main --rebase --allow-unrelated-histories
+git push -u origin main
+```
+
+### 24.5 后续可选（未做）
+
+- 开启 GitHub Pages（Settings → Pages → `main` / root）
+- 添加 `README.md` 项目简介与预览链接
+- 大体积 PNG 是否迁移 Git LFS（当前直接入库）
+
+---
+
+## 25. 案例页 V1/V2 拆分与 OpenShift AI V2 页面（2026-06-11）
+
+在 §15–§23 各 V1 案例页稳定后，将四个 OpenShift / Keycloak 详情页拆为 **V1 / V2 双版本**，首页工作卡片仍链至 V1；详情页顶栏新增 **V1 | V2** 切换。V2 在克隆 V1 数据基础上，通过 `*-v2.js` 补丁与独立 CSS 增量实现新设计稿区块。
+
+**页面入口（旧路径已移除）：**
+
+| 案例 | V1 | V2 |
+|------|----|----|
+| RBAC | `cases/rbac-v1.html` | `cases/rbac-v2.html` |
+| Model Details | `cases/model-details-v1.html` | `cases/model-details-v2.html` |
+| Deployment Tracking | `cases/deployment-tracking-v1.html` | `cases/deployment-tracking-v2.html` |
+| Keycloak | `cases/keycloak-v1.html` | `cases/keycloak-v2.html` |
+
+已删除：`cases/rbac.html`、`cases/model-details.html`、`cases/deployment-tracking.html`、`cases/keycloak.html`。
+
+### 25.1 版本命名与导航基础设施
+
+| 文件 | 改动 |
+|------|------|
+| `js/case-naming.js`（新） | `CASE_DETAIL_NAMING`：`{slug}-v{N}` id、`cases/{slug}-v{N}.html` href、bilingual `codeName`；`getCaseDetailVersionPair()` 解析 V1/V2 对 |
+| `js/case-openshift-data.js` | 数据键改为 `rbac-v1` 等；`cloneOpenShiftCaseVersion()` 深拷贝生成 V2 |
+| `js/case-index.js` | 工作卡片 href 指向 V1；补充 `version` / `codeName` 字段 |
+| `js/case-page.js` | `mountVersionSwitch()` — 粘性顶栏 V1/V2 药丸切换；prev/next 导航按 V1 id 计算邻接 |
+| `css/case-page.css` | `.case-version-switch` 样式 |
+| `js/i18n.js` | Keycloak：`keycloak-composite-role-v1` + 运行时克隆 `v2` |
+
+### 25.2 RBAC V2 — Research / Design breakdown 新区块
+
+**脚本：** `js/case-openshift-rbac-v2.js` · **样式：** `css/case-openshift-rbac-v2.css`  
+**入口：** `cases/rbac-v2.html`（额外加载上述两文件）
+
+| 区块 | 渲染器 / 补丁 | 资源目录（示例） |
+|------|----------------|------------------|
+| Project context | `renderRbacProjectContextV2` | `rbac/project-context-v2/` |
+| Design objectives | `renderRbacObjectivesV2`（移至 Tech research **之前**） | `rbac/objectives-v2/` |
+| Tech research | `renderRbacTechResearchV2` | `rbac/research-v2/` |
+| Competitor research | `renderRbacCompetitorResearchV2` | `rbac/competitor-v2/` |
+| Inspiration | `renderRbacInspirationV2`（替换 V1 metrics） | `rbac/inspiration-v2/` |
+| Role reveal | `renderRbacRoleRevealV2` | `rbac/reveal-v2/` |
+| Roles mapping | `applyRbacV2RolesMappingSummaries`（去括号摘要、去 footer） | — |
+| Role assignment ×4 | `applyRbacV2RoleAssignment` + `case-openshift.js` 新 visual 分支 | `rbac/assignment-v2/` |
+| Usability | `applyRbacV2Usability`（见 §25.4） | — |
+
+**`js/case-openshift.js` 新增 block 类型：** `rbacProjectContextV2`、`rbacTechResearchV2`、`rbacCompetitorResearchV2`、`rbacObjectivesV2`、`rbacInspirationV2`、`rbacRoleRevealV2`。
+
+**V2 仍沿用 V1：** Hero、User research、Event tracking、Final hi-fi assignment 合成图、tags。
+
+### 25.3 Model Details V2 — IA / Objectives 与 Design 文案
+
+**脚本：** `js/case-openshift-model-details-v2.js` · **样式：** `css/case-openshift-model-details-v2.css`  
+**入口：** `cases/model-details-v2.html`
+
+| 区块 | 实现 |
+|------|------|
+| IA map | `renderModelIaMapV2` — 目标三图标 + `@2x` 信息架构图（`model-details/ia-v2/`） |
+| Design objectives | `renderModelObjectivesV2` — 四卡徽章布局（`model-details/objectives-v2/`） |
+| Design breakdown 文案 | `applyModelDetailsV2Overview`、Header/IA、Challenge 0/1、Performance、Compression、Benchmark cognitive load 等补丁 |
+
+**资源更新：** `goals-validated.png` / `@2x` / SVG、`goals-tabs.svg` 等 Design 区图标重导出。
+
+**V2 仍沿用 V1：** Hero、User research（persona/journey）、Event tracking、Design breakdown 线框结构与主 CSS。
+
+### 25.4 RBAC V2 — Role assignment 与 Usability 迭代
+
+**设计参考：** Role assignment V2 系列（Figma `5334` / `5338` / `5343` / `5586`）；Hi-fi `4080:40705`
+
+#### Role assignment 四挑战（仅 V2）
+
+| 挑战 | visual | 要点 |
+|------|--------|------|
+| C1 Typeahead | `typeaheadV2` | 叠放双卡 mock；Figma 裁剪定位（`h:103.94%` / `120.16%`） |
+| C2 Role table | `roleTableV2` | Explorations 层 + 表格 mock + 磨砂 annotation bar（Figma `5341:47268` 描边采样色） |
+| C3 Assignment status | `assignmentStatusV2` | 左标题 + mock（紫框 `::after`）+ 右 legend；仅保留标题无正文 |
+| C4 Save confirm | `saveConfirmV2` | 灰底 stage `#f8f9fb` + 左文案 + 右合成图（bg / modal / arrow） |
+
+**图片资源：** `assets/cases/openshift-ai/rbac/assignment-v2/`（9 张 PNG）  
+- 自 Figma MCP 原比例导出，**禁止非等比拉伸**  
+- HTML 增加 `.fc-rbac-assign__crop` 容器，CSS 按 Figma `top/left/width/height` 百分比裁剪  
+- 隔离 V1 泄漏：`.fc-rbac-assign__c3-mock-v2`、`.fc-rbac-assign__c4-composite-v2__*` 等独立类名
+
+#### C4 与 Final hi-fi 间距
+
+- **不改** C4 灰底卡片 padding / 背景  
+- `body[data-case-id="rbac-v2"] .fc-rbac-assign + .fc-assignment-hifi { margin-top: 0 }` — 去掉 Hi-fi 区块默认 32px 上边距
+
+#### Final hi-fi 标题居中
+
+- `.fc-assignment-hifi__title`：`left: 50%` + `transform: translateX(-50%)`（桌面与 `@media`）  
+- 修复中文版「角色分配页面最终高保真设计」因固定 `left: 592px` 偏左的问题；英文同步居中
+
+#### Usability testing 精简（仅 V2）
+
+- `applyRbacV2Usability()` 删除 `USABILITY_TESTING_DATA.executive`  
+- `renderUsabilityTesting()` 仅在存在 `executive` 数据时输出 `.fc-usability__exec`  
+- V2 移除 **Executive summary** 与 **Core prototype tasks**；V1 保留
+
+### 25.5 Deployment Tracking V2 — Research 区段
+
+**脚本：** `js/case-openshift-deployment-v2.js` · **样式：** `css/case-openshift-deployment-v2.css`  
+**入口：** `cases/deployment-tracking-v2.html`
+
+| 改动 | 说明 |
+|------|------|
+| Project context | `renderDeploymentContextV2` — 部署说明卡 + 插图（`deployment/project-context-v2/`） |
+| User research | `renderDeploymentUserResearchV2` — persona、journey、客户洞察板、四目标卡 |
+| Evaluation 并入 Research | `renderDeploymentEvaluationV2Section`；`renderDeploymentEvaluation` 在 V2 返回空 |
+| UX extension 文案 | `applyExtensionV2Text` 更新 collapsible / modal 复用说明 |
+| Breakdown V2 资源 | `deployment/breakdown-v2/`、`research-v2/` 已导出，**尚未接线**（V2 仍用 V1 breakdown / trade-offs） |
+
+### 25.6 Keycloak V1/V2
+
+- 仅路由与 `data-case-id` 拆分（`keycloak-composite-role-v1` / `v2`）  
+- 脚本、样式、正文与 V1 **完全一致**；支持顶栏版本切换  
+- 首页卡片仍为 V1 且 `hidden: true`
+
+### 25.7 涉及文件一览
+
+```
+cases/*-v1.html, cases/*-v2.html     # 八个版本化入口
+js/case-naming.js                    # 命名约定
+js/case-openshift-rbac-v2.js
+js/case-openshift-model-details-v2.js
+js/case-openshift-deployment-v2.js
+css/case-openshift-rbac-v2.css
+css/case-openshift-model-details-v2.css
+css/case-openshift-deployment-v2.css
+js/case-openshift.js                 # V2 渲染分支、Role assignment crop 结构、Usability 条件渲染
+css/case-openshift.css               # Hi-fi 标题居中
+css/case-page.css                    # 版本切换器、zh 排版补充
+assets/cases/openshift-ai/rbac/      # *-v2/、assignment-v2/
+assets/cases/openshift-ai/model-details/  # ia-v2/、objectives-v2/、design goals 重导出
+assets/cases/openshift-ai/deployment/     # project-context-v2/、research-v2/、breakdown-v2/（未接线）
+```
+
+### 25.9 RBAC V2 — 中文版排版与文案微调（2026-06-08）
+
+针对 `cases/rbac-v2.html` 中文版的局部排版与标点，**仅 `html:lang(zh)` 或 zh 文案**，英文版与其他区块不变。
+
+#### 设计目标（Design objectives）
+
+| 改动 | 说明 |
+|------|------|
+| 卡片高度 | `.fc-rbac-obj-v2__stage` 高度 323→280 |
+| 边框 SVG | `scaleY(188/231)` + `transform-origin: top center` 垂直压缩；**宽度与下边框不变**（避免 `object-fit: contain` 缩窄或 `overflow: hidden` 裁掉底边） |
+| 标题间距 | `.fc-rbac-obj-v2__card-title` 下边距 18→12 |
+
+#### 技术调研（Tech research）
+
+| 改动 | 说明 |
+|------|------|
+| 引言标点 | 「OpenShift AI 的权限基于 Kubernetes RBAC，因此…」→「…RBAC。**因此**…」（逗号改句号，独立成句） |
+| 引言下边距 | `.fc-rbac-tr-v2__intro` 的 `margin-bottom` 32→**48px**（引言与下方 Roles/verbs、Role binding 双栏间距） |
+
+文案同步：`js/case-openshift-data.js`（V1 源数据）、`js/case-openshift-rbac-v2.js`（V2 `TECH_RESEARCH.intro`）。
+
+#### 竞品调研（Competitor research）
+
+| 区块 | 中文版行为 |
+|------|------------|
+| **常见痛点** | `.fc-rbac-cr-v2__card--pain` 取消 `min-height: 160`；`.fc-rbac-cr-v2__row--pain .fc-rbac-cr-v2__cards` 设为 `align-items: flex-start`，各卡随中文行数收缩 |
+| **常见角色管理模式** | `.fc-rbac-cr-v2__card--pattern` 取消 `min-height: 212`；保留默认 `stretch`，三张卡**等高**（以内容最高者为准，整体低于英文固定高度） |
+
+#### 涉及文件
+
+```
+css/case-openshift-rbac-v2.css    # 上述 zh 布局覆盖 + Tech research 引言间距
+js/case-openshift-data.js         # Tech research 引言标点（rbac-v1 源）
+js/case-openshift-rbac-v2.js      # Tech research 引言标点（V2 补丁）
+```
+
+### 25.10 首页 About — 设计项目产品外链（2026-06-08）
+
+About 区块 **「设计项目 / Design projects」** 下三个产品名称可点击跳转官网，中英文均生效；默认样式与原先标题一致，悬停时变蓝。
+
+| 产品 | 外链 |
+|------|------|
+| OpenShift AI | https://www.redhat.com/en/products/ai/openshift-ai |
+| Keycloak | https://www.keycloak.org/ |
+| Infinispan | https://infinispan.org/ |
+
+| 改动 | 说明 |
+|------|------|
+| 数据 | `js/i18n.js` — `cv.projects[].url`（en / zh 各三条） |
+| 渲染 | `js/app.js` — `renderCvEntry(..., "project")` 有 `url` 时输出 `<a target="_blank" rel="noopener noreferrer">` |
+| 样式 | `css/styles.css` — `.cv-entry-title a` 继承标题色、无下划线；`:hover` 使用 `--color-brand`（`#0066cc`） |
+
+### 25.11 案例详情页 — 仅展示 V2（2026-06-08）
+
+详情页对外只展示 V2 内容；§25.1 顶栏 **V1 | V2** 药丸切换已停用（样式仍保留于 `css/case-page.css`，便于日后恢复）。
+
+| 行为 | 实现 |
+|------|------|
+| V1 不可见 | 访问 `cases/*-v1.html` 时 `location.replace` 跳转到同 slug 的 V2 页面 |
+| 取消切换器 | `mountVersionSwitch()` 不再渲染按钮，并移除已有 `#case-version-switch` |
+| 未改项 | 首页工作卡片仍链至 V1 href（进入后自动进 V2）；`CASE_INDEX`、`*-v1.html` 文件与 V1 数据保留；prev/next 邻接导航逻辑不变 |
+
+**涉及文件：** `js/case-page.js`（`redirectToV2IfNeeded()`、`mountVersionSwitch()`）
+
+### 25.8 验证
+
+```bash
+cd "Portfolio web"
+python3 -m http.server 8765
+# RBAC V2:     http://127.0.0.1:8765/cases/rbac-v2.html
+# 中文版：设计目标三卡高度、Tech research 引言 48px 间距、竞品调研痛点/模式卡片高度
+# 首页 About：设计项目产品名外链与悬停变蓝
+# 详情页：访问 *-v1.html 应自动进入 V2；顶栏无 V1/V2 切换
+# Model V2:    http://127.0.0.1:8765/cases/model-details-v2.html
+# Deployment V2: http://127.0.0.1:8765/cases/deployment-tracking-v2.html
+# Role assignment 图片比例、Hi-fi 标题中英文居中、Usability 无 Executive 块
+```
+
+---
+
 ## 16. 后续可迭代方向（未做）
 
 - 邮箱 / LinkedIn 在 Contact 区块也改为蓝色（若需与 Hero 完全统一）
 - 添加 favicon
-- 部署到 GitHub Pages / Vercel 等
-- C1–C3 Challenge 与 Figma 二次 diff（若设计稿更新；§18.7 已对齐灰条间距，小屏 `@media (max-width: 1200px)` 下 grid 恢复 `height: auto`）
+- 部署到 GitHub Pages / Vercel 等（仓库已就绪，见 §24.5）
+- Deployment V2：接线 `breakdown-v2/` 资源，替换 V1 Design breakdown 区块（§25.5）
+- Keycloak V2：若需独立内容或设计迭代（当前与 V1 相同，§25.6）
 - Keycloak 页与 Red Hat 博客像素级 diff（字体、间距微调）
 - 小屏下 Usability 语录卡、Hi-fi 合成图横向滚动或堆叠细节微调
 - Model Details Hero：副标题字重、process 双行排版、插图缩放（见 §17.8）
-- Deployment Tracking：Research / Solutions 等若 Figma 更新可再 diff（§19、§23 已覆盖 breakdown / trade-offs / extension 及 Hero–Research 对齐）
 - 恢复首页 Keycloak 卡片或改为外链 Red Hat 博客（§20.2 当前为隐藏）
 - Hero 轨道：按文案长度自动缩放圆球、与内圈重叠检测
 
 ---
 
-*最后更新：2026-06-03（§22 RBAC Usability）· 2026-06-03（§21 Model Details Research / Design）· 2026-06-03（§20 Hero 轨道）· 2026-06-02（§23 Deployment Hero / Research）· 2026-06-02（§19–§18）· **§17 Model Details Hero 开头（工作总结已并入）** · 2026-06-01（§15）*
+*最后更新：2026-06-08（§25.9–§25.11 RBAC V2 中文排版、首页外链、详情页 V2-only）· 2026-06-11（§25 案例 V1/V2 拆分与 OpenShift AI V2）· 2026-06-02（§24 GitHub）· 2026-06-03（§22–§20）· 2026-06-02（§23–§18、§17）· 2026-06-01（§15）*

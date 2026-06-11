@@ -17,8 +17,10 @@
       projectContext: {
         title: { en: "Project context", zh: "项目背景" },
         body: {
-          en: "On OpenShift AI, the testing team leverages platform resources to evaluate AI model performance across different compression modes and hardware profiles, then generates benchmark data. Models that have completed full validation and come with complete performance records are defined as Validated models.",
-          zh: "在 OpenShift AI 中，测试团队利用平台资源评估不同压缩模式与硬件配置下的模型性能并生成 benchmark 数据。完成完整验证且具备完整性能记录的模型定义为 Validated model。",
+          html: {
+            en: "<strong>Model as a Service (MaaS)</strong> provides cloud-based access to pre-trained AI/ML models. To ensure security and balance performance, OpenShift AI evaluates models across various hardware and compression profiles to generate benchmark data. This empowers users to make informed choices. Models that complete this rigorous testing with full performance records are classified as <strong>Validated Models</strong>.",
+            zh: "<strong>Model as a Service (MaaS)</strong> 提供基于云平台的预训练 AI/ML 模型访问服务。为保障安全并平衡性能，OpenShift AI 会在不同硬件与压缩配置下评估模型并生成 benchmark 数据，帮助用户做出更明智的选择。完成严格测试且具备完整性能记录的模型被归类为 <strong>Validated Models</strong>。",
+          },
         },
         challenges: [
           { en: "High information density with unclear visual hierarchy", zh: "信息密度高但视觉层级不清晰" },
@@ -31,10 +33,10 @@
           { en: "Establish an extensible design system", zh: "建立可扩展的设计体系" },
         ],
         purpose: {
-          title: { en: "Purpose of the validated model details page", zh: "Validated model 详情页的目的" },
+          title: { en: "Purpose of the validated model details page", zh: "Validated Models 详情页的设计目标" },
           body: {
             en: "The detail page presents intuitive performance benchmark data of validated models. It helps users clearly understand model capabilities, and supports efficient model comparison, selection and subsequent application.",
-            zh: "详情页呈现 Validated model 直观的性能 benchmark 数据，帮助用户清晰理解模型能力，并支持高效的模型对比、选择与后续应用。",
+            zh: "详情页呈现 Validated Models 直观的性能 benchmark 数据，帮助用户清晰理解模型能力，并支持高效的模型对比、选择与后续应用。",
           },
         },
       },
@@ -89,7 +91,7 @@
         journeyTitle: { en: "User Journey", zh: "用户旅程" },
         journeyIntro: {
           en: "Journey · Validated model & benchmarks",
-          zh: "旅程 · Validated model 与 benchmark",
+          zh: "旅程 · Validated Models 与 benchmark",
         },
         phases: [
           {
@@ -101,11 +103,11 @@
             },
             intent: {
               en: "Shortlist from the catalog using browse or filters (use case, hardware type, SLO hints). Compare cards and select one model to evaluate with benchmark evidence next.",
-              zh: "通过浏览或筛选（用例、硬件类型、SLO 提示）从目录中筛选；对比卡片并选定一个模型，下一步用 benchmark 证据评估。",
+              zh: "通过浏览或筛选（用例、硬件类型、SLO 提示）从目录中筛选，对比卡片并选定一个模型，下一步用 benchmark 证据评估。",
             },
             risks: {
               en: "Easy to confuse validated vs experimental listings. And filter wording may not match how teams describe workloads, slowing consensus.",
-              zh: "易混淆 validated 与 experimental 列表；筛选文案可能与团队描述工作负载的方式不一致，拖慢共识。",
+              zh: "易混淆 validated 与 experimental 列表，筛选文案可能与团队描述工作负载的方式不一致，拖慢共识。",
             },
           },
           {
@@ -118,12 +120,12 @@
             intent: {
               html: {
                 en: 'Use <strong>Overview</strong> for specs and open <strong>Performance insights</strong> for benchmark-linked charts. Use validation script or CLI/config snippets when offered to align local checks with published runs.',
-                zh: "用 <strong>Overview</strong> 查看规格，打开 <strong>Performance insights</strong> 查看 benchmark 图表；如有验证脚本或 CLI/配置片段，用于与已发布运行对齐本地检查。",
+                zh: "用 <strong>Overview</strong> 查看规格，打开 <strong>Performance insights</strong> 查看 benchmark 图表，如有验证脚本或 CLI/配置片段，用于与已发布运行对齐本地检查。",
               },
             },
             risks: {
               en: "Benchmark setup (hardware, batching, data slice) varies by model — hard to compare or reproduce on the stack without clear artifact links.",
-              zh: "benchmark 设置（硬件、batch、数据切片）因模型而异——缺少清晰 artifact 链接时难以在栈上对比或复现。",
+              zh: "benchmark 设置（硬件、batch、数据切片）因模型而异——缺少清晰的 benchmark artifact 链接时，难以在相同环境中对比或复现。",
             },
           },
           {
@@ -135,11 +137,11 @@
             },
             intent: {
               en: "Filter and compare configurations and accuracy vs compression. And inherit catalog filters where applicable or accept recommended strongest defaults.",
-              zh: "筛选并对比配置及精度与压缩关系；在适用时继承目录筛选或接受推荐的最强默认项。",
+              zh: "筛选并对比配置及精度与压缩关系，在适用时继承目录筛选或接受推荐的最强默认项。",
             },
             risks: {
               en: "High cognitive load across dimensions. Stakeholders ask why a configuration is recommended without plain-language rationale.",
-              zh: "多维度认知负荷高；干系人常追问推荐配置原因而缺少通俗说明。",
+              zh: "多维度认知负荷高，干系人常追问推荐配置原因而缺少通俗说明。",
             },
           },
           {
@@ -151,11 +153,11 @@
             },
             intent: {
               en: "Check whether an available HWP matches the desired config. If not, export details and request HWP, otherwise select the HWP for deployment.",
-              zh: "检查是否有可用 HWP 匹配目标配置；若无则导出详情并申请 HWP，否则选择 HWP 用于部署。",
+              zh: "检查是否有可用 HWP 匹配目标配置，若无则导出详情并申请 HWP，否则选择 HWP 用于部署。",
             },
             risks: {
               en: "Deploy blocked when no HWP exists. Unclear SLA, ownership, or funding for new profiles creates stakeholder anxiety.",
-              zh: "无 HWP 时部署受阻；新 profile 的 SLA、归属或预算不清晰会引发干系人焦虑。",
+              zh: "无 HWP 时部署受阻，新 profile 的 SLA、归属或预算不清晰会引发干系人焦虑。",
             },
           },
           {
@@ -167,11 +169,11 @@
             },
             intent: {
               en: "Launch deployment with HWP, compression, and environment settings. Connect ops monitoring to the same SLO language used in benchmarks where possible.",
-              zh: "以 HWP、压缩与环境设置启动部署；尽可能将运维监控与 benchmark 中使用的 SLO 语言对齐。",
+              zh: "以 HWP、压缩与环境设置启动部署，尽可能将运维监控与 benchmark 中使用的 SLO 语言对齐。",
             },
             risks: {
               en: "Runtime drift vs benchmark claims. Handoff between model owners and platform/Ops for profile lifecycle and re-validation.",
-              zh: "运行时与 benchmark 声明漂移；模型负责人与平台/Ops 在 profile 生命周期与再验证上的交接。",
+              zh: "运行时与 benchmark 声明漂移，模型负责人与平台/Ops 在 profile 生命周期与再验证上的交接。",
             },
           },
         ],
@@ -181,7 +183,7 @@
         cards: [
           { icon: ICON + "view-in-ar.svg", text: { en: "Display intuitive and comprehensive performance benchmark data", zh: "展示直观且全面的性能 benchmark 数据" } },
           { icon: ICON + "theaters.svg", text: { en: "Enable users to clearly compare and select the most matched hardware", zh: "帮助用户清晰对比并选择最匹配的硬件" } },
-          { icon: ICON + "balance.svg", text: { en: "Facilitate easy comparison among different validated models", zh: "便于在不同 Validated model 间对比" } },
+          { icon: ICON + "balance.svg", text: { en: "Facilitate easy comparison among different validated models", zh: "便于在不同 Validated Models 间对比" } },
           { icon: ICON + "integration-instructions.svg", text: { en: "Improve the efficiency of model selection, registration and deployment", zh: "提升模型选择、注册与部署效率" } },
         ],
       },
@@ -240,15 +242,15 @@
           num: 2,
           body: {
             en: 'A "Validated" label beside the model name uses magenta as a consistent signal of verification status across the platform. Users can assess status without hunting\u2014faster, safer decisions with strong contrast against neutral UI.',
-            zh: "模型名称旁的 “Validated” 标签以洋红色作为全平台一致的验证状态信号，用户无需四处查找即可判断状态，在中性 UI 上形成强对比，决策更快、更安全。",
+            zh: "模型名称旁的 “Validated” 标签以品红（magenta）作为全平台一致的验证状态信号，用户无需四处查找即可判断状态，在中性 UI 上形成强对比，决策更快、更安全。",
           },
-          mock: { src: DESIGN + "goals-validated.svg", width: 1014, height: 430, alt: "Validated label and popover" },
+          mock: { src: DESIGN + "goals-validated.png", width: 507, height: 215, alt: "Validated label and popover" },
         },
         {
           num: 3,
           html: {
             en: "User research shows 83.3% of users prioritize model deployment vs. only 8.3% for registration. Based on this insight, I made <strong>Deploy model</strong> the primary button.",
-            zh: "用户研究显示 83.3% 用户优先部署模型，仅 8.3% 优先注册。基于此将 <strong>Deploy model</strong> 设为主按钮。",
+            zh: "用户研究显示 83.3% 的用户最终目的是部署模型，仅 8.3% 的用户目的是注册模型。基于此将 <strong>Deploy model</strong> 设为主按钮。",
           },
           mock: { src: DESIGN + "goals-chart.svg", width: 1002, height: 564, alt: "Users\u2019 end goal radial chart" },
         },
@@ -368,7 +370,7 @@
             title: { en: "Compression level comparison", zh: "Compression level comparison" },
             body: {
               en: "To visualize the trade-offs between model size and performance/accuracy. The side-by-side card layout provides an immediate comparison, helping users justify the use of quantized models for cost savings.",
-              zh: "可视化模型规模与性能/精度权衡；并排卡片布局便于论证量化模型带来的成本收益。",
+              zh: "可视化模型规模与性能/精度权衡，并排卡片布局便于论证量化模型带来的成本收益。",
             },
           },
           {
@@ -421,7 +423,7 @@
             width: 503,
             body: {
               en: "Expand/collapse controls are available. Advanced info are collapsed by default to reduce visual noise. Users can expand them to view details and compare data, keeping the main workflow clean while supporting in-depth usage needs.",
-              zh: "提供展开/折叠控件。高级信息默认折叠以降低视觉干扰；用户可展开查看详情并对比数据，在保持主流程简洁的同时满足深度使用需求。",
+              zh: "提供展开/折叠控件。高级信息默认折叠以降低视觉干扰，用户可展开查看详情并对比数据，在保持主流程简洁的同时满足深度使用需求。",
             },
           },
           {
@@ -448,7 +450,7 @@
             width: 481,
             body: {
               en: "Clicking the legend toggles the performance data of the corresponding compression level on and off. Users can keep only the compression types they care about for easier comparison and selection.",
-              zh: "点击图例可开关对应压缩级别的性能数据；用户可仅保留关心的压缩类型，便于对比与选择。",
+              zh: "点击图例可开关对应压缩级别的性能数据，用户可仅保留关心的压缩类型，便于对比与选择。",
             },
           },
         ],
@@ -458,7 +460,7 @@
         title: { en: "Hardware configuration", zh: "Hardware configuration" },
         intro: {
           en: "Tabular density supports side-by-side scanning. Stack columns reinforce reproducibility alongside performance.",
-          zh: "表格密度支持并排扫描；堆叠列在性能旁强化可复现性。",
+          zh: "表格密度支持并排扫描，堆叠列在性能旁强化可复现性。",
         },
         table: {
           src: BENCHMARK + "table-main.png",
@@ -494,7 +496,7 @@
               body: {
                 html: {
                   en: "<p>Based on user research, only the most commonly used parameters are shown by default. Users can also customize visible columns, and the system remembers their preferences for faster comparisons.</p><p>Columns in the modal are grouped into four categories with expand/collapse controls, and a “Restore default columns” button can reset the view.</p>",
-                  zh: "<p>基于用户研究，默认仅展示最常用参数；用户可自定义可见列，系统会记住偏好以加快对比。</p><p>弹窗中的列分为四组，支持展开/折叠，并提供「Restore default columns」的功能以便重置视图。</p>",
+                  zh: "<p>基于用户研究，默认仅展示最常用参数，用户可自定义可见列，系统会记住偏好以加快对比。</p><p>弹窗中的列分为四组，支持展开/折叠，并提供「Restore default columns」的功能以便重置视图。</p>",
                 },
               },
               visual: "columns",
@@ -526,7 +528,7 @@
               },
               body: {
                 en: "I also provided a default recommendation while preserving human accountability. Instead of enforcing a single optimal result, we offer users a clear starting point that is more actionable. The salient, non-intrusive badge works alongside filters to maintain",
-                zh: "在保留人工问责的同时提供默认推荐：不强制单一最优结果，而是给出更可执行的起点；醒目且不打扰的徽章与筛选器协同工作。",
+                zh: "在保留人工问责的同时提供默认推荐：不强制单一最优结果，而是给出更可执行的起点，醒目且不打扰的徽章与筛选器协同工作。",
               },
               visual: "recommended",
               images: {

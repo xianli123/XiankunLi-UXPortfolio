@@ -17,6 +17,41 @@
   gap: var(--space-lg);
 }
 
+.case-version-switch {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: var(--space-md);
+  padding: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg);
+}
+
+.case-version-switch__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  transition: color var(--transition), background var(--transition);
+}
+
+.case-version-switch__btn:hover {
+  color: var(--color-text);
+}
+
+.case-version-switch__btn.is-active {
+  background: var(--color-text);
+  color: #fff;
+  pointer-events: none;
+}
+
 .case-page-back {
   display: inline-flex;
   align-items: center;
@@ -187,6 +222,8 @@ html:lang(zh) .case-page__main .fc :where(
   .fc-model-design__lead,
   .fc-model-design__icon-row-text,
   .fc-model-design__goal-text,
+  .fc-model-context__body,
+  .fc-model-ia-v2__body,
   .fc-quote__text,
   .fc-model-persona__body
 ) {
@@ -205,6 +242,10 @@ html:lang(zh) .case-page__main .fc :where(
 ) strong {
   font-weight: 600;
   color: var(--color-text);
+}
+
+html:lang(zh) .case-page__main .fc .fc-model-context__body strong {
+  font-weight: 500;
 }
 
 /* Hero on dark stage — keep white, do not use muted body color */

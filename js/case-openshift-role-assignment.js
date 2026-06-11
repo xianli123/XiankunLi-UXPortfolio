@@ -22,7 +22,7 @@
         },
         painTitle: {
           en: "Inefficiency caused by mandatory manual user/group input",
-          zh: "强制手动输入 user/group 导致效率低下",
+          zh: "必须手动输入 user/group，操作效率较低",
         },
         solutionTitle: {
           en: "Typeahead input for user/group selection",
@@ -61,7 +61,7 @@
       {
         painBody: {
           en: "In accordance with previous specifications, we will introduce around a dozen new predefined roles. During permission management, it becomes challenging to clearly list all available roles for project admins, guide them to make proper selections, and display detailed role information effectively.",
-          zh: "根据先前定义，将引入约十余个预定义角色。权限管理时，如何清晰列出可用角色、引导正确选择并有效展示角色详情成为挑战。",
+          zh: "根据先前定义，将引入十余个预定义角色。权限管理时，如何清晰列出可用角色、引导正确选择并有效展示角色详情成为挑战。",
         },
         painTitle: {
           en: "Need a clear and easy-to-use role list",
@@ -98,7 +98,7 @@
       {
         painBody: {
           en: "Per previous definitions, nearly a dozen new predefined roles will be added. When managing role assignments, project admins struggle to quickly tell which roles are already granted to users/groups and which are not.",
-          zh: "根据先前定义，将新增近十余个预定义角色。管理角色分配时，管理员难以快速区分哪些角色已授予 user/group、哪些尚未授予。",
+          zh: "根据先前定义，将新增十余个预定义角色。管理角色分配时，管理员难以快速区分哪些角色已授予 user/group、哪些尚未授予。",
         },
         painTitle: {
           en: "Difficulty in distinguishing assignment status",
@@ -136,7 +136,7 @@
             variant: "unassigning",
             text: {
               en: "The AI role will be unassigned from the user/group after saving the changes.",
-              zh: "保存变更后，该 AI 角色将从该 user/group 取消分配。",
+              zh: "保存变更后，将取消该 user/group 的此 AI 角色分配。",
             },
           },
           {
@@ -145,7 +145,7 @@
             text: {
               html: {
                 en: 'The <strong>OpenShift custom role</strong> will be unassigned from the user/group after saving the changes.',
-                zh: "保存变更后，<strong>OpenShift custom role</strong> 将从该 user/group 取消分配。",
+                zh: "保存变更后，将取消该 user/group 的 <strong>OpenShift custom role</strong> 分配。",
               },
             },
             footnote: {
@@ -196,7 +196,7 @@
 
   window.applyRoleAssignmentBlock = function applyRoleAssignmentBlock() {
     const block = window.RBAC_ROLE_ASSIGNMENT_BLOCK;
-    const rbac = window.CASE_OPENSHIFT_DATA?.rbac;
+    const rbac = window.CASE_OPENSHIFT_DATA?.["rbac-v1"];
     if (!block || !rbac) return;
     const section = rbac.blocks.find(
       (b) => b.type === "section" && b.title?.en === "Design breakdown"

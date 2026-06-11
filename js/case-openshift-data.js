@@ -6,27 +6,27 @@
 
   const VERB_ROWS = [
     [
-      { en: "Create/Duplicate", zh: "Create/Duplicate", rowspan: 1 },
+      { en: "Create/Duplicate", zh: "创建/复制", rowspan: 1 },
       "Create",
-      { en: "Create or duplicate a resource", zh: "Create or duplicate a resource" },
+      { en: "Create or duplicate a resource", zh: "创建或复制资源" },
     ],
     [
-      { en: "Read/Preview", zh: "Read/Preview", rowspan: 4 },
+      { en: "Read/Preview", zh: "读取/预览", rowspan: 4 },
       "Get",
-      { en: "Retrieve detailed information about a specific resource", zh: "Retrieve detailed information about a specific resource" },
+      { en: "Retrieve detailed information about a specific resource", zh: "获取特定资源的详细信息" },
     ],
-    ["List", { en: "List all instances of a resource", zh: "List all instances of a resource" }],
-    ["Watch", { en: "Continuously monitor a resource for changes", zh: "Continuously monitor a resource for changes" }],
+    ["List", { en: "List all instances of a resource", zh: "列出资源的所有实例" }],
+    ["Watch", { en: "Continuously monitor a resource for changes", zh: "持续监控资源变更" }],
     [
-      { en: "Update", zh: "Update", rowspan: 2 },
+      { en: "Update", zh: "更新", rowspan: 2 },
       "Update",
-      { en: "Modify multiple parts of an existing resource at one time", zh: "Modify multiple parts of an existing resource at one time" },
+      { en: "Modify multiple parts of an existing resource at one time", zh: "一次性修改现有资源的多个部分" },
     ],
-    ["Patch", { en: "Partially update an existing resource's data", zh: "Partially update an existing resource's data" }],
+    ["Patch", { en: "Partially update an existing resource's data", zh: "部分更新现有资源的数据" }],
     [
       "Delete",
       "Delete",
-      { en: "Remove a resource", zh: "Remove a resource" },
+      { en: "Remove a resource", zh: "删除资源" },
     ],
   ];
 
@@ -42,7 +42,20 @@
     { icon: "video-file.svg", label: "Event tracking design" },
   ];
 
+  const PROCESS_RBAC_ZH = [
+    { icon: "hearing.svg", label: "客户洞察梳理" },
+    { icon: "queue-play-next.svg", label: "技术调研" },
+    { icon: "contact-emergency.svg", label: "用户研究" },
+    { icon: "equalizer.svg", label: "竞品调研" },
+    { icon: "swap-calls.svg", label: "概念设计" },
+    { icon: "app-registration.svg", label: "高保真设计" },
+    { icon: "send-time-extension.svg", label: "设计交付" },
+    { icon: "contact-phone.svg", label: "可用性测试" },
+    { icon: "video-file.svg", label: "埋点设计" },
+  ];
+
   const PROCESS_MODEL = PROCESS_RBAC.filter((s) => s.label !== "Usability testing");
+  const PROCESS_MODEL_ZH = PROCESS_RBAC_ZH.filter((s) => s.label !== "可用性测试");
 
   const PROCESS_DEPLOY = [
     { icon: "hearing.svg", label: "Customer insights sorting" },
@@ -55,9 +68,25 @@
     { icon: "dynamic-feed.svg", label: "Design extension" },
   ];
 
+  const PROCESS_DEPLOY_ZH = [
+    { icon: "hearing.svg", label: "客户洞察梳理" },
+    { icon: "contact-emergency.svg", label: "用户研究" },
+    { icon: "content-paste-search.svg", label: "旧版设计评估" },
+    { icon: "swap-calls.svg", label: "概念设计" },
+    { icon: "app-registration.svg", label: "高保真设计" },
+    { icon: "send-time-extension.svg", label: "设计交付" },
+    { icon: "content-paste-go.svg", label: "新版设计评估" },
+    { icon: "dynamic-feed.svg", label: "设计延展" },
+  ];
+
   window.CASE_OPENSHIFT_DATA = {
-    rbac: {
-      id: "rbac",
+    "rbac-v1": {
+      id: "rbac-v1",
+      version: 1,
+      codeName: {
+        en: "RBAC Design in AI Project V1",
+        zh: "AI 项目中的 RBAC 权限设计 V1",
+      },
       template: "openshift",
       blocks: [
         {
@@ -79,7 +108,7 @@
             team: { en: "1 Designer, 3 Engineers, 2 PMs", zh: "1 设计师、3 工程师、2 PM" },
             productLabel: { en: "Red Hat OpenShift AI", zh: "Red Hat OpenShift AI" },
           },
-          process: { en: PROCESS_RBAC, zh: PROCESS_RBAC, layout: "rbac-stagger" },
+          process: { en: PROCESS_RBAC, zh: PROCESS_RBAC_ZH, layout: "rbac-stagger" },
         },
         {
           type: "section",
@@ -91,7 +120,7 @@
                 title: { en: "Background", zh: "背景" },
                 body: {
                   en: "Red Hat OpenShift AI is an enterprise cloud-native AI/ML platform for data science and AI/ML engineering. With increasing adoption in enterprises and education, demand for fine-grained access control has grown.",
-                  zh: "Red Hat OpenShift AI 是企业级云原生 AI/ML 平台，面向数据科学与 AI/ML 工程。随着企业与教育场景采用率提升，对细粒度访问控制的需求日益增长。",
+                  zh: "Red Hat OpenShift AI 是企业级云原生 AI/ML 平台，面向数据科学家与 AI/ML 工程师。随着企业与教育场景采用率提升，对细粒度访问控制的需求日益增长。",
                 },
               },
               right: {
@@ -108,7 +137,7 @@
                     icon: "vpn-key-off.svg",
                     text: {
                       en: "Organizations struggle with managing complex permission structures. The existing system lacked clarity, making it difficult for admin to understand who has access to what, and why.",
-                      zh: "组织难以管理复杂权限结构。现有系统缺乏清晰度，管理员难以理解谁拥有哪些权限及原因。",
+                      zh: "组织难以管理复杂权限结构。现有系统信息不清晰，管理员难以判断权限归属及原因。",
                     },
                   },
                 ],
@@ -150,18 +179,18 @@
               type: "content",
               body: {
                 en: "OpenShift AI permissions build on Kubernetes RBAC, so I researched the native model and how other platforms expose it before designing workflows that stay compliant and understandable.",
-                zh: "OpenShift AI 的权限基于 Kubernetes RBAC，因此在设计流程前，我先调研原生模型与同类产品的做法，确保方案既合规又便于理解。",
+                zh: "OpenShift AI 的权限基于 Kubernetes RBAC。因此在设计流程前，我先调研原生模型与同类产品的做法，确保方案既合规又便于理解。",
               },
             },
             {
               type: "verbTable",
-              title: { en: "Roles and verbs", zh: "角色与动词" },
+              title: { en: "Roles and verbs", zh: "角色与操作动词" },
               body: {
                 en: "Mapped platform permission actions to native Kubernetes RBAC verbs, ensuring consistent, secure, and programmable access control.",
                 zh: "将平台权限操作映射到 Kubernetes 原生 RBAC 动词，确保一致、安全且可编程的访问控制。",
               },
               image: "assets/cases/openshift-ai/rbac/research/roles-verbs-table.png",
-              imageAlt: { en: "Roles and verbs mapping table", zh: "角色与动词映射表" },
+              imageAlt: { en: "Roles and verbs mapping table", zh: "角色与操作动词映射表" },
             },
             {
               type: "bindingSplit",
@@ -175,7 +204,7 @@
                 },
                 {
                   en: "A RoleBinding typically includes three core components: the role to be assigned, the subject (user/group/service account) receiving the role, and the specific resources the role applies to. The image shows an example of a role binding in K8S.",
-                  zh: "RoleBinding 通常包含三个核心组件：要分配的角色、获得角色的主体（用户/组/服务账户），以及角色适用的具体资源。图示为 K8S 中的 RoleBinding 示例。",
+                  zh: "RoleBinding 通常包含三个核心组件：要分配的角色、获得角色的主体（用户/组/服务账户），以及角色适用的具体资源。图示为 Kubernetes 中的 RoleBinding 示例。",
                 },
               ],
             },
@@ -205,8 +234,8 @@
                 zh: "本节梳理项目管理员为新成员分配 Workbench 访问权限的完整流程。现有用户遵循类似流程，确保团队权限管理一致。",
               },
               steps: [
-                { emoji: "😟", phase: { en: "Identify problem", zh: "识别问题" }, title: { en: "New hire onboarding", zh: "新员工 onboarding" }, body: { en: "New team members need access to existing workbenches, but should not have permission to modify configurations.", zh: "新成员需要访问现有 Workbench，但不应拥有修改配置的权限。" } },
-                { emoji: "🤔", phase: { en: "Find a solution", zh: "寻找方案" }, title: { en: "Review permissions", zh: "审核权限" }, bodyHtml: { en: 'The project admin logs into the RHOAI, navigates to the <strong>Permissions</strong> tab, and reviews available roles.', zh: "项目管理员登录 RHOAI，进入 <strong>Permissions</strong> 标签页并查看可用角色。" } },
+                { emoji: "😟", phase: { en: "Identify problem", zh: "识别问题" }, title: { en: "New hire onboarding", zh: "新员工入职" }, body: { en: "New team members need access to existing workbenches, but should not have permission to modify configurations.", zh: "新成员需要访问现有 Workbench，但不应拥有修改配置的权限。" } },
+                { emoji: "🤔", phase: { en: "Find a solution", zh: "寻找方案" }, title: { en: "Review permissions", zh: "查看权限" }, bodyHtml: { en: 'The project admin logs into the RHOAI, navigates to the <strong>Permissions</strong> tab, and reviews available roles.', zh: "项目管理员登录 RHOAI，进入 <strong>Permissions</strong> 标签页并查看可用角色。" } },
                 { emoji: "😊", phase: { en: "Configure permissions", zh: "配置权限" }, titleHtml: { en: 'Assign <em>Reader</em> role', zh: "分配 <em>Reader</em> 角色" }, bodyHtml: { en: 'Select the <strong>Workbench reader</strong> role, specify the target workbench name, and add the user.', zh: "选择 <strong>Workbench reader</strong> 角色，指定目标 Workbench 名称并添加用户。" } },
                 { emoji: "✅", phase: { en: "Verify result", zh: "验证结果" }, title: { en: "Test access", zh: "测试访问" }, body: { en: "The new employee confirms they can view workbench details, while the edit button is disabled.", zh: "新员工确认可查看 Workbench 详情，且编辑按钮被禁用。" } },
                 { emoji: "😌", phase: { en: "Ongoing management", zh: "持续管理" }, title: { en: "Permission audits", zh: "权限审计" }, body: { en: "Regularly review permission assignments to ensure compliance with security requirements.", zh: "定期审核权限分配，确保符合安全要求。" } },
@@ -219,7 +248,7 @@
                 { icon: "co-present.svg", title: { en: "Coarse permission granularity", zh: "权限粒度过粗" }, text: { en: "Existing roles (admin and edit) are too broad, violating the principle of least privilege and creating security risks.", zh: "现有角色（admin 与 edit）范围过宽，违反最小权限原则并带来安全风险。" } },
                 { icon: "select-all.svg", title: { en: "Poor resource isolation", zh: "资源隔离不足" }, text: { en: "No effective isolation of resource access between users/groups in the same project, a key need for education and multi-tenant scenarios.", zh: "同一项目内用户/组之间缺乏有效资源访问隔离，是教育与多租户场景的关键需求。" } },
                 { icon: "visibility-off.svg", title: { en: "Opaque role definitions", zh: "角色定义不透明" }, text: { en: "Custom role permissions are defined via complex Kubernetes APIs, lacking visualization and making audits difficult.", zh: "自定义角色权限通过复杂 Kubernetes API 定义，缺少可视化，审计困难。" } },
-                { icon: "edit-off.svg", title: { en: "Fragmented management experience", zh: "管理体验割裂" }, text: { en: "Advanced permission tasks require switching to the OpenShift console, raising costs and breaking UX consistency.", zh: "高级权限任务需切换至 OpenShift 控制台，增加成本并破坏体验一致性。" } },
+                { icon: "edit-off.svg", title: { en: "Fragmented management experience", zh: "管理体验割裂" }, text: { en: "Advanced permission tasks require switching to the OpenShift console, raising costs and breaking UX consistency.", zh: "高级权限任务需切换至 OpenShift 控制台，增加成本并影响体验一致性。" } },
               ],
             },
           ],
@@ -274,7 +303,7 @@
                       label: { en: "Assignment methods", zh: "分配方式" },
                       text: {
                         en: "Support for direct assignment, group-based inheritance, and co-administrator designation.",
-                        zh: "支持直接分配、组继承与共同管理员指定。",
+                        zh: "支持直接分配、组继承与共同管理员委派。",
                       },
                     },
                     {
@@ -294,7 +323,7 @@
               title: { en: "Inspiration from competitor analysis", zh: "竞品分析启发" },
               body: {
                 en: "During discussions with the product and business team, we agreed to split collected inspirations and required features into two phases: MVP phase and Post-MVP phase. This allows us to fully focus on users' core needs in the MVP stage and make better use of the engineering team's development efforts.",
-                zh: "与产品、业务团队讨论后，我们将收集的灵感与需求功能拆分为 MVP 与 Post-MVP 两阶段，以便在 MVP 阶段聚焦用户核心需求，并更高效地利用开发团队的开发投入。",
+                zh: "与产品、业务团队讨论后，我们将收集的灵感与需求功能拆分为 MVP 与 Post-MVP 两阶段，以便在 MVP 阶段聚焦用户核心需求，并更高效地投入开发资源。",
               },
             },
             {
@@ -305,12 +334,12 @@
                 zh: '我们在 <span class="fc-metrics__phase">MVP 阶段</span> 的重点如下。',
               },
               items: [
-                { num: "01", text: { en: "Build AI scenario-based role mapping on top of K8S RBAC", zh: "在 K8S RBAC 之上构建 AI 场景角色映射" } },
-                { num: "02", text: { en: "Offer out-of-the-box AI-exclusive roles for OpenShift AI console", zh: "为 OpenShift AI 控制台提供开箱即用 AI 专属角色" } },
+                { num: "01", text: { en: "Build AI scenario-based role mapping on top of K8S RBAC", zh: "在 Kubernetes RBAC 之上构建 AI 场景角色映射" } },
+                { num: "02", text: { en: "Offer out-of-the-box AI-exclusive roles for OpenShift AI console", zh: "为 OpenShift AI 控制台提供开箱即用的 AI 专属角色" } },
                 { num: "03", text: { en: "Provide fine-grained permissions at the resource level", zh: "提供资源级细粒度权限" } },
                 { num: "04", text: { en: "Predefined roles categorized by plugin source", zh: "按插件来源分类的预定义角色" } },
                 { num: "05", text: { en: "Visualize permission rules within the OpenShift AI console", zh: "在 OpenShift AI 控制台内可视化权限规则" } },
-                { num: "06", text: { en: "Follow the K8S architecture: Role + RoleBinding", zh: "遵循 K8S 架构：Role + RoleBinding" } },
+                { num: "06", text: { en: "Follow the K8S architecture: Role + RoleBinding", zh: "遵循 Kubernetes 架构：Role + RoleBinding" } },
               ],
             },
             {
@@ -324,8 +353,8 @@
                 { num: "01", text: { en: "Enable project admins to customize roles based on their needs", zh: "允许项目管理员按需自定义角色" } },
                 { num: "02", text: { en: "Allow project admins to grant permissions to specific resource instances", zh: "允许为特定资源实例授权" } },
                 { num: "03", text: { en: "Support role copy and quick configuration to improve admin efficiency", zh: "支持角色复制与快速配置" } },
-                { num: "04", text: { en: "Allow end-users to view their roles and apply for new permissions", zh: "允许终端用户查看角色并申请新权限" } },
-                { num: "05", text: { en: "Notify the end-users when permissions are changed", zh: "权限变更时通知终端用户" } },
+                { num: "04", text: { en: "Allow end-users to view their roles and apply for new permissions", zh: "允许最终用户查看角色并申请新权限" } },
+                { num: "05", text: { en: "Notify the end-users when permissions are changed", zh: "权限变更时通知最终用户" } },
               ],
             },
           ],
@@ -339,7 +368,7 @@
           },
           cards: [
             { icon: "supervised-user-circle.svg", title: { en: "Granular control", zh: "细粒度控制" }, text: { en: "Enable fine-grained permission management for resources, allowing adminis to precisely control user permissions for view, edit, use, or delete actions.", zh: "为资源启用细粒度权限管理，使管理员能精确控制用户的查看、编辑、使用或删除权限。" } },
-            { icon: "manage-accounts.svg", title: { en: "User management", zh: "用户管理" }, text: { en: "Streamlined role assignment processes, enabling the project admins to efficiently manage team permissions at scale.", zh: "简化角色分配流程，使项目管理员能高效管理大规模团队权限。" } },
+            { icon: "manage-accounts.svg", title: { en: "User management", zh: "用户管理" }, text: { en: "Streamlined role assignment processes, enabling the project admins to efficiently manage team permissions at scale.", zh: "简化角色分配流程，使项目管理员能高效管理大规模团队的权限。" } },
             { icon: "security.svg", title: { en: "Enterprise-grade security", zh: "企业级安全" }, text: { en: "Built on Kubernetes native RBAC, ensuring secure, auditable, and extensible access control across namespaces.", zh: "基于 Kubernetes 原生 RBAC，确保跨 namespace 安全、可审计且可扩展的访问控制。" } },
           ],
         },
@@ -430,8 +459,13 @@
       ],
     },
 
-    "model-details": {
-      id: "model-details",
+    "model-details-v1": {
+      id: "model-details-v1",
+      version: 1,
+      codeName: {
+        en: "Validated Model's Details Design V1",
+        zh: "Validated Models 详情页设计 V1",
+      },
       template: "openshift",
       blocks: [
         {
@@ -441,10 +475,10 @@
           illustrationWidth: 931,
           illustrationHeight: 514,
           product: { en: "Red Hat OpenShift AI 3.0", zh: "Red Hat OpenShift AI 3.0" },
-          title: { en: "Validated Model's Details Design", zh: "Validated Model 详情页设计" },
+          title: { en: "Validated Model's Details Design", zh: "Validated Models 详情页设计" },
           tagline: {
             en: "The validated model detail page is designed with refined information architecture and streamlined interactions to boost efficiency for data scientists and developers.",
-            zh: "通过优化信息架构与交互流程，提升数据科学家与开发者在 Validated Model 详情页上的决策效率。",
+            zh: "通过优化信息架构与交互流程，提升数据科学家与开发者在 Validated Models 详情页上的决策效率。",
           },
           meta: {
             role: { en: "End-to-end Designer", zh: "端到端设计师" },
@@ -453,7 +487,7 @@
             team: { en: "1 Designer, 3 Engineers, 2 PMs", zh: "1 设计师、3 工程师、2 PM" },
             productLabel: { en: "Red Hat OpenShift AI", zh: "Red Hat OpenShift AI" },
           },
-          process: { en: PROCESS_MODEL, zh: PROCESS_MODEL, layout: "model-stagger" },
+          process: { en: PROCESS_MODEL, zh: PROCESS_MODEL_ZH, layout: "model-stagger" },
         },
         { type: "modelResearch" },
         { type: "modelIaMap" },
@@ -535,15 +569,20 @@
         {
           type: "tags",
           items: {
-            en: ["Validated Models", "Information Architecture", "Benchmarks", "ML Ops", "Event tracking"],
-            zh: ["Validated Model", "信息架构", "Benchmark", "ML Ops", "埋点设计"],
+            en: ["Validated Models", "Information Architecture", "Benchmarks", "MLOps", "Event tracking"],
+            zh: ["Validated Models", "信息架构", "Benchmark", "MLOps", "埋点设计"],
           },
         },
       ],
     },
 
-    "deployment-tracking": {
-      id: "deployment-tracking",
+    "deployment-tracking-v1": {
+      id: "deployment-tracking-v1",
+      version: 1,
+      codeName: {
+        en: "AI Model Deployment Tracking V1",
+        zh: "AI 模型部署状态追踪 V1",
+      },
       template: "openshift",
       blocks: [
         {
@@ -568,7 +607,7 @@
             team: { en: "1 Designer, 4 Engineers, 1 PM", zh: "1 设计师、4 工程师、1 PM" },
             productLabel: { en: "Red Hat OpenShift AI", zh: "Red Hat OpenShift AI" },
           },
-          process: { en: PROCESS_DEPLOY, zh: PROCESS_DEPLOY, layout: "deploy-stagger" },
+          process: { en: PROCESS_DEPLOY, zh: PROCESS_DEPLOY_ZH, layout: "deploy-stagger" },
         },
         { type: "deploymentResearch" },
         { type: "deploymentEvaluation" },
@@ -590,4 +629,27 @@
   window.applyRolesMappingBlock?.();
   window.applyRoleRevealBlock?.();
   window.applyRoleAssignmentBlock?.();
+
+  function cloneOpenShiftCaseVersion(sourceId, targetId, version, codeName) {
+    const src = window.CASE_OPENSHIFT_DATA[sourceId];
+    if (!src) return;
+    window.CASE_OPENSHIFT_DATA[targetId] = JSON.parse(JSON.stringify(src));
+    const target = window.CASE_OPENSHIFT_DATA[targetId];
+    target.id = targetId;
+    target.version = version;
+    target.codeName = codeName;
+  }
+
+  cloneOpenShiftCaseVersion("rbac-v1", "rbac-v2", 2, {
+    en: "RBAC Design in AI Project V2",
+    zh: "AI 项目中的 RBAC 权限设计 V2",
+  });
+  cloneOpenShiftCaseVersion("model-details-v1", "model-details-v2", 2, {
+    en: "Validated Model's Details Design V2",
+    zh: "Validated Models 详情页设计 V2",
+  });
+  cloneOpenShiftCaseVersion("deployment-tracking-v1", "deployment-tracking-v2", 2, {
+    en: "AI Model Deployment Tracking V2",
+    zh: "AI 模型部署状态追踪 V2",
+  });
 })();

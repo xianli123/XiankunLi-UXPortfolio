@@ -9,10 +9,10 @@
   window.RBAC_ROLE_REVEAL_BLOCK = {
     type: "roleReveal",
     spacingTop: 72,
-    title: { en: "Reveal role details and assignees", zh: "展示角色详情与 assignee" },
+    title: { en: "Reveal role details and assignees", zh: "展示角色详情与 Assignees" },
     intro: {
       en: "To determine the optimal pattern for displaying role details, I explored and iterated on multiple interaction approaches, then conducted a comparative analysis focusing on user experience, space efficiency, information hierarchy, and reusability. From multiple design explorations, I selected two representative solutions for detailed comparison as shown below.",
-      zh: "为确定展示角色详情的最优模式，我探索并迭代多种交互方案，并从体验、空间效率、信息层级与可复用性等维度进行对比分析。在多种设计探索中，我选取以下两种代表性方案进行详细对比。",
+      zh: "为确定展示角色详情的最优模式，我探索并迭代多种交互方案，并从体验、空间效率、信息层级与可复用性等维度进行对比分析。经过多轮方案探索，我选取以下两种代表性方案进行详细对比。",
     },
     concepts: [
       {
@@ -39,7 +39,7 @@
         title: { en: "Conceptual design #02", zh: "概念设计 #02" },
         description: {
           en: "A floating modal popup that appears on user trigger, with no permanent space occupation.",
-          zh: "由用户触发出现的浮动弹窗，不永久占用界面空间。",
+          zh: "由用户操作触发的浮动弹窗，不常驻占用界面空间。",
         },
         pros: [
           { en: "Showing clear information hierarchy", zh: "信息层级清晰" },
@@ -47,7 +47,7 @@
           { en: "Easy to maintain the user's attention", zh: "易于保持用户注意力" },
         ],
         cons: [
-          { en: "Slightly higher cost for cross-role comparisons", zh: "跨角色对比成本略高" },
+          { en: "Slightly higher cost for cross-role comparisons", zh: "跨角色对比的操作成本略高" },
         ],
         image: ASSET + "concept-02.png",
         imageAlt: { en: "Modal pattern for role details", zh: "角色详情弹窗方案" },
@@ -85,7 +85,7 @@
 
   window.applyRoleRevealBlock = function applyRoleRevealBlock() {
     const block = window.RBAC_ROLE_REVEAL_BLOCK;
-    const rbac = window.CASE_OPENSHIFT_DATA?.rbac;
+    const rbac = window.CASE_OPENSHIFT_DATA?.["rbac-v1"];
     if (!block || !rbac) return;
     const section = rbac.blocks.find(
       (b) => b.type === "section" && b.title?.en === "Design breakdown"

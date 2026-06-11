@@ -132,8 +132,9 @@
       root.innerHTML = renderKeycloakCase(cs);
     }
 
-    const prev = window.getAdjacentCase?.(caseId, "prev");
-    const next = window.getAdjacentCase?.(caseId, "next");
+    const navCaseId = caseId.replace(/-v\d+$/, "-v1");
+    const prev = window.getAdjacentCase?.(navCaseId, "prev");
+    const next = window.getAdjacentCase?.(navCaseId, "next");
     const nav = document.getElementById("case-nav");
     if (nav && prev && next) {
       nav.innerHTML = `
@@ -148,6 +149,7 @@
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     syncLangSwitch();
     renderStaticLabels();
+    mountVersionSwitch();
     renderCase();
   }
 
@@ -171,10 +173,27 @@
     });
   }
 
+  function redirectToV2IfNeeded() {
+    const caseId = document.body.dataset.caseId;
+    const pair = window.getCaseDetailVersionPair?.(caseId);
+    if (pair?.currentVersion === 1 && pair.v2?.href) {
+      window.location.replace(pair.v2.href);
+      return true;
+    }
+    return false;
+  }
+
+  function mountVersionSwitch() {
+    document.getElementById("case-version-switch")?.remove();
+  }
+
   function init() {
+    if (redirectToV2IfNeeded()) return;
+
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     syncLangSwitch();
     renderStaticLabels();
+    mountVersionSwitch();
     renderCase();
 
     $("#lang-switch")?.addEventListener("click", () => {

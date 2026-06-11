@@ -163,4 +163,15 @@ python3 -m http.server 8765
 
 ---
 
+---
+
+## 8. 版本控制
+
+本次 Hero 改动已包含在 GitHub 首次提交中：
+
+- 仓库：[xianli123/XiankunLi-UXPortfolio](https://github.com/xianli123/XiankunLi-UXPortfolio)
+- 提交：`48d7186`（见 [CHANGELOG.md §24](../CHANGELOG.md#24-github-仓库初始化与推送2026-06-02)）
+
+---
+
 *文档生成：2026-06-02 · 对应当前仓库 `case-openshift.css` 与 `hero-illustration.png` 状态。*

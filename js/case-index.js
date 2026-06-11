@@ -1,13 +1,19 @@
 /**
  * Case study index — card metadata and lookup for all featured work.
+ * Detail page ids/hrefs follow CASE_DETAIL_NAMING in js/case-naming.js (…-v1).
  */
 (function () {
   "use strict";
 
   window.CASE_INDEX = [
     {
-      id: "rbac",
-      href: "cases/rbac.html",
+      id: "rbac-v1",
+      version: 1,
+      codeName: {
+        en: "RBAC Design in AI Project V1",
+        zh: "AI 项目中的 RBAC 权限设计 V1",
+      },
+      href: "cases/rbac-v1.html",
       color: "#EE0000",
       coverImage: "assets/cases/openshift-ai/rbac/hero/hero-illustration.svg",
       coverFit: "contain",
@@ -23,27 +29,37 @@
       },
     },
     {
-      id: "model-details",
-      href: "cases/model-details.html",
+      id: "model-details-v1",
+      version: 1,
+      codeName: {
+        en: "Validated Model's Details Design V1",
+        zh: "Validated Models 详情页设计 V1",
+      },
+      href: "cases/model-details-v1.html",
       color: "#EE0000",
       coverImage: "assets/cases/openshift-ai/model-details/hero/hero-illustration.png",
       coverPosition: "left top",
       title: {
         en: "Validated Model's Details Design",
-        zh: "Validated Model 详情页设计",
+        zh: "Validated Models 详情页设计",
       },
       tags: {
-        en: "Information Architecture + UX/UI Design + ML Ops",
-        zh: "信息架构 + 体验设计 + ML Ops",
+        en: "Information Architecture + UX/UI Design + MLOps",
+        zh: "信息架构 + 体验设计 + MLOps",
       },
       excerpt: {
         en: "Refined information architecture and streamlined interactions to boost efficiency for data scientists evaluating validated models.",
-        zh: "通过优化信息架构与交互流程，提升数据科学家评估 Validated Model 的决策效率。",
+        zh: "通过优化信息架构与交互流程，提升数据科学家评估 Validated Models 的决策效率。",
       },
     },
     {
-      id: "deployment-tracking",
-      href: "cases/deployment-tracking.html",
+      id: "deployment-tracking-v1",
+      version: 1,
+      codeName: {
+        en: "AI Model Deployment Tracking V1",
+        zh: "AI 模型部署状态追踪 V1",
+      },
+      href: "cases/deployment-tracking-v1.html",
       color: "#EE0000",
       coverImage: "assets/cases/openshift-ai/deployment/hero-illustration.png",
       coverFit: "contain",
@@ -59,9 +75,14 @@
       },
     },
     {
-      id: "keycloak-composite-role",
+      id: "keycloak-composite-role-v1",
+      version: 1,
+      codeName: {
+        en: "Keycloak Composite Role UI Redesign V1",
+        zh: "Keycloak Composite Role 界面重设计 V1",
+      },
       hidden: true, // temporarily hidden on home page
-      href: "cases/keycloak.html",
+      href: "cases/keycloak-v1.html",
       color: "#1F883D",
       coverImage: "assets/cases/keycloak/02-CompositeRole.png",
       coverPosition: "center top",

@@ -33,7 +33,7 @@
           icon: U + "icon-edit-calendar.svg",
           text: {
             en: "Participated in plan review, user session observation and research result synthesis",
-            zh: "参与方案评审、用户 session 观察与结果 synthesis",
+            zh: "参与方案评审、观察用户测试 session，并整理研究结果",
           },
         },
         {
@@ -73,7 +73,7 @@
         zh: "我们招募具备日常 RBAC 经验的项目管理员与安全从业者，在可点击原型上完成任务。",
       },
       stats: [
-        { value: "6", label: { en: "Sessions completed", zh: "完成 session 数" } },
+        { value: "6", label: { en: "Sessions completed", zh: "完成测试场次" } },
         { value: "3", label: { en: "Core task scenarios", zh: "核心任务场景" } },
         { value: "100%", label: { en: "Completeness rating", zh: "完整度评分" } },
         { value: "5", label: { en: "Recommendations", zh: "优化建议" } },
@@ -139,7 +139,7 @@
       ],
     },
     recommend: {
-      title: { en: "What participants recommended", zh: "受试者建议" },
+      title: { en: "What participants recommended", zh: "参与者建议" },
       cards: [
         {
           text: {
@@ -187,7 +187,7 @@
       title: { en: "Next step ...", zh: "下一步 ..." },
       body: {
         en: "After the usability testing, we shared all findings with product managers and engineering teams. The test results proved that the design has addressed core user pain points and fully matched user demands. Only minor details remain to be optimized, which will not affect the official release of core functions. We will adopt a small-win strategy to gradually implement all user-suggested improvements.",
-        zh: "可用性测试后，我们将全部发现同步给 PM 与开发团队。结果证明设计已解决核心痛点并满足用户需求。仅余细节优化，不影响核心功能正式发布。我们将采用 small-win 策略逐步落地用户建议。",
+        zh: "可用性测试后，我们将全部发现同步给 PM 与开发团队。结果证明设计已解决核心痛点并满足用户需求。仅余细节优化，不影响核心功能正式发布。我们将采用小步迭代策略逐步落地用户建议。",
       },
     },
     assets: {

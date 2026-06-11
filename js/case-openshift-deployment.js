@@ -44,7 +44,7 @@
               role: { en: "Model deployer", zh: "模型部署者" },
               body: {
                 en: "Responsible for AI model training, experimentation and deployment release. Needs to track real-time deployment progress, identify stalled steps, and troubleshoot failures quickly.",
-                zh: "负责 AI 模型训练、实验与部署发布。需要追踪实时部署进度、识别卡住步骤并快速排查失败。",
+                zh: "负责 AI 模型训练、实验与部署发布。需要追踪实时部署进度、识别卡住的步骤并快速定位故障。",
               },
             },
             {
@@ -101,11 +101,11 @@
           height: 778,
           workflow: { src: JOURNEY + "workflow-flow.svg", x: 166, y: 82, width: 1410, height: 184 },
           rowLabels: [
-            { text: { en: "Steps", zh: "步骤" }, x: 24, y: 35 },
-            { text: { en: "Workflow", zh: "工作流" }, x: 24, y: 143 },
-            { text: { en: "Painpoints", zh: "痛点" }, x: 24, y: 357 },
-            { text: { en: "Touch points", zh: "接触点" }, x: 24, y: 508 },
-            { text: { en: "Opportunities", zh: "机会点" }, x: 24, y: 632 },
+            { text: { en: "Steps", zh: "步骤" }, x: 24, y: 45 },
+            { text: { en: "Workflow", zh: "工作流" }, x: 24, y: 174 },
+            { text: { en: "Painpoints", zh: "痛点" }, x: 24, y: 371 },
+            { text: { en: "Touch points", zh: "触点" }, x: 24, y: 526 },
+            { text: { en: "Opportunities", zh: "机会点" }, x: 24, y: 666 },
           ],
           stages: [
             {
@@ -128,10 +128,10 @@
           painpoints: [
             { text: { en: "Unclear deploy state", zh: "部署状态不清晰" }, x: 420, y: 292, width: 167, height: 32 },
             { text: { en: "No clear deployment process", zh: "部署流程不清晰" }, x: 555, y: 338, width: 235, height: 32 },
-            { text: { en: "No deployment logs for debug", zh: "缺少部署日志无法调试" }, x: 552, y: 378, width: 241, height: 32 },
+            { text: { en: "No deployment logs for debug", zh: "缺少部署日志，难以排查问题" }, x: 552, y: 378, width: 241, height: 32 },
             { text: { en: "No clear duration expectation", zh: "缺少明确的耗时预期" }, x: 555, y: 418, width: 235, height: 32 },
             { text: { en: "Insufficient error details", zh: "错误信息不足" }, x: 924, y: 292, width: 194, height: 32 },
-            { text: { en: "Hard to realize the error in the table", zh: "难以在表格中发现错误" }, x: 840, y: 332, width: 278, height: 32 },
+            { text: { en: "Hard to realize the error in the table", zh: "难以在列表中识别异常状态" }, x: 840, y: 332, width: 278, height: 32 },
             { text: { en: "Hard to read activity from table view", zh: "表格视图难以阅读活动状态" }, x: 1162, y: 329, width: 293, height: 32 },
             { text: { en: "No detailed help text for the status", zh: "状态缺少详细帮助文本" }, x: 1174, y: 369, width: 270, height: 32 },
             { text: { en: "No guidelines to fix issues", zh: "缺少修复问题的指引" }, x: 1052, y: 418, width: 207, height: 32 },
@@ -257,7 +257,7 @@
           variant: "timeline-visual",
           title: {
             en: "Adopt timeline-style process visualization",
-            zh: "采用时间线式流程可视化",
+            zh: "采用时间线进行流程可视化",
           },
           body: {
             en: "Implement a stage-based timeline with clear dividers and highlighted current progress based on the deployment logs. Enables users to grasp the full deployment journey at a glance.",
@@ -343,7 +343,7 @@
             label: { en: "Unknown", zh: "未知" },
             body: {
               en: "Helper information depends on the underlying issue. The backend determines the specific cause and exposes it in the UI accordingly.",
-              zh: "帮助信息取决于底层问题，后端确定具体原因并在界面中相应展示。",
+              zh: "帮助信息取决于后端问题的判断，后端确定具体原因后会在界面中做出相应提示。",
             },
             icon: IMG + "breakdown/icons/label-unknown.svg",
           },
@@ -413,7 +413,7 @@
           },
           {
             en: "The events log reuses logs from OpenShift. On one hand, this ensures the event log remains concise and easy to read. On the other hand, it allows users to leverage their existing familiarity with OpenShift logs, creating a consistent experience. The most recent logs are displayed at the top.",
-            zh: "事件日志复用了 OpenShift 的日志。一方面，这确保事件日志保持简洁易读；另一方面，用户可以利用对 OpenShift 日志的现有熟悉度，获得一致的体验。最新的日志显示在顶部。",
+            zh: "事件日志复用了 OpenShift 的日志。一方面，这确保事件日志保持简洁易读，另一方面，用户可以利用对 OpenShift 日志的现有熟悉度，获得一致的体验。最新的日志显示在顶部。",
           },
         ],
         visual: {
@@ -465,7 +465,7 @@
               label: { en: "Decision", zh: "决策" },
               text: {
                 en: "To avoid misleading users with inaccurate references, we deprioritized this feature and leave it for future iterations.",
-                zh: "为避免不准确参考误导用户，该功能被降级并留待后续迭代。",
+                zh: "为避免不准确预期误导用户，该功能优先级下调并留待后续迭代。",
               },
             },
           ],
@@ -506,7 +506,7 @@
               label: { en: "Decision", zh: "决策" },
               text: {
                 en: "The integrated layout is deferred for now. It is marked as a nice-to-have feature, to be implemented in future iterations when technical support becomes available.",
-                zh: "整合布局暂缓，标记为锦上添花功能，待技术支撑成熟后再实现。",
+                zh: "整合布局暂缓，标记为增强型（nice-to-have）功能，待技术支撑成熟后再实现。",
               },
             },
           ],
@@ -550,7 +550,7 @@
         intro: {
           html: {
             en: 'After the feature launch, I collaborated with the customer support team to collect user feedback on the new functionality. Although a few details still require further iteration and optimization, the current release has already resolved most of users\' major pain points. <strong>Users regarded this update as a huge improvement.</strong>',
-            zh: "功能上线后，我与客户支持团队协作收集用户反馈。尽管部分细节仍需迭代优化，当前版本已解决用户大部分核心痛点。<strong>用户认为此次更新是重大改进。</strong>",
+            zh: "功能上线后，我与客户支持团队协作收集用户反馈。尽管部分细节仍需迭代优化，但是当前版本已解决用户大部分核心痛点。<strong>用户认为此次更新是重大改进。</strong>",
           },
         },
         testimonials: [
@@ -581,7 +581,7 @@
           {
             text: {
               en: "Keeping the OpenShift-style event logs was a great call. I have already known how to read them, so there was zero learning curve for this feature.",
-              zh: "保留 OpenShift 风格的事件日志非常正确。我已熟悉如何阅读，因此该功能零学习成本。",
+              zh: "保留 OpenShift 风格的事件日志非常正确。我已熟悉这类日志的阅读方式，因此该功能几乎零学习成本。",
             },
             author: { en: "Data Scientist", zh: "数据科学家" },
             role: { en: "A user from an airline company", zh: "某航空公司用户" },
@@ -601,7 +601,7 @@
             layout: "visual-left",
             heading: {
               en: "Adoption of the pattern in ‘Starting pipeline server’",
-              zh: "模式在「Starting pipeline server」中的采用",
+              zh: "组件在「Starting pipeline server」中的应用",
             },
             body: {
               text: {
@@ -619,7 +619,7 @@
                 num: "01",
                 text: {
                   en: "Reused the core status modal architecture",
-                  zh: "复用核心状态弹窗架构",
+                  zh: "复用状态追踪的弹出框组件和架构",
                 },
               },
               {
@@ -633,7 +633,7 @@
                 num: "03",
                 text: {
                   en: "Delivers consistent UX with zero learning curve",
-                  zh: "交付一致体验，零学习成本",
+                  zh: "保证一致的用户体验，降低学习成本",
                 },
               },
             ],
@@ -642,12 +642,12 @@
             layout: "visual-right",
             heading: {
               en: "Application of pattern variants in ‘Workbench status’ modal",
-              zh: "模式变体在「Workbench status」弹窗中的应用",
+              zh: "组件变体在「Workbench status」弹窗中的应用",
             },
             body: {
               html: {
                 en: '<p>To handle complex multi-stage workflows, the core status tracking pattern includes expandable steps.</p><p>For example, the <em>Assign pod</em> step in the <strong>Workbench</strong> workflow is collapsible by default, keeping the high-level progress view clean. When expanded, it reveals nested subtasks. This balances clarity for casual users and deep visibility for advanced users, while maintaining the same consistent interaction pattern across different product areas.</p>',
-                zh: "<p>为处理复杂的多阶段工作流，核心状态追踪模式包含可展开步骤。</p><p>例如，<strong>Workbench</strong> 工作流中的 <em>Assign pod</em> 步骤默认可折叠，保持高层进度视图简洁；展开后显示嵌套子任务。这兼顾了普通用户的清晰度与高级用户的深度可见性，并在不同产品区域保持一致交互模式。</p>",
+                zh: "<p>为处理复杂的多阶段工作流，主要步骤中包含可展开步骤。</p><p>例如，<strong>Workbench</strong> 工作流中的 <em>Assign pod</em> 步骤默认可折叠，保持高层进度视图简洁，展开后显示嵌套子任务。这兼顾了普通用户的清晰度与高级用户的深度可见性，并在不同产品区域保持一致交互模式。</p>",
               },
             },
             inlineVisual: {
@@ -836,8 +836,7 @@
         <figure class="fc-deploy-uj__fig">
           <div class="fc-deploy-uj__board" style="width:${u(j.width)};height:${u(j.height)}">
             <div class="fc-deploy-uj__frame" aria-hidden="true"></div>
-            <aside class="fc-deploy-uj__rows" aria-label="Journey rows">${rowLabels}</aside>
-            <div class="fc-deploy-uj__timeline">${stages}</div>
+            <div class="fc-deploy-uj__timeline" aria-label="Journey rows">${rowLabels}${stages}</div>
             ${zones}
             ${workflow}
             ${lines}

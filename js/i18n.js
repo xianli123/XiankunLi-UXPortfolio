@@ -33,6 +33,7 @@ window.PORTFOLIO_I18N = {
         {
           period: "2023.03 — Present",
           title: "OpenShift AI",
+          url: "https://www.redhat.com/en/products/ai/openshift-ai",
           color: "#ee0000",
           subtitle:
             "An enterprise-grade, open-source AI platform built on top of OpenShift",
@@ -43,6 +44,7 @@ window.PORTFOLIO_I18N = {
         {
           period: "2019.06 — 2025.03",
           title: "Keycloak",
+          url: "https://www.keycloak.org/",
           color: "#1f883d",
           subtitle:
             "An open-source IAM (Identity and Access Management) product",
@@ -53,6 +55,7 @@ window.PORTFOLIO_I18N = {
         {
           period: "2022.05 — 2023.05",
           title: "Infinispan",
+          url: "https://infinispan.org/",
           color: "#0066cc",
           subtitle:
             "An open-source, high-performance IMDG (In-Memory Data Grid) platform",
@@ -174,6 +177,7 @@ window.PORTFOLIO_I18N = {
         {
           period: "2023.03 — 至今",
           title: "OpenShift AI",
+          url: "https://www.redhat.com/en/products/ai/openshift-ai",
           color: "#ee0000",
           subtitle: "建立在 OpenShift 之上的企业级、开源的人工智能平台",
           paragraphs: [
@@ -183,8 +187,9 @@ window.PORTFOLIO_I18N = {
         {
           period: "2019.06 — 2025.03",
           title: "Keycloak",
+          url: "https://www.keycloak.org/",
           color: "#1f883d",
-          subtitle: "开源的身份授权认证和访问管理的平台",
+          subtitle: "开源身份与访问管理（IAM）平台",
           paragraphs: [
             "从参与整体 UX 升级到后续独立负责多个版本的用户体验设计，逐步承担更高设计责任。主导多个功能从 0 到 1 的设计与决策，独立推进设计全流程（研究、设计、测试与交付），推动跨团队对齐设计决策。显著提升了新手用户的使用体验与专家用户的满意度。同时积极融入开源社区文化，与 Keycloak 的社区用户建立了良好的反馈、互动关系。",
           ],
@@ -192,6 +197,7 @@ window.PORTFOLIO_I18N = {
         {
           period: "2022.05 — 2023.05",
           title: "Infinispan",
+          url: "https://infinispan.org/",
           color: "#0066cc",
           subtitle: "开源的分布式内存数据网格平台",
           paragraphs: [
@@ -281,7 +287,12 @@ window.PORTFOLIO_I18N = {
 
 window.CASE_STUDIES = [
   {
-    id: "keycloak-composite-role",
+    id: "keycloak-composite-role-v1",
+    version: 1,
+    codeName: {
+      en: "Keycloak Composite Role UI Redesign V1",
+      zh: "Keycloak Composite Role 界面重设计 V1",
+    },
     template: "keycloak-blog",
     color: "#1F883D",
     tabLabel: { en: "Keycloak", zh: "Keycloak" },
@@ -334,7 +345,7 @@ window.CASE_STUDIES = [
         title: { en: "Pain points in the original UI", zh: "旧版界面痛点" },
         body: {
           en: "The legacy UI used four boxes for different role types. New users could not understand how to assign roles — especially client roles that required filtering first. Even experienced users had to inspect realm and client roles separately to see everything assigned.",
-          zh: "旧版界面用四个框区分不同角色类型。新用户难以理解如何分配角色——尤其是需要先筛选 client 的 client role。即使熟练用户也要分别查看 realm 与 client 角色才能掌握全部分配。",
+          zh: "旧版界面用四个框区分不同角色类型。新用户难以理解如何分配角色——尤其是需要先按 client 筛选的 client role。即使熟练用户也要分别查看 realm 与 client 角色才能掌握全部分配。",
         },
         images: [
           {
@@ -360,7 +371,7 @@ window.CASE_STUDIES = [
             "用统一表格展示关联角色，client role 带 client 名称前缀",
             "突出 Add role 与 Remove 两个核心操作",
             "增加支持模糊搜索的检索能力",
-            "将 Associated roles 独立为 Tab，而非藏在 Settings 中",
+            "将 Associated roles 独立为 Tab，而非放在 Settings 下",
           ],
         },
         images: [
@@ -386,20 +397,20 @@ window.CASE_STUDIES = [
         title: { en: "Validation", zh: "验证结果" },
         body: {
           en: "Usability tests with 10 experienced Keycloak users and interviews with 10 novice users showed significant gains in efficiency and ease of use compared to the legacy UI.",
-          zh: "对 10 名 Keycloak 老用户进行可用性测试，并对 10 名新用户进行访谈，结果显示新设计在效率与易用性上显著优于旧版。",
+          zh: "对 10 名有经验的 Keycloak 用户进行可用性测试，并对 10 名新手用户进行访谈，结果显示新设计在效率与易用性上显著优于旧版。",
         },
         images: [
           {
             src: "assets/cases/keycloak/10-TestingResult.png",
-            alt: { en: "Usability evaluation from experienced users", zh: "老用户可用性评估" },
+            alt: { en: "Usability evaluation from experienced users", zh: "有经验用户可用性评估" },
           },
           {
             src: "assets/cases/keycloak/11-InterviewResult-1.png",
-            alt: { en: "Novice user efficiency comparison", zh: "新用户效率对比" },
+            alt: { en: "Novice user efficiency comparison", zh: "新手用户效率对比" },
           },
           {
             src: "assets/cases/keycloak/12-InterviewResult-2.png",
-            alt: { en: "Novice user ease-of-use comparison", zh: "新用户易用性对比" },
+            alt: { en: "Novice user ease-of-use comparison", zh: "新手用户易用性对比" },
           },
         ],
       },
@@ -418,8 +429,21 @@ window.CASE_STUDIES = [
     },
     tags: {
       en: ["IAM", "Composite Role", "Usability Testing", "Open Source"],
-      zh: ["身份认证", "Composite Role", "可用性测试", "开源"],
+      zh: ["身份与访问管理", "Composite Role", "可用性测试", "开源"],
     },
     externalUrl: "https://www.redhat.com/en/blog/keycloak-ui-architecture",
   },
 ];
+
+(function () {
+  const src = window.CASE_STUDIES.find((c) => c.id === "keycloak-composite-role-v1");
+  if (!src) return;
+  const v2 = JSON.parse(JSON.stringify(src));
+  v2.id = "keycloak-composite-role-v2";
+  v2.version = 2;
+  v2.codeName = {
+    en: "Keycloak Composite Role UI Redesign V2",
+    zh: "Keycloak Composite Role 界面重设计 V2",
+  };
+  window.CASE_STUDIES.push(v2);
+})();

@@ -9,7 +9,7 @@
     title: { en: "Define new roles and mapping", zh: "定义新角色与映射" },
     introHtml: {
       en: 'I summarized supporting insights and defined new roles based on early technical research and business requirements. I then discussed and iterated the role definitions with PM and engineering teams. We finally agreed to launch three core roles first, namely <strong>resource maintainer</strong>, <strong>resource updater</strong> and <strong>resource reader</strong>. The table below shows some examples of workbench new roles.',
-      zh: "我根据早期技术调研与业务需求总结支持洞察并定义新角色，并与 PM、开发团队讨论迭代角色定义。我们最终同意先上线三个核心角色：<strong>resource maintainer</strong>、<strong>resource updater</strong> 与 <strong>resource reader</strong>。下表展示部分 Workbench 新角色示例。",
+      zh: "我根据早期技术调研与业务需求综合调研洞察并定义新角色，并与 PM、开发团队讨论迭代角色定义。我们最终同意先上线三个核心角色：<strong>resource maintainer</strong>、<strong>resource updater</strong> 与 <strong>resource reader</strong>。下表展示部分 Workbench 新角色示例。",
     },
     headers: [
       {
@@ -41,7 +41,7 @@
             actions: [
               { label: { en: "Create", zh: "Create" } },
               { label: { en: "Read", zh: "Read" }, verbs: ["Get", "List", "Watch"] },
-              { label: { en: "Update", zh: "Update" }, verbs: ["Update", "Patch"] },
+              { label: { en: "Update", zh: "更新" }, verbs: ["Update", "Patch"] },
               { label: { en: "Delete", zh: "Delete" } },
             ],
             resources: {
@@ -68,7 +68,7 @@
           {
             actions: [
               { label: { en: "Read", zh: "Read" }, verbs: ["Get", "List", "Watch"] },
-              { label: { en: "Update", zh: "Update" }, verbs: ["Update", "Patch"] },
+              { label: { en: "Update", zh: "更新" }, verbs: ["Update", "Patch"] },
             ],
             resources: {
               en: "Any workbench in a project(namespace)",
@@ -84,11 +84,11 @@
             shade: true,
             actions: [
               { label: { en: "Read", zh: "Read" }, verbs: ["Get", "List", "Watch"] },
-              { label: { en: "Update", zh: "Update" }, verbs: ["Update", "Patch"] },
+              { label: { en: "Update", zh: "更新" }, verbs: ["Update", "Patch"] },
             ],
             resources: {
               en: "Workbenches in a project (namespace) that match a specific name",
-              zh: "项目中特定名称的Workbench",
+              zh: "项目中指定名称的 Workbench",
             },
             descriptionHtml: {
               en: 'Users who have the <strong>Workbench updater</strong> role for a workbench named "Foo" will be able to view the workbench named "Foo" in this namespace, open the workbench, start and stop the workbench, and modify the configuration of the workbench.',
@@ -124,11 +124,11 @@
             actions: [{ label: { en: "Read", zh: "Read" }, verbs: ["Get", "List", "Watch"] }],
             resources: {
               en: "Workbenches in a project (namespace) that match a specific name",
-              zh: "项目中特定名称的Workbench",
+              zh: "项目中指定名称的 Workbench",
             },
             descriptionHtml: {
               en: "Users who have the <strong>Workbench reader</strong> role will be able to view and open some specified workbenches in this namespace, but cannot start/stop running the workbenches.",
-              zh: "拥有 <strong>Workbench reader</strong> 角色的用户可查看并打开该 namespace 中部分指定 Workbench，但无法启停运行中的 Workbench。",
+              zh: "拥有 <strong>Workbench reader</strong> 角色的用户可查看并打开该 namespace 中部分指定 Workbench，但无法启停已运行的 Workbench。",
             },
             priority: "low",
           },
@@ -143,7 +143,7 @@
 
   window.applyRolesMappingBlock = function applyRolesMappingBlock() {
     const block = window.RBAC_ROLES_MAPPING_BLOCK;
-    const rbac = window.CASE_OPENSHIFT_DATA?.rbac;
+    const rbac = window.CASE_OPENSHIFT_DATA?.["rbac-v1"];
     if (!block || !rbac) return;
     const section = rbac.blocks.find(
       (b) => b.type === "section" && b.title?.en === "Design breakdown"

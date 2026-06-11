@@ -2627,12 +2627,13 @@
   }
 
   .fc-assignment-hifi__title {
-    left: 30.83%;
+    left: 50%;
     top: 6.65%;
     font-size: clamp(calc(18 * var(--u)), 3.2vw, calc(40 * var(--u)));
     white-space: normal;
     max-width: 60%;
     text-align: center;
+    transform: translateX(-50%);
   }
 
   .fc-assignment-hifi__ghost--upper {
@@ -3209,7 +3210,7 @@
 
 .fc-assignment-hifi__title {
   position: absolute;
-  left: calc(592 * var(--u));
+  left: 50%;
   top: calc(65 * var(--u));
   z-index: 2;
   margin: 0;
@@ -3220,6 +3221,8 @@
   letter-spacing: calc(-0.8 * var(--u));
   color: #fff;
   white-space: nowrap;
+  text-align: center;
+  transform: translateX(-50%);
 }
 
 .fc-assignment-hifi__ghost {
@@ -5908,40 +5911,33 @@ html:lang(zh) .case-page__main .fc .fc-usability__quote-grid--5 .fc-usability__q
 }
 
 .fc-model-benchmark__cs {
-  position: relative;
   display: flex;
+  flex-direction: column;
   gap: 0;
 }
 
-.fc-model-benchmark__rail {
-  position: relative;
+.fc-model-benchmark__cs-row {
+  display: flex;
+  align-items: stretch;
+}
+
+.fc-model-benchmark__rail-pale,
+.fc-model-benchmark__rail-hot {
   flex-shrink: 0;
   width: calc(16 * var(--u));
-  min-height: 100%;
+  border-radius: calc(26 * var(--u));
 }
 
 .fc-model-benchmark__rail-pale {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  min-height: calc(1885 * var(--u));
   background: #ffecff;
-  border-radius: calc(26 * var(--u));
 }
 
 .fc-model-benchmark__rail-hot {
-  position: absolute;
-  left: 0;
-  top: calc(425 * var(--u));
-  bottom: 0;
-  width: 100%;
   background: #ffb8ff;
-  border-radius: calc(26 * var(--u));
 }
 
-.fc-model-benchmark__cs-body {
+.fc-model-benchmark__cs-head-body,
+.fc-model-benchmark__cs-sol-body {
   flex: 1;
   min-width: 0;
   margin-left: calc(48 * var(--u));
@@ -6830,25 +6826,17 @@ html:lang(zh) .case-page__main .fc .fc-usability__quote-grid--5 .fc-usability__q
   pointer-events: none;
 }
 
-.fc-deploy-uj__rows {
-  position: absolute;
-  z-index: 1;
-  left: calc(24 * var(--u));
-  top: calc(24 * var(--u));
-  width: calc(125 * var(--u));
-  height: calc(754 * var(--u));
-  margin: 0;
-  padding: 0;
-}
-
+/* Row labels live in .fc-deploy-uj__timeline (board coords); shared by deployment V1 + V2 */
 .fc-deploy-uj__row-label {
   position: absolute;
+  z-index: 2;
   margin: 0;
   font-size: calc(16 * var(--u));
   font-weight: 500;
   line-height: calc(26 * var(--u));
   color: #000;
   white-space: nowrap;
+  transform: translateY(-50%);
 }
 
 .fc-deploy-uj__timeline {
@@ -7853,6 +7841,12 @@ html:lang(zh) .case-page__main .fc .fc-usability__quote-grid--5 .fc-usability__q
 .fc-deploy-tradeoff__row-body ul {
   margin: 0;
   padding-left: calc(24 * var(--u));
+  list-style: disc;
+  list-style-position: outside;
+}
+
+.fc-deploy-tradeoff__row-body ul li {
+  display: list-item;
 }
 
 .fc-deploy-ux__subtitle {

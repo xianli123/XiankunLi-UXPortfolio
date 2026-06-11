@@ -227,12 +227,13 @@
   }
 
   function renderObjectives(block, lang) {
+    const intro = block.body
+      ? `<div class="fc-section__intro"><p class="fc-section__body">${esc(t(block.body, lang))}</p></div>`
+      : "";
     return `
       <section class="fc-section fc-section--objectives">
         <h2 class="fc-section__title">${esc(t(block.title, lang))}</h2>
-        <div class="fc-section__intro">
-          <p class="fc-section__body">${esc(t(block.body, lang))}</p>
-        </div>
+        ${intro}
         <div class="fc-card-grid fc-card-grid--objectives">
           ${(block.cards || [])
             .map(
@@ -371,7 +372,7 @@
       <section class="fc-section fc-model-research">
         <h2 class="fc-section__title">${esc(t(pc.title, lang))}</h2>
         <div class="fc-model-context">
-          <p class="fc-model-context__body">${esc(t(pc.body, lang))}</p>
+          <p class="fc-model-context__body">${htmlOrEsc(pc.body, lang)}</p>
           <div class="fc-model-context__cards">
             <div class="fc-model-context__card fc-model-context__card--challenge">
               <h3>Challenges</h3>
@@ -383,10 +384,14 @@
             </div>
           </div>
         </div>
-        <div class="fc-model-purpose">
+        ${
+          window.renderModelPurposeV2
+            ? window.renderModelPurposeV2(pc.purpose, lang)
+            : `<div class="fc-model-purpose">
           <h3>${esc(t(pc.purpose.title, lang))}</h3>
           <p>${esc(t(pc.purpose.body, lang))}</p>
-        </div>
+        </div>`
+        }
 
         <h2 class="fc-section__title fc-model-research__gap">${esc(t(ur.title, lang))}</h2>
         <h3 class="fc-section__subtitle">${esc(t(ur.personaTitle, lang))}</h3>
@@ -411,12 +416,17 @@
           <div class="fc-model-journey__grid">${journeyCols}</div>
         </div>
 
-        <h2 class="fc-section__title fc-model-research__gap--objectives">${esc(t(obj.title, lang))}</h2>
-        <div class="fc-model-objectives">${objectiveCards}</div>
+        ${
+          window.renderModelObjectivesV2
+            ? window.renderModelObjectivesV2(obj, lang)
+            : `<h2 class="fc-section__title fc-model-research__gap--objectives">${esc(t(obj.title, lang))}</h2>
+        <div class="fc-model-objectives">${objectiveCards}</div>`
+        }
       </section>`;
   }
 
   function renderModelIaMap(_block, lang) {
+    if (window.renderModelIaMapV2) return window.renderModelIaMapV2(_block, lang);
     const d = window.MODEL_DETAILS_DATA?.iaMap;
     if (!d) return "";
     const goals = (d.goals || [])
@@ -772,32 +782,36 @@
           <img src="${esc(table.src)}" alt="${esc(table.alt || t(section.title, lang))}" width="${table.width}" height="${table.height}" loading="lazy">
         </figure>
         <div class="fc-model-benchmark__cs">
-          <div class="fc-model-benchmark__rail" aria-hidden="true">
-            <span class="fc-model-benchmark__rail-pale"></span>
-            <span class="fc-model-benchmark__rail-hot"></span>
-          </div>
-          <div class="fc-model-benchmark__cs-body">
-            <header class="fc-model-benchmark__cs-header">
-              <div class="fc-model-benchmark__badge">
-                <span class="fc-model-benchmark__badge-icon" aria-hidden="true">
-                  <img src="${esc(cs.badgeIcon)}" alt="" width="20" height="20" loading="lazy">
-                </span>
-                <span class="fc-model-benchmark__badge-text">${esc(t(cs.badge, lang))}</span>
-              </div>
-              <h4 class="fc-model-benchmark__cs-headline">${esc(t(cs.headline, lang))}</h4>
-            </header>
-            <div class="fc-model-benchmark__challenge">
-              <span class="fc-model-benchmark__tag fc-model-benchmark__tag--challenge">Challenge</span>
-              <div class="fc-model-benchmark__challenge-grid">
-                <div class="fc-model-benchmark__challenge-copy">${htmlOrEsc(cs.challenge, lang)}</div>
-                <figure class="fc-model-benchmark__challenge-visual">
-                  <img src="${esc(challengeImg.src)}" alt="${esc(challengeImg.alt || "")}" width="${challengeImg.width}" height="${challengeImg.height}" loading="lazy">
-                </figure>
+          <div class="fc-model-benchmark__cs-row fc-model-benchmark__cs-row--head">
+            <div class="fc-model-benchmark__rail-pale" aria-hidden="true"></div>
+            <div class="fc-model-benchmark__cs-head-body">
+              <header class="fc-model-benchmark__cs-header">
+                <div class="fc-model-benchmark__badge">
+                  <span class="fc-model-benchmark__badge-icon" aria-hidden="true">
+                    <img src="${esc(cs.badgeIcon)}" alt="" width="20" height="20" loading="lazy">
+                  </span>
+                  <span class="fc-model-benchmark__badge-text">${esc(t(cs.badge, lang))}</span>
+                </div>
+                <h4 class="fc-model-benchmark__cs-headline">${esc(t(cs.headline, lang))}</h4>
+              </header>
+              <div class="fc-model-benchmark__challenge">
+                <span class="fc-model-benchmark__tag fc-model-benchmark__tag--challenge">Challenge</span>
+                <div class="fc-model-benchmark__challenge-grid">
+                  <div class="fc-model-benchmark__challenge-copy">${htmlOrEsc(cs.challenge, lang)}</div>
+                  <figure class="fc-model-benchmark__challenge-visual">
+                    <img src="${esc(challengeImg.src)}" alt="${esc(challengeImg.alt || "")}" width="${challengeImg.width}" height="${challengeImg.height}" loading="lazy">
+                  </figure>
+                </div>
               </div>
             </div>
-            <div class="fc-model-benchmark__solution-wrap">
-              <span class="fc-model-benchmark__tag fc-model-benchmark__tag--solution">Solution</span>
-              <div class="fc-model-benchmark__solutions">${solutions}</div>
+          </div>
+          <div class="fc-model-benchmark__cs-row fc-model-benchmark__cs-row--sol">
+            <div class="fc-model-benchmark__rail-hot" aria-hidden="true"></div>
+            <div class="fc-model-benchmark__cs-sol-body">
+              <div class="fc-model-benchmark__solution-wrap">
+                <span class="fc-model-benchmark__tag fc-model-benchmark__tag--solution">Solution</span>
+                <div class="fc-model-benchmark__solutions">${solutions}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1176,9 +1190,13 @@
             </div>
             ${reasonCols}
           </div>
-          <figure class="fc-role-reveal__flow">
+          ${
+            fd.diagram
+              ? `<figure class="fc-role-reveal__flow">
             <img src="${esc(fd.diagram)}" alt="${esc(t(fd.diagramAlt, lang))}" loading="lazy" width="1600" height="709">
-          </figure>
+          </figure>`
+              : ""
+          }
         </section>
         <section class="fc-role-reveal__hifi" aria-labelledby="fc-role-reveal-hifi">
           <h4 class="fc-role-reveal__section-label" id="fc-role-reveal-hifi">${esc(t(block.hifi?.title, lang))}</h4>
@@ -1272,6 +1290,46 @@
         ? `<p class="fc-rbac-assign__desc fc-rbac-assign__desc--solution${solutionDescExtra}">${esc(t(ch.solutionBody, lang))}</p>`
         : "";
 
+    if (ch.visual === "typeaheadV2") {
+      return `
+      <article class="fc-rbac-assign__challenge fc-rbac-assign__challenge--typeahead-v2">
+        <div class="fc-rbac-assign__c1-stage">
+          <div class="fc-rbac-assign__c1-grid">
+            <div class="fc-rbac-assign__c1-band-label">
+              <img src="${esc(assets.challengeIcon)}" alt="" width="16" height="16" loading="lazy">
+              <span>Challenge and solution</span>
+            </div>
+            <div class="fc-rbac-assign__c1-left">
+              <div class="fc-rbac-assign__c1-challenge">
+                ${renderRbacAssignRow("challenge", ch.painTitle, lang)}
+                ${painBody}
+              </div>
+              <div class="fc-rbac-assign__c1-solution">
+                ${renderRbacAssignRow("solution", ch.solutionTitle, lang)}
+                ${solutionBody}
+                <p class="fc-rbac-assign__pf-ref">
+                  <span>PF pattern reference:</span>
+                  <a href="${esc(ch.pfLink)}" target="_blank" rel="noopener noreferrer">Typeahead</a>
+                </p>
+              </div>
+            </div>
+            <figure class="fc-rbac-assign__c1-mock fc-rbac-assign__c1-mock--v2">
+              <div class="fc-rbac-assign__c1-card fc-rbac-assign__c1-card--back">
+                <div class="fc-rbac-assign__crop fc-rbac-assign__crop--typeahead-default">
+                  <img src="${esc(assets.typeaheadV2Default)}" alt="" loading="lazy" width="776" height="433">
+                </div>
+              </div>
+              <div class="fc-rbac-assign__c1-card fc-rbac-assign__c1-card--front">
+                <div class="fc-rbac-assign__crop fc-rbac-assign__crop--typeahead-active">
+                  <img src="${esc(assets.typeaheadV2Active)}" alt="" loading="lazy" width="776" height="353">
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </article>`;
+    }
+
     if (ch.visual === "typeahead") {
       const notes = (ch.annotations || [])
         .map((a, i) => renderRbacAssignAnnotation(a, lang, assets, i + 1))
@@ -1300,6 +1358,53 @@
                 <a href="${esc(ch.pfLink)}" target="_blank" rel="noopener noreferrer">Typeahead</a>
               </p>
             </div>
+          </div>
+        </div>
+      </article>`;
+    }
+
+    if (ch.visual === "roleTableV2") {
+      const annotationItems = (ch.annotations || [])
+        .map(
+          (a, index) => `
+        <li class="fc-rbac-assign__c2-anno-item${index > 0 ? " fc-rbac-assign__c2-anno-item--divided" : ""}">
+          ${renderRbacAssignText(a, lang)}
+        </li>`
+        )
+        .join("");
+      return `
+      <article class="fc-rbac-assign__challenge fc-rbac-assign__challenge--role-table-v2">
+        <div class="fc-rbac-assign__c2-stage">
+          <div class="fc-rbac-assign__c2-grid">
+            <div class="fc-rbac-assign__c2-band-label">
+              <img src="${esc(assets.challengeIcon)}" alt="" width="16" height="16" loading="lazy">
+              <span>Challenge and solution</span>
+            </div>
+            <div class="fc-rbac-assign__c2-left">
+              <div class="fc-rbac-assign__c2-challenge">
+                ${renderRbacAssignRow("challenge", ch.painTitle, lang)}
+              </div>
+              <div class="fc-rbac-assign__c2-solution">
+                ${renderRbacAssignRow("solution", ch.solutionTitle, lang)}
+              </div>
+            </div>
+            <div class="fc-rbac-assign__c2-explorations-v2" aria-hidden="true">
+              <div class="fc-rbac-assign__crop fc-rbac-assign__crop--explorations-card">
+                <img class="fc-rbac-assign__c2-explorations-card" src="${esc(assets.explorationsV2Card)}" alt="" loading="lazy" width="653" height="545">
+              </div>
+              <div class="fc-rbac-assign__crop fc-rbac-assign__crop--explorations-bg">
+                <img class="fc-rbac-assign__c2-explorations-bg" src="${esc(assets.explorationsV2Bg)}" alt="" loading="lazy" width="1600" height="389">
+              </div>
+              <div class="fc-rbac-assign__c2-explorations-dim"></div>
+              <span class="fc-rbac-assign__c2-explorations-label">Explorations</span>
+            </div>
+            <figure class="fc-rbac-assign__c2-mock fc-rbac-assign__c2-mock--v2">
+              <img src="${esc(assets.roleTableV2Mock)}" alt="" loading="lazy" width="857" height="808">
+              <div class="fc-rbac-assign__c2-anno-bar">
+                <div class="fc-rbac-assign__c2-anno-glass" aria-hidden="true"></div>
+                <ol class="fc-rbac-assign__c2-anno-list">${annotationItems}</ol>
+              </div>
+            </figure>
           </div>
         </div>
       </article>`;
@@ -1335,6 +1440,42 @@
       </article>`;
     }
 
+    if (ch.visual === "assignmentStatusV2") {
+      return `
+      <article class="fc-rbac-assign__challenge fc-rbac-assign__challenge--status-v2">
+        <div class="fc-rbac-assign__c3-stage fc-rbac-assign__c3-stage--v2">
+          <div class="fc-rbac-assign__c3-grid fc-rbac-assign__c3-grid--v2">
+            <div class="fc-rbac-assign__c3-band-label">
+              <img src="${esc(assets.challengeIcon)}" alt="" width="16" height="16" loading="lazy">
+              <span>Challenge and solution</span>
+            </div>
+            <div class="fc-rbac-assign__c3-left">
+              <div class="fc-rbac-assign__c3-challenge">
+                ${renderRbacAssignRow("challenge", ch.painTitle, lang)}
+              </div>
+              <div class="fc-rbac-assign__c3-solution">
+                ${renderRbacAssignRow("solution", ch.solutionTitle, lang)}
+              </div>
+            </div>
+            <figure class="fc-rbac-assign__c3-mock-v2">
+              <div class="fc-rbac-assign__crop fc-rbac-assign__crop--c3-ui">
+                <img
+                  class="fc-rbac-assign__c3-mock-v2__img"
+                  src="${esc(assets.assignmentStatusV2Ui)}"
+                  alt=""
+                  loading="lazy"
+                  width="776"
+                  height="661">
+              </div>
+            </figure>
+            <div class="fc-rbac-assign__c3-legend-v2">
+              ${renderRbacAssignStatusLegend(ch, lang)}
+            </div>
+          </div>
+        </div>
+      </article>`;
+    }
+
     if (ch.visual === "assignmentStatus") {
       return `
       <article class="fc-rbac-assign__challenge fc-rbac-assign__challenge--status">
@@ -1361,6 +1502,59 @@
                 loading="lazy"
                 width="776"
                 height="661">
+            </figure>
+          </div>
+        </div>
+      </article>`;
+    }
+
+    if (ch.visual === "saveConfirmV2") {
+      const solutionBodyC4 = ch.solutionHtml
+        ? `<p class="fc-rbac-assign__desc fc-rbac-assign__desc--solution">${htmlOrEsc({ html: ch.solutionHtml }, lang)}</p>`
+        : ch.solutionBody
+          ? `<p class="fc-rbac-assign__desc fc-rbac-assign__desc--solution">${esc(t(ch.solutionBody, lang))}</p>`
+          : "";
+      return `
+      <article class="fc-rbac-assign__challenge fc-rbac-assign__challenge--save-v2">
+        <div class="fc-rbac-assign__c4-stage fc-rbac-assign__c4-stage--v2">
+          <div class="fc-rbac-assign__c4-grid fc-rbac-assign__c4-grid--v2">
+            <div class="fc-rbac-assign__c4-band-label">
+              <img src="${esc(assets.challengeIcon)}" alt="" width="16" height="16" loading="lazy">
+              <span>Challenge and solution</span>
+            </div>
+            <div class="fc-rbac-assign__c4-left">
+              <div class="fc-rbac-assign__c4-challenge">
+                ${renderRbacAssignRow("challenge", ch.painTitle, lang)}
+              </div>
+              <div class="fc-rbac-assign__c4-solution">
+                ${renderRbacAssignRow("solution", ch.solutionTitle, lang)}
+                ${solutionBodyC4}
+              </div>
+            </div>
+            <figure class="fc-rbac-assign__c4-mock-v2">
+              <div class="fc-rbac-assign__c4-composite-v2">
+                <img
+                  class="fc-rbac-assign__c4-composite-v2__bg"
+                  src="${esc(assets.saveDialogV2Bg)}"
+                  alt=""
+                  loading="lazy"
+                  width="888"
+                  height="627">
+                <img
+                  class="fc-rbac-assign__c4-composite-v2__modal"
+                  src="${esc(assets.saveDialogV2Modal)}"
+                  alt=""
+                  loading="lazy"
+                  width="488"
+                  height="565">
+                <img
+                  class="fc-rbac-assign__c4-composite-v2__arrow"
+                  src="${esc(assets.saveDialogV2Arrow)}"
+                  alt=""
+                  loading="lazy"
+                  width="279"
+                  height="515">
+              </div>
             </figure>
           </div>
         </div>
@@ -1750,24 +1944,40 @@
         </div>`
       )
       .join("");
-    const stats = (d.executive?.stats || [])
-      .map(
-        (s) => `
+    const execHtml = d.executive
+      ? (() => {
+          const stats = (d.executive.stats || [])
+            .map(
+              (s) => `
         <div class="fc-usability__stat">
           <p class="fc-usability__stat-num">${esc(s.value)}</p>
           <p class="fc-usability__stat-label">${esc(t(s.label, lang))}</p>
         </div>`
-      )
-      .join("");
-    const tasks = (d.executive?.tasks || [])
-      .map(
-        (task) => `
+            )
+            .join("");
+          const tasks = (d.executive.tasks || [])
+            .map(
+              (task) => `
         <li class="fc-usability__task">
           <span class="fc-usability__task-num">${esc(task.num)}</span>
           <span class="fc-usability__task-text">${esc(t(task.text, lang))}</span>
         </li>`
-      )
-      .join("");
+            )
+            .join("");
+          return `
+          <div class="fc-usability__exec">
+            <div class="fc-usability__exec-left">
+              <h3 class="fc-usability__h3">${esc(t(d.executive.title, lang))}</h3>
+              <p class="fc-usability__body">${esc(t(d.executive.intro, lang))}</p>
+              <div class="fc-usability__stats">${stats}</div>
+            </div>
+            <div class="fc-usability__exec-right">
+              <h3 class="fc-usability__h3">${esc(t(d.executive.tasksTitle, lang))}</h3>
+              <ol class="fc-usability__tasks">${tasks}</ol>
+            </div>
+          </div>`;
+        })()
+      : "";
     const praiseCards = (d.praise?.cards || [])
       .map(
         (card) => `
@@ -1813,17 +2023,7 @@
             <p class="fc-usability__body fc-usability__body--wide">${esc(t(d.myRole?.body, lang))}</p>
             <div class="fc-usability__role-strip">${roleItems}</div>
           </div>
-          <div class="fc-usability__exec">
-            <div class="fc-usability__exec-left">
-              <h3 class="fc-usability__h3">${esc(t(d.executive?.title, lang))}</h3>
-              <p class="fc-usability__body">${esc(t(d.executive?.intro, lang))}</p>
-              <div class="fc-usability__stats">${stats}</div>
-            </div>
-            <div class="fc-usability__exec-right">
-              <h3 class="fc-usability__h3">${esc(t(d.executive?.tasksTitle, lang))}</h3>
-              <ol class="fc-usability__tasks">${tasks}</ol>
-            </div>
-          </div>
+          ${execHtml}
           <div class="fc-usability__praise">
             <h3 class="fc-usability__h3">${esc(t(d.praise?.title, lang))}</h3>
             <p class="fc-usability__body fc-usability__body--wide">${esc(t(d.praise?.intro, lang))}</p>
@@ -2065,6 +2265,16 @@
         return renderJourney(block, lang);
       case "split":
         return renderSplit(block, lang);
+      case "rbacProjectContextV2":
+        return window.renderRbacProjectContextV2?.(block, lang) || "";
+      case "rbacTechResearchV2":
+        return window.renderRbacTechResearchV2?.(block, lang) || "";
+      case "rbacCompetitorResearchV2":
+        return window.renderRbacCompetitorResearchV2?.(block, lang) || "";
+      case "rbacObjectivesV2":
+        return window.renderRbacObjectivesV2?.(block, lang) || "";
+      case "rbacInspirationV2":
+        return window.renderRbacInspirationV2?.(block, lang) || "";
       case "band":
         return renderBand(block, lang);
       case "content":
@@ -2075,6 +2285,8 @@
         return renderRolesMapping(block, lang);
       case "roleReveal":
         return renderRoleReveal(block, lang);
+      case "rbacRoleRevealV2":
+        return window.renderRbacRoleRevealV2?.(block, lang) || "";
       case "roleAssignment":
         return renderRoleAssignment(block, lang);
       case "verbTable":

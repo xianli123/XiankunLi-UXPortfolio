@@ -88,10 +88,13 @@
       .join("");
 
     if (type === "project") {
+      const titleHtml = entry.url
+        ? `<a href="${entry.url}" target="_blank" rel="noopener noreferrer">${entry.title}</a>`
+        : entry.title;
       return `
         <article class="cv-entry cv-entry--project" style="--entry-accent: ${entry.color || "var(--color-brand)"}">
           <p class="cv-period">${entry.period}</p>
-          <h4 class="cv-entry-title">${entry.title}</h4>
+          <h4 class="cv-entry-title">${titleHtml}</h4>
           <p class="cv-subtitle">${entry.subtitle}</p>
           ${paragraphs || (entry.desc ? `<p class="cv-desc">${entry.desc}</p>` : "")}
         </article>`;

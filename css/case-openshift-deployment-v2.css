@@ -1,0 +1,471 @@
+/* Deployment Tracking V2 */
+
+/* Project context — Figma 5143:35709 */
+.fc-deploy-context-v2 {
+  margin-top: calc(24 * var(--u));
+  max-width: calc(1600 * var(--u));
+}
+
+.fc-deploy-context-v2__title {
+  margin: 0 0 calc(18 * var(--u));
+  font-size: calc(32 * var(--u));
+  font-weight: 500;
+  line-height: calc(36 * var(--u));
+  color: var(--fc-text);
+}
+
+.fc-deploy-context-v2__card {
+  display: flex;
+  align-items: center;
+  gap: calc(40 * var(--u));
+  padding: calc(20 * var(--u));
+  border: calc(2 * var(--u)) solid #d6d6d6;
+  border-radius: calc(20 * var(--u));
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.fc-deploy-context-v2__art {
+  flex-shrink: 0;
+  margin: 0;
+  width: calc(150 * var(--u));
+  height: calc(136.25 * var(--u));
+}
+
+.fc-deploy-context-v2__art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.fc-deploy-context-v2__body {
+  margin: 0;
+  padding: calc(24 * var(--u)) 0;
+  flex: 1;
+  min-width: 0;
+  font-size: calc(24 * var(--u));
+  font-weight: 400;
+  line-height: normal;
+  color: var(--fc-text);
+}
+
+/* User research — Figma 5101:39574 */
+.fc-deploy-ur-v2 {
+  margin-top: calc(120 * var(--u));
+  max-width: calc(1600 * var(--u));
+}
+
+.fc-deploy-ur-v2__heading {
+  margin-bottom: calc(54 * var(--u));
+}
+
+.fc-deploy-ur-v2__subheading {
+  margin: 0;
+  font-size: calc(32 * var(--u));
+  font-weight: 500;
+  line-height: calc(36 * var(--u));
+  color: var(--fc-text);
+}
+
+.fc-deploy-ur-v2__intro {
+  margin: calc(16 * var(--u)) 0 calc(32 * var(--u));
+  max-width: calc(626 * var(--u));
+  font-size: calc(24 * var(--u));
+  font-weight: 400;
+  line-height: calc(36 * var(--u));
+  color: var(--fc-text);
+}
+
+/* Persona */
+.fc-deploy-ur-v2__persona {
+  margin-bottom: calc(80 * var(--u));
+}
+
+.fc-deploy-ur-v2__persona-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(32 * var(--u));
+}
+
+.fc-deploy-ur-v2__persona-card {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--u));
+  min-width: 0;
+  padding: calc(24 * var(--u));
+  border: calc(2 * var(--u)) solid #d9d9d9;
+  border-radius: calc(16 * var(--u));
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.fc-deploy-ur-v2__persona-head {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(12 * var(--u));
+}
+
+.fc-deploy-ur-v2__persona-head img {
+  flex-shrink: 0;
+  width: calc(40 * var(--u));
+  height: calc(40 * var(--u));
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.fc-deploy-ur-v2__persona-meta {
+  min-width: 0;
+}
+
+.fc-deploy-ur-v2__persona-title {
+  margin: 0;
+  font-size: calc(24 * var(--u));
+  font-weight: 500;
+  line-height: calc(36 * var(--u));
+  color: var(--fc-text);
+}
+
+.fc-deploy-ur-v2__persona-subtitle {
+  margin: 0;
+  font-size: calc(16 * var(--u));
+  font-weight: 400;
+  line-height: calc(24 * var(--u));
+  color: var(--fc-text);
+}
+
+.fc-deploy-ur-v2__persona-body {
+  margin: 0;
+  font-size: calc(16 * var(--u));
+  font-weight: 400;
+  line-height: calc(24 * var(--u));
+  color: var(--fc-text);
+}
+
+/* User journey — V2 overrides */
+.fc-deploy-uj--v2 {
+  margin-top: 0;
+  text-align: left;
+}
+
+.fc-deploy-uj--v2 .fc-deploy-arrow {
+  display: none;
+}
+
+.fc-deploy-uj--v2 .fc-deploy-uj__title {
+  margin: 0 0 calc(32 * var(--u));
+  max-width: none;
+}
+
+.fc-deploy-uj--v2 .fc-deploy-uj__board::after {
+  border-color: #e0e0e0;
+}
+
+/* Customer insight */
+.fc-deploy-ur-v2__insight {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(1020 * var(--u));
+  gap: calc(32 * var(--u));
+  align-items: start;
+  margin-top: calc(80 * var(--u));
+}
+
+.fc-deploy-ur-v2__insight-copy {
+  min-width: 0;
+  max-width: calc(548 * var(--u));
+  padding-top: calc(8 * var(--u));
+}
+
+.fc-deploy-ur-v2__insight-intro {
+  margin: calc(16 * var(--u)) 0 0;
+  max-width: 100%;
+  font-size: calc(24 * var(--u));
+  font-weight: 400;
+  line-height: calc(36 * var(--u));
+  color: var(--fc-text);
+}
+
+.fc-deploy-ur-v2__insight-fig {
+  position: relative;
+  margin: 0;
+  width: calc(1020 * var(--u));
+  height: calc(925.25 * var(--u));
+}
+
+.fc-deploy-ur-v2__insight-frame {
+  position: absolute;
+  inset: 0;
+  border-radius: calc(12.5 * var(--u));
+  background: rgba(199, 199, 199, 0.2);
+  pointer-events: none;
+}
+
+.fc-deploy-ur-v2__insight-board {
+  position: absolute;
+  left: calc(21.25 * var(--u));
+  top: calc(24.17 * var(--u));
+  display: block;
+  width: calc(981.67 * var(--u));
+  height: calc(887.83 * var(--u));
+  object-fit: contain;
+  object-position: center top;
+}
+
+/* Design objectives */
+.fc-deploy-ur-v2__objectives {
+  position: relative;
+  margin-top: calc(-308.5 * var(--u));
+  padding-top: calc(72 * var(--u));
+  padding-bottom: calc(72 * var(--u));
+}
+
+.fc-deploy-ur-v2__objectives-band {
+  position: absolute;
+  top: 0;
+  left: calc(-160 * var(--u));
+  right: calc(-160 * var(--u));
+  bottom: 0;
+  background: rgba(255, 245, 255, 0.6);
+  backdrop-filter: blur(calc(8 * var(--u)));
+  -webkit-backdrop-filter: blur(calc(8 * var(--u)));
+  pointer-events: none;
+}
+
+.fc-deploy-ur-v2__objectives-band::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  box-shadow: 0 calc(-8 * var(--u)) calc(24.1 * var(--u)) 0 rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+.fc-deploy-ur-v2__objectives-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.fc-deploy-ur-v2__objectives .fc-deploy-ur-v2__subheading {
+  margin-bottom: calc(32 * var(--u));
+}
+
+.fc-deploy-ur-v2__objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(33 * var(--u)) calc(32 * var(--u));
+}
+
+.fc-deploy-ur-v2__objective-card {
+  display: flex;
+  align-items: center;
+  gap: calc(32 * var(--u));
+  min-height: calc(260 * var(--u));
+  padding: calc(24 * var(--u));
+  border: 1px solid #1f1f1f;
+  border-radius: calc(20 * var(--u));
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.fc-deploy-ur-v2__objective-art {
+  flex-shrink: 0;
+  width: calc(180 * var(--u));
+  height: calc(174 * var(--u));
+  object-fit: contain;
+  object-position: center;
+}
+
+.fc-deploy-ur-v2__objective-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.fc-deploy-ur-v2__objective-title {
+  margin: 0 0 calc(24 * var(--u));
+  font-size: calc(24 * var(--u));
+  font-weight: 500;
+  line-height: calc(36 * var(--u));
+  color: var(--fc-text);
+}
+
+.fc-deploy-ur-v2__objective-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 * var(--u));
+}
+
+.fc-deploy-ur-v2__objective-label {
+  margin: 0;
+  font-size: calc(16 * var(--u));
+  font-weight: 500;
+  line-height: calc(28 * var(--u));
+  color: var(--fc-text);
+}
+
+.fc-deploy-ur-v2__objective-text {
+  margin: 0;
+  font-size: calc(16 * var(--u));
+  font-weight: 400;
+  line-height: calc(28 * var(--u));
+  color: var(--fc-text);
+}
+
+/* Evaluation — Figma 5101:37887 (merged into Project context) */
+.fc-deploy-research > .fc-deploy-eval-v2 {
+  margin-top: calc(48 * var(--u));
+}
+
+.fc-deploy-eval-v2__stage {
+  position: relative;
+  max-width: calc(1600 * var(--u));
+  --deploy-eval-callout-y: calc(40 * var(--u));
+}
+
+.fc-deploy-eval-v2__subheading {
+  position: absolute;
+  top: var(--deploy-eval-callout-y);
+  left: 0;
+  z-index: 3;
+  margin: 0;
+  max-width: calc(470 * var(--u));
+  font-size: calc(32 * var(--u));
+  font-weight: 500;
+  line-height: calc(36 * var(--u));
+  color: var(--fc-text);
+}
+
+.fc-deploy-eval-v2__issues {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: calc(24 * var(--u));
+  width: calc(1008 * var(--u));
+  margin-left: calc(560 * var(--u));
+  margin-bottom: calc(-80 * var(--u));
+  box-sizing: border-box;
+  transform: translateY(var(--deploy-eval-callout-y));
+}
+
+.fc-deploy-eval-v2__shot {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.fc-deploy-eval-v2__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.fc-deploy-eval-v2__issue {
+  flex: 0 0 calc(320 * var(--u));
+  width: calc(320 * var(--u));
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(16 * var(--u));
+  height: calc(189 * var(--u));
+  padding: calc(16 * var(--u));
+  box-sizing: border-box;
+  border: 1px solid #ffbdbd;
+  border-radius: calc(8 * var(--u));
+  background: radial-gradient(
+    ellipse 320% 189% at 0% 0%,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  backdrop-filter: blur(calc(21 * var(--u)));
+  -webkit-backdrop-filter: blur(calc(21 * var(--u)));
+  box-shadow: 0 calc(6 * var(--u)) calc(23.5 * var(--u)) calc(-11 * var(--u)) rgba(255, 90, 67, 0.4);
+  text-align: center;
+}
+
+.fc-deploy-eval-v2__issue h4 {
+  margin: 0;
+  font-size: calc(20 * var(--u));
+  font-weight: 500;
+  line-height: calc(32 * var(--u));
+  color: var(--fc-text);
+}
+
+.fc-deploy-eval-v2__issue p {
+  margin: 0;
+  font-size: calc(20 * var(--u));
+  font-weight: 400;
+  line-height: calc(28 * var(--u));
+  color: var(--fc-text);
+}
+
+@media (max-width: 1200px) {
+  .fc-deploy-context-v2__card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fc-deploy-context-v2__body {
+    padding: 0;
+  }
+
+  .fc-deploy-eval-v2__subheading {
+    position: static;
+    max-width: none;
+    margin-top: var(--deploy-eval-callout-y);
+    margin-bottom: calc(16 * var(--u));
+  }
+
+  .fc-deploy-eval-v2__issues {
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: calc(24 * var(--u));
+    transform: none;
+  }
+
+  .fc-deploy-eval-v2__issue {
+    height: auto;
+    min-height: calc(189 * var(--u));
+  }
+
+  .fc-deploy-ur-v2__persona-grid,
+  .fc-deploy-ur-v2__objectives-grid,
+  .fc-deploy-ur-v2__insight {
+    grid-template-columns: 1fr;
+  }
+
+  .fc-deploy-ur-v2__insight-copy {
+    max-width: none;
+  }
+
+  .fc-deploy-ur-v2__insight-fig {
+    width: 100%;
+    max-width: calc(1020 * var(--u));
+    height: auto;
+    aspect-ratio: 1020 / 925.25;
+  }
+
+  .fc-deploy-ur-v2__insight-board {
+    width: calc(100% - 42 * var(--u));
+    height: auto;
+    aspect-ratio: 981.67 / 887.83;
+  }
+
+  .fc-deploy-ur-v2__objectives-band {
+    left: calc(-24 * var(--u));
+    right: calc(-24 * var(--u));
+  }
+}
+
+html:lang(zh) .case-page__main .fc .fc-deploy-eval-v2__issues {
+  min-height: calc(189 * var(--u));
+  align-items: flex-start;
+}
+
+html:lang(zh) .case-page__main .fc .fc-deploy-eval-v2__issue {
+  height: auto;
+  min-height: unset;
+}

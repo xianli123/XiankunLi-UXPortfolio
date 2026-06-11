@@ -226,7 +226,7 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       type: "paragraph",
       text: {
         en: "Users tend to view the data quickly rather than query data multiple times. We changed the associated roles boxes to a table displaying associated realm roles and client roles. This way, users can view all the associated roles efficiently. There is a prefixed label for client roles to indicate the client's name.",
-        zh: "用户倾向于快速浏览数据，而非多次查询。我们将关联角色的框改为表格，统一展示 realm 与 client 角色，并为客户角色添加前缀标签以标明 client 名称。",
+        zh: "用户倾向于快速浏览数据，而非多次查询。我们将关联角色的框改为表格，统一展示 realm 与 client 角色，并为 client 角色添加前缀标签以标明 client 名称。",
       },
     },
     {
