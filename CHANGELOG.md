@@ -11,6 +11,7 @@
 
 | 章节 | 内容 |
 |------|------|
+| [§27](#27-model-details--deployment-v3-区块补全2026-06-29) | Model Details V3 埋点区块重建；Deployment V3 UX 评估（反馈卡 + 可用性指标 + 总结卡） |
 | [§26](#26-案例页-v3-上线与默认路由2026-06-29) | 四案例 V3 详情页、RBAC / Model Details V3 新区块、V3 为默认入口并隐藏 V2 |
 | [§25.11](#2511-案例详情页--仅展示-v22026-06-08) | （已被 §26 取代）详情页隐藏 V1、自动跳转 V2、移除顶栏版本切换 |
 | [§25.10](#2510-首页-about--设计项目产品外链2026-06-08) | About「设计项目」产品名外链 + 悬停变蓝 |
@@ -1522,6 +1523,78 @@ python3 -m http.server 8765
 
 ---
 
+## 27. Model Details & Deployment V3 区块补全（2026-06-29）
+
+在 §26 V3 页面上线后，继续补齐 **Model Details V3** 与 **Deployment Tracking V3** 中仍沿用 V2 的尾部区块，并按 Figma 设计稿对齐布局与间距。
+
+### 27.1 Model Details V3 — Event tracking
+
+**设计参考：** Figma `7437:36112`  
+**脚本：** `js/case-openshift-model-details-v3.js`（新增 `renderModelEventTrackingV3`）  
+**样式：** `css/case-openshift-model-details-v2.css`（`body[data-case-id="model-details-v3"] .fc-event-v3__*`）
+
+| 改动 | 说明 |
+|------|------|
+| 区块重建 | HEART 框架引言 + 6 步埋点流程列表 + 4 个指标圆环（复用 `rbac/event-tracking-v3/metric-circle-secondary.svg`） |
+| 路由 | `js/case-openshift.js` 新增 `eventTrackingModelV3` 分支；运行时替换 `model-details-v3` 的 `eventTracking` 区块 |
+| IA 中文标题 | `信息架构图` → `信息架构设计`（`js/case-openshift-model-details-v2.js`） |
+| 中文指标标签 | 「推荐配置采用率」改为两行「推荐配置<br>采用率」 |
+| Project context 卡 | bullet **24px**；卡与上方间距 **24px**；双卡宽 **720px**、页面居中（§26.3 补充落地） |
+
+### 27.2 Deployment Tracking V3 — UX evaluation
+
+**设计参考：** Figma `7450:36449`（整体 UX 评估）、`7462:36777`（可用性总结卡）  
+**脚本：** `js/case-openshift-deployment-v3.js`（新）  
+**样式：** `css/case-openshift-deployment-v2.css`（`body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__*`）  
+**入口：** `cases/deployment-tracking-v3.html` 加载 `case-openshift-deployment-v3.js`
+
+| 区块 | 说明 |
+|------|------|
+| Feedback | 引言 + 4 张用户证言卡（quote 图标、姓名 / 角色） |
+| Usability testing | A/B 测试引言 + 3 个指标圆环（↓90% / ↓97% / ↑90%） |
+| 总结卡 | 80×80 strategy 插图 + 结论文案；**1px** 蓝色边框 `#2097F6`、圆角 20px、内边距 20px |
+| Reusable extension | 沿用 V2 区块，标题与上方内容间距 **128px** |
+
+**间距微调（仅 V3）：**
+
+| 位置 | 值 |
+|------|-----|
+| Usability testing 标题 → 引言 | 24px |
+| Feedback 引言 → 证言卡 | 24px |
+| Feedback 区块 → Usability testing | **72px** |
+| 3 指标 → 总结卡 | 48px |
+
+**资源：** `assets/cases/openshift-ai/deployment/ux-v3/strategy.svg`
+
+**路由：** `js/case-openshift.js` 在 `deployment-tracking-v3` 且存在 `renderDeploymentUxV3` 时分发 V3 UX 渲染器。
+
+### 27.3 涉及文件一览
+
+```
+cases/model-details-v3.html
+cases/deployment-tracking-v3.html
+js/case-openshift-model-details-v2.js
+js/case-openshift-model-details-v3.js
+js/case-openshift-deployment-v3.js          # 新
+js/case-openshift.js
+css/case-openshift-model-details-v2.css
+css/case-openshift-deployment-v2.css
+assets/cases/openshift-ai/deployment/ux-v3/strategy.svg
+```
+
+### 27.4 验证
+
+```bash
+cd "Portfolio web"
+python3 -m http.server 8765
+# Model Details V3 — Event tracking 四指标 + HEART 流程
+# http://127.0.0.1:8765/cases/model-details-v3.html
+# Deployment V3 — UX 评估：证言卡、可用性指标、蓝色总结卡
+# http://127.0.0.1:8765/cases/deployment-tracking-v3.html
+```
+
+---
+
 ## 16. 后续可迭代方向（未做）
 
 - 邮箱 / LinkedIn 在 Contact 区块也改为蓝色（若需与 Hero 完全统一）
@@ -1537,4 +1610,4 @@ python3 -m http.server 8765
 
 ---
 
-*最后更新：2026-06-08（§25.9–§25.11 RBAC V2 中文排版、首页外链、详情页 V2-only）· 2026-06-11（§25 案例 V1/V2 拆分与 OpenShift AI V2）· 2026-06-02（§24 GitHub）· 2026-06-03（§22–§20）· 2026-06-02（§23–§18、§17）· 2026-06-01（§15）*
+*最后更新：2026-06-29（§27 Model Details / Deployment V3 区块补全）· 2026-06-29（§26 V3 上线）· 2026-06-08（§25.9–§25.11）· 2026-06-11（§25）· 2026-06-02（§24 GitHub）*

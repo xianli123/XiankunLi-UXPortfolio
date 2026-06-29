@@ -25,7 +25,7 @@
   }
 
   const IA_MAP_V2 = {
-    title: { en: "IA map design", zh: "信息架构图" },
+    title: { en: "IA map design", zh: "信息架构设计" },
     bodyHtml: {
       en: 'Designed the model details <strong>Information Architecture</strong> based on user research and task analysis. The structure balances business and user needs, transforming complex model management into an intuitive workflow that minimizes cognitive load.',
       zh: "基于用户研究与任务分析，设计了模型详情的 <strong>Information Architecture</strong>（信息架构）。该结构在平衡业务与用户需求的同时，将复杂的模型管理转化为直观工作流，降低认知负荷。",

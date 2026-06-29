@@ -469,3 +469,260 @@ html:lang(zh) .case-page__main .fc .fc-deploy-eval-v2__issue {
   height: auto;
   min-height: unset;
 }
+
+/* Deployment tracking V3 — UX evaluation (Figma 7450:36449) */
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__title {
+  margin: 0;
+  max-width: calc(1600 * var(--u));
+  font-size: calc(48 * var(--u));
+  font-weight: 700;
+  line-height: calc(64 * var(--u));
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__feedback {
+  margin-top: calc(48 * var(--u));
+  max-width: calc(1600 * var(--u));
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__subtitle {
+  margin: 0 0 calc(24 * var(--u));
+  max-width: calc(764 * var(--u));
+  font-size: calc(32 * var(--u));
+  font-weight: 500;
+  line-height: calc(36 * var(--u));
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__intro {
+  margin: 0 0 calc(24 * var(--u));
+  max-width: calc(1600 * var(--u));
+  font-size: calc(24 * var(--u));
+  font-weight: 400;
+  line-height: calc(32 * var(--u));
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__intro strong {
+  font-weight: 500;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__testimonials {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, calc(382 * var(--u))));
+  gap: calc(24 * var(--u));
+  justify-content: space-between;
+  max-width: calc(1600 * var(--u));
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__testimonial {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: calc(24 * var(--u));
+  margin: 0;
+  min-height: calc(320 * var(--u));
+  padding: calc(24 * var(--u));
+  border: 1px solid #d6d6d6;
+  border-radius: calc(16 * var(--u));
+  background: #fff;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__quote {
+  width: calc(32 * var(--u));
+  height: calc(31 * var(--u));
+  flex-shrink: 0;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__testimonial-text {
+  margin: 0;
+  font-size: calc(20 * var(--u));
+  font-weight: 400;
+  line-height: calc(28 * var(--u));
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__testimonial-foot {
+  margin-top: auto;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__testimonial-author {
+  margin: 0;
+  font-size: calc(20 * var(--u));
+  font-weight: 500;
+  line-height: calc(28 * var(--u));
+  color: #0d0d0d;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__testimonial-role {
+  margin: calc(4 * var(--u)) 0 0;
+  font-size: calc(20 * var(--u));
+  font-weight: 500;
+  line-height: calc(28 * var(--u));
+  color: #808080;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__usability {
+  margin-top: calc(72 * var(--u));
+  max-width: calc(1600 * var(--u));
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__results-title {
+  margin: 0;
+  max-width: calc(720 * var(--u));
+  font-size: calc(32 * var(--u));
+  font-weight: 500;
+  line-height: calc(32 * var(--u));
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__usability-intro {
+  margin: calc(24 * var(--u)) 0 0;
+  max-width: calc(1600 * var(--u));
+  font-size: calc(24 * var(--u));
+  font-weight: 400;
+  line-height: calc(32 * var(--u));
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__usability-intro strong {
+  font-weight: 600;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: calc(84 * var(--u));
+  margin-top: calc(48 * var(--u));
+  max-width: calc(1600 * var(--u));
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__usability-outro {
+  display: flex;
+  align-items: center;
+  gap: calc(40 * var(--u));
+  margin: calc(48 * var(--u)) 0 0;
+  max-width: calc(1600 * var(--u));
+  padding: calc(20 * var(--u));
+  border: 1px solid #2097f6;
+  border-radius: calc(20 * var(--u));
+  background: #fff;
+  box-sizing: border-box;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__usability-outro-icon {
+  flex-shrink: 0;
+  width: calc(80 * var(--u));
+  height: calc(80 * var(--u));
+  object-fit: contain;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__usability-outro-text {
+  margin: 0;
+  min-width: 0;
+  flex: 1;
+  font-size: calc(24 * var(--u));
+  font-weight: 400;
+  line-height: calc(36 * var(--u));
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metric-circle {
+  position: relative;
+  width: calc(260 * var(--u));
+  height: calc(260 * var(--u));
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metric-circle-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metric-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: calc(24 * var(--u));
+  box-sizing: border-box;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metric-label {
+  margin: 0 0 calc(8 * var(--u));
+  max-width: calc(219 * var(--u));
+  font-size: calc(20 * var(--u));
+  font-weight: 400;
+  line-height: 1.4;
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metric-value {
+  margin: 0;
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metric-line {
+  margin: 0;
+  line-height: 1.2;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metric-num {
+  font-size: calc(37.587 * var(--u));
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metric-heading {
+  margin: calc(24 * var(--u)) 0 0;
+  max-width: calc(400 * var(--u));
+  font-size: calc(24 * var(--u));
+  font-weight: 500;
+  line-height: 1.4;
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc .fc-deploy-ux-v3 .fc-deploy-ux-v3__metric-caption {
+  margin: calc(16 * var(--u)) 0 0;
+  max-width: calc(400 * var(--u));
+  font-size: calc(20 * var(--u));
+  line-height: 1.4;
+  font-weight: 300;
+  color: #1f1f1f;
+}
+
+body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3 .fc-deploy-ux__gap {
+  margin-top: calc(128 * var(--u));
+}
+
+@media (max-width: 1200px) {
+  body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__testimonials {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__metrics {
+    grid-template-columns: 1fr;
+    gap: calc(48 * var(--u));
+  }
+}
+
+@media (max-width: 700px) {
+  body[data-case-id="deployment-tracking-v3"] .fc-deploy-ux-v3__testimonials {
+    grid-template-columns: 1fr;
+  }
+}

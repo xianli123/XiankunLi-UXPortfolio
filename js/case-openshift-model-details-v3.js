@@ -159,4 +159,156 @@
         </div>
       </div>`;
   };
+
+  const ICON = "assets/cases/openshift-ai/icons/";
+  const EVENT_TRACKING_V3_IMG = "assets/cases/openshift-ai/rbac/event-tracking-v3/";
+
+  const MODEL_EVENT_TRACKING_V3 = {
+    title: { en: "Event tracking behind UX", zh: "体验背后的埋点" },
+    heartTitle: { en: "Event tracking definition process", zh: "埋点定义流程" },
+    heartBodyHtml: {
+      en: "To support continuous design improvement, user behavior tracking was implemented using the HEART (Happiness, Engagement, Adoption, Retention, Task Success) framework.<br><br>The data validated key design decisions around IA map, deployment planning workflows, and hardware and compression comparison experiences.",
+      zh: "为支撑设计的持续改进，我们采用 HEART（Happiness、Engagement、Adoption、Retention、Task Success）框架实现用户行为追踪。<br><br>相关数据验证了信息架构、部署规划流程，以及硬件与压缩对比体验等关键设计决策。",
+    },
+    process: [
+      { icon: "event-tracking/insights.svg", text: { en: "Map out core user journeys", zh: "梳理核心用户旅程" } },
+      { icon: "event-tracking/sticky-note-2.svg", text: { en: "Define interactive events for tracking", zh: "定义可追踪的交互事件" } },
+      { icon: "event-tracking/inventory.svg", text: { en: "Deliver official event tracking documentation", zh: "交付官方埋点文档" } },
+      { icon: "event-tracking/connect-without-contact.svg", text: { en: "Align requirements with research team", zh: "与研究团队对齐需求" } },
+      { icon: "event-tracking/content-paste-search.svg", text: { en: "Validate design decisions with behavioral data", zh: "用行为数据验证设计决策" } },
+      { icon: "event-tracking/published-with-changes.svg", text: { en: "Drive iterative optimization if needed", zh: "按需驱动迭代优化" } },
+    ],
+    resultsTitle: {
+      en: "Positive results observed from data tracking",
+      zh: "数据追踪显示的正向成效",
+    },
+    metrics: [
+      {
+        circle: "metric-circle-secondary.svg",
+        labelHtml: {
+          en: "Cross-page/tab<br>navigation",
+          zh: "跨页面/标签页<br>导航",
+        },
+        valueHtml: {
+          en: '<p class="fc-event-v3__metric-line"><span class="fc-event-v3__metric-num">↓ 17%</span></p>',
+          zh: '<p class="fc-event-v3__metric-line"><span class="fc-event-v3__metric-num">↓ 17%</span></p>',
+        },
+        heading: { en: "Reduced context switching", zh: "减少上下文切换" },
+        caption: {
+          en: "Users relied less on external documentation and supporting resources during model evaluation.",
+          zh: "用户在模型评估过程中更少依赖外部文档与支持资源。",
+        },
+      },
+      {
+        circle: "metric-circle-secondary.svg",
+        labelHtml: {
+          en: "Time to initiate<br>deployment",
+          zh: "发起部署<br>所需时间",
+        },
+        valueHtml: {
+          en: '<p class="fc-event-v3__metric-line"><span class="fc-event-v3__metric-num">↓ 45%</span></p>',
+          zh: '<p class="fc-event-v3__metric-line"><span class="fc-event-v3__metric-num">↓ 45%</span></p>',
+        },
+        heading: { en: "Faster deployment decisions", zh: "更快的部署决策" },
+        caption: {
+          en: "Users were able to evaluate deployment requirements and initiate deployment more efficiently.",
+          zh: "用户能够更高效地评估部署需求并发起部署。",
+        },
+      },
+      {
+        circle: "metric-circle-secondary.svg",
+        labelHtml: {
+          en: "Recommendation adoption rate",
+          zh: "推荐配置<br>采用率",
+        },
+        valueHtml: {
+          en: '<p class="fc-event-v3__metric-line"><span class="fc-event-v3__metric-num">32%</span></p>',
+          zh: '<p class="fc-event-v3__metric-line"><span class="fc-event-v3__metric-num">32%</span></p>',
+        },
+        heading: { en: "High adoption of recommended configs", zh: "推荐配置的高采用率" },
+        caption: {
+          en: "More users selected recommended hardware and compression options when planning deployments.",
+          zh: "更多用户在规划部署时选择了推荐的硬件与压缩配置。",
+        },
+      },
+      {
+        circle: "metric-circle-secondary.svg",
+        labelHtml: {
+          en: "Deployment<br>conversion rate",
+          zh: "部署<br>转化率",
+        },
+        valueHtml: {
+          en: '<p class="fc-event-v3__metric-line"><span class="fc-event-v3__metric-num">↑ 28%</span></p>',
+          zh: '<p class="fc-event-v3__metric-line"><span class="fc-event-v3__metric-num">↑ 28%</span></p>',
+        },
+        heading: { en: "Higher deployment conversion", zh: "更高的部署转化" },
+        caption: {
+          en: "More users successfully progressed from model evaluation to deployment.",
+          zh: "更多用户成功从模型评估阶段推进到部署。",
+        },
+      },
+    ],
+  };
+
+  window.renderModelEventTrackingV3 = function (_block, lang) {
+    const d = MODEL_EVENT_TRACKING_V3;
+    const heartBody = d.heartBodyHtml?.[lang] || d.heartBodyHtml?.en || "";
+
+    const processItems = d.process
+      .map(
+        (item) => `
+        <li class="fc-event-v3__process-item">
+          <img src="${ICON}${esc(item.icon)}" alt="" width="32" height="32" loading="lazy" aria-hidden="true">
+          <span>${esc(t(item.text, lang))}</span>
+        </li>`
+      )
+      .join("");
+
+    const metrics = d.metrics
+      .map((metric) => {
+        const labelHtml = metric.labelHtml?.[lang] || metric.labelHtml?.en || "";
+        const valueHtml = metric.valueHtml?.[lang] || metric.valueHtml?.en || "";
+        return `
+        <article class="fc-event-v3__metric">
+          <div class="fc-event-v3__metric-circle">
+            <img class="fc-event-v3__metric-circle-art" src="${EVENT_TRACKING_V3_IMG}${esc(metric.circle)}" alt="" aria-hidden="true" width="260" height="260" loading="lazy">
+            <div class="fc-event-v3__metric-inner">
+              <p class="fc-event-v3__metric-label">${labelHtml}</p>
+              <div class="fc-event-v3__metric-value">${valueHtml}</div>
+            </div>
+          </div>
+          <h4 class="fc-event-v3__metric-heading">${esc(t(metric.heading, lang))}</h4>
+          <p class="fc-event-v3__metric-caption">${esc(t(metric.caption, lang))}</p>
+        </article>`;
+      })
+      .join("");
+
+    return `
+      <section class="fc-section fc-event-v3 fc-event-v3--model">
+        <h2 class="fc-event-v3__title">${esc(t(d.title, lang))}</h2>
+        <div class="fc-event-v3__intro">
+          <div class="fc-event-v3__intro-left">
+            <h3 class="fc-event-v3__subtitle">${esc(t(d.heartTitle, lang))}</h3>
+            <p class="fc-event-v3__body">${heartBody}</p>
+          </div>
+          <div class="fc-event-v3__intro-right">
+            <div class="fc-event-v3__process">
+              <ul class="fc-event-v3__process-list">${processItems}</ul>
+            </div>
+          </div>
+        </div>
+        <h3 class="fc-event-v3__results-title">${esc(t(d.resultsTitle, lang))}</h3>
+        <div class="fc-event-v3__metrics">${metrics}</div>
+      </section>`;
+  };
+
+  function applyModelDetailsV3EventTracking() {
+    const cs = window.CASE_OPENSHIFT_DATA?.["model-details-v3"];
+    if (!cs?.blocks) return;
+    const idx = cs.blocks.findIndex((b) => b?.type === "eventTracking");
+    if (idx < 0) return;
+    cs.blocks[idx] = { type: "eventTrackingModelV3" };
+  }
+
+  applyModelDetailsV3EventTracking();
 })();

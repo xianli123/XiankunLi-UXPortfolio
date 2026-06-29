@@ -2426,6 +2426,8 @@
         return renderEventTracking(block, lang);
       case "eventTrackingV3":
         return window.renderEventTrackingV3?.(block, lang) || "";
+      case "eventTrackingModelV3":
+        return window.renderModelEventTrackingV3?.(block, lang) || "";
       case "deploymentResearch":
         return window.renderDeploymentResearch?.(lang) || "";
       case "deploymentEvaluation":
@@ -2437,6 +2439,9 @@
       case "deploymentTradeoffs":
         return window.renderDeploymentTradeoffs?.(lang) || "";
       case "deploymentUx":
+        if (document.body.dataset.caseId === "deployment-tracking-v3" && window.renderDeploymentUxV3) {
+          return window.renderDeploymentUxV3(lang);
+        }
         return window.renderDeploymentUx?.(lang) || "";
       default:
         return "";
