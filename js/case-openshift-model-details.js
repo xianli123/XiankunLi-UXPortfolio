@@ -25,18 +25,18 @@
         challenges: [
           { en: "High information density with unclear visual hierarchy", zh: "信息密度高但视觉层级不清晰" },
           { en: "Difficult hardware comparisons without a unified views", zh: "缺少统一视图，难以进行硬件对比" },
-          { en: "Performance data scattered with no fast path to insight", zh: "性能数据分散，缺少快速获得洞察的路径" },
+          { en: "Performance data scattered with no fast path to insight", zh: "性能数据分散，难以快速读懂关键信息" },
         ],
         goals: [
           { en: "Cut configuration decision time", zh: "缩短配置决策时间" },
-          { en: "Increase adoption of hardware optimization workflows", zh: "提升硬件优化工作流采用率" },
+          { en: "Increase adoption of hardware optimization workflows", zh: "提升硬件优化流程的使用率" },
           { en: "Establish an extensible design system", zh: "建立可扩展的设计体系" },
         ],
         purpose: {
           title: { en: "Purpose of the validated model details page", zh: "Validated Models 详情页的设计目标" },
           body: {
             en: "The detail page presents intuitive performance benchmark data of validated models. It helps users clearly understand model capabilities, and supports efficient model comparison, selection and subsequent application.",
-            zh: "详情页呈现 Validated Models 直观的性能 benchmark 数据，帮助用户清晰理解模型能力，并支持高效的模型对比、选择与后续应用。",
+            zh: "详情页以直观方式呈现 Validated Models 的性能 benchmark 数据，帮助用户清晰理解模型能力，并支持高效的模型对比、选择与落地使用。",
           },
         },
       },
@@ -53,7 +53,7 @@
           },
           keywords: [
             { en: "Evaluation-focused", zh: "以评估为导向" },
-            { en: "Ships models end-to-end", zh: "端到端交付模型" },
+            { en: "Ships models end-to-end", zh: "覆盖模型全流程上线" },
             { en: "Evidence-led", zh: "证据驱动" },
             { en: "Scenario-based choices", zh: "基于场景的选择" },
           ],
@@ -91,7 +91,7 @@
         journeyTitle: { en: "User Journey", zh: "用户旅程" },
         journeyIntro: {
           en: "Journey · Validated model & benchmarks",
-          zh: "旅程 · Validated Models 与 benchmark",
+          zh: "用户旅程 · Validated Models 与 benchmark",
         },
         phases: [
           {
@@ -99,15 +99,15 @@
             tone: "discover",
             objective: {
               en: "Land on a candidate validated model that fits the use case and constraints before deep benchmark reading.",
-              zh: "在深入阅读 benchmark 前，找到符合用例与约束的候选 Validated model。",
+              zh: "在深入阅读 benchmark 前，先锁定符合用例与约束的候选 Validated Model。",
             },
             intent: {
               en: "Shortlist from the catalog using browse or filters (use case, hardware type, SLO hints). Compare cards and select one model to evaluate with benchmark evidence next.",
-              zh: "通过浏览或筛选（用例、硬件类型、SLO 提示）从目录中筛选，对比卡片并选定一个模型，下一步用 benchmark 证据评估。",
+              zh: "通过浏览或筛选（用例、硬件类型、SLO 提示）在目录中圈定候选，对比卡片并选定一个模型，下一步用 benchmark 证据评估。",
             },
             risks: {
               en: "Easy to confuse validated vs experimental listings. And filter wording may not match how teams describe workloads, slowing consensus.",
-              zh: "易混淆 validated 与 experimental 列表，筛选文案可能与团队描述工作负载的方式不一致，拖慢共识。",
+              zh: "易混淆 validated 与 experimental 列表，筛选文案可能与团队描述工作负载的方式不一致，拖慢团队对齐。",
             },
           },
           {
@@ -115,17 +115,17 @@
             tone: "evidence",
             objective: {
               en: "Trust benchmark numbers and understand what was measured so comparisons are fair.",
-              zh: "信任 benchmark 数字并理解测量内容，使对比公平。",
+              zh: "理解 benchmark 数据及其测量方法，使对比公平可信。",
             },
             intent: {
               html: {
                 en: 'Use <strong>Overview</strong> for specs and open <strong>Performance insights</strong> for benchmark-linked charts. Use validation script or CLI/config snippets when offered to align local checks with published runs.',
-                zh: "用 <strong>Overview</strong> 查看规格，打开 <strong>Performance insights</strong> 查看 benchmark 图表，如有验证脚本或 CLI/配置片段，用于与已发布运行对齐本地检查。",
+                zh: "用 <strong>Overview</strong> 查看规格，打开 <strong>Performance insights</strong> 查看 benchmark 图表；如有验证脚本或 CLI/配置片段，用于将本地检查结果与已发布运行结果对齐。",
               },
             },
             risks: {
               en: "Benchmark setup (hardware, batching, data slice) varies by model — hard to compare or reproduce on the stack without clear artifact links.",
-              zh: "benchmark 设置（硬件、batch、数据切片）因模型而异——缺少清晰的 benchmark artifact 链接时，难以在相同环境中对比或复现。",
+              zh: "benchmark 设置（硬件、batch、数据切片）因模型而异——缺少清晰的 benchmark 记录/配置链接时，难以在相同环境中对比或复现。",
             },
           },
           {
@@ -137,7 +137,7 @@
             },
             intent: {
               en: "Filter and compare configurations and accuracy vs compression. And inherit catalog filters where applicable or accept recommended strongest defaults.",
-              zh: "筛选并对比配置及精度与压缩关系，在适用时继承目录筛选或接受推荐的最强默认项。",
+              zh: "筛选并对比配置及精度与压缩关系，在适用时继承目录筛选或采用系统推荐的最优默认配置。",
             },
             risks: {
               en: "High cognitive load across dimensions. Stakeholders ask why a configuration is recommended without plain-language rationale.",
@@ -165,15 +165,15 @@
             tone: "deploy",
             objective: {
               en: "Run the model with chosen HWP and compression, grounded in benchmark assumptions for ongoing monitoring.",
-              zh: "以所选 HWP 与压缩运行模型，并以 benchmark 假设支撑持续监控。",
+              zh: "以所选 HWP 与压缩运行模型，并基于 benchmark 假设建立持续监控基线。",
             },
             intent: {
               en: "Launch deployment with HWP, compression, and environment settings. Connect ops monitoring to the same SLO language used in benchmarks where possible.",
-              zh: "以 HWP、压缩与环境设置启动部署，尽可能将运维监控与 benchmark 中使用的 SLO 语言对齐。",
+              zh: "以 HWP、压缩与环境设置启动部署，尽可能让运维监控指标与 benchmark 中的 SLO 定义保持一致。",
             },
             risks: {
               en: "Runtime drift vs benchmark claims. Handoff between model owners and platform/Ops for profile lifecycle and re-validation.",
-              zh: "运行时与 benchmark 声明漂移，模型负责人与平台/Ops 在 profile 生命周期与再验证上的交接。",
+              zh: "实际运行表现与 benchmark 结论不一致；模型负责人与平台/Ops 在配置生命周期与再验证流程上的协作衔接不清。",
             },
           },
         ],
@@ -182,7 +182,7 @@
         title: { en: "Design objectives", zh: "设计目标" },
         cards: [
           { icon: ICON + "view-in-ar.svg", text: { en: "Display intuitive and comprehensive performance benchmark data", zh: "展示直观且全面的性能 benchmark 数据" } },
-          { icon: ICON + "theaters.svg", text: { en: "Enable users to clearly compare and select the most matched hardware", zh: "帮助用户清晰对比并选择最匹配的硬件" } },
+          { icon: ICON + "theaters.svg", text: { en: "Enable users to clearly compare and select the most matched hardware", zh: "帮助用户清晰对比并选择最合适的硬件" } },
           { icon: ICON + "balance.svg", text: { en: "Facilitate easy comparison among different validated models", zh: "便于在不同 Validated Models 间对比" } },
           { icon: ICON + "integration-instructions.svg", text: { en: "Improve the efficiency of model selection, registration and deployment", zh: "提升模型选择、注册与部署效率" } },
         ],
@@ -192,7 +192,7 @@
       title: { en: "IA map design", zh: "信息架构图" },
       body: {
         en: "The information architecture of the model details page was developed through user research and task analysis to ensure platform alignment.\n\nBy prioritizing user needs and business logic while maintaining clarity and consistency, this IA simplifies intricate model management into an intuitive workflow that minimizes cognitive effort.",
-        zh: "模型详情页的信息架构通过用户研究与任务分析制定，以确保与平台对齐。\n\n在保持清晰与一致的同时优先考虑用户需求与业务逻辑，将复杂的模型管理简化为降低认知负荷的直观工作流。",
+        zh: "基于用户研究与任务分析，模型详情页的信息架构在保持清晰一致的同时，将复杂的模型管理简化为直观工作流，降低认知负荷。",
       },
       goalsTitle: { en: "Goals", zh: "目标" },
       goals: [
@@ -261,7 +261,7 @@
         intro: {
           html: {
             en: 'This "decision-priority" <strong>Overview</strong> tab layout aligns information hierarchy with user intent, putting high-impact details first to cut decision time and cognitive load.',
-            zh: "该以决策为先的 <strong>Overview</strong> 标签布局将信息层级与用户意图对齐，将高影响信息前置，缩短决策时间并降低认知负荷。",
+            zh: "这一以决策优先级为导向的 <strong>Overview</strong> 标签布局，将信息层级与用户意图对齐，把高影响信息前置，缩短决策时间并降低认知负荷。",
           },
         },
         items: [
@@ -286,7 +286,7 @@
             title: { en: "Right sidebar", zh: "右侧边栏" },
             html: {
               en: 'Groups secondary yet critical details by relevance. It clarifies "<span class="fc-model-design__accent fc-model-design__accent--violet">Where does it come from, and what is its background?</span>" and provides the model\u2019s background information.',
-              zh: "按相关性归组次要但关键的信息，说明「<span class=\"fc-model-design__accent fc-model-design__accent--violet\">来源与背景？</span>」并提供模型背景信息。",
+              zh: "按相关性归组次要但关键的信息，说明「<span class=\"fc-model-design__accent fc-model-design__accent--violet\">模型来源与背景？</span>」并提供模型背景信息。",
             },
           },
         ],
@@ -361,7 +361,7 @@
             title: { en: "Hardware configuration", zh: "Hardware configuration" },
             body: {
               en: "AI deployment is a balancing act between cost and performance. This table centralizes complex multi-dimensional data (Latency, RPS, Versioning, etc.) into a single scannable view.",
-              zh: "AI 部署需在成本与性能间权衡。该表将延迟、RPS、版本等多维数据集中为可扫描视图。",
+              zh: "AI 部署需在成本与性能间权衡。该表将延迟、RPS、版本等多维数据整合为便于快速浏览的单一视图。",
             },
           },
           {
@@ -370,7 +370,7 @@
             title: { en: "Compression level comparison", zh: "Compression level comparison" },
             body: {
               en: "To visualize the trade-offs between model size and performance/accuracy. The side-by-side card layout provides an immediate comparison, helping users justify the use of quantized models for cost savings.",
-              zh: "可视化模型规模与性能/精度权衡，并排卡片布局便于论证量化模型带来的成本收益。",
+              zh: "可视化模型规模与性能/精度权衡，并排卡片布局便于评估量化模型带来的成本收益。",
             },
           },
           {
@@ -379,7 +379,7 @@
             title: { en: "Advanced metrics across compressions", zh: "Advanced metrics across compressions" },
             body: {
               en: 'Providing deep-dive technical transparency through visualization (Line and Bar charts). Keeps the initial page load clean while allowing power users to dig deeper into "Performance insights".',
-              zh: "通过折线图与柱状图提供深度技术透明度，保持首屏简洁，同时让高级用户深入 Performance insights。",
+              zh: "通过折线图与柱状图呈现更深入的技术细节，保持首屏简洁，同时满足进阶用户在 Performance insights 中的深度分析需求。",
             },
           },
         ],
@@ -508,7 +508,7 @@
               },
             },
             {
-              title: { en: "Adding powerful filters", zh: "添加强大筛选器" },
+              title: { en: "Adding powerful filters", zh: "增强筛选能力" },
               body: {
                 en: "To translate an exponential configuration space into a small set of constraints, helping users narrow candidates under explicit latency/RPS and workload assumptions.",
                 zh: "将指数级配置空间转化为少量约束，帮助用户在明确的延迟/RPS 与工作负载假设下缩小候选范围。",

@@ -28,7 +28,7 @@
     title: { en: "IA map design", zh: "信息架构图" },
     bodyHtml: {
       en: 'Designed the model details <strong>Information Architecture</strong> based on user research and task analysis. The structure balances business and user needs, transforming complex model management into an intuitive workflow that minimizes cognitive load.',
-      zh: "基于用户研究与任务分析，设计了模型详情的 <strong>Information Architecture</strong>（信息架构）。该结构在平衡业务与用户需求的同时，将复杂的模型管理转化为降低认知负荷的直观工作流。",
+      zh: "基于用户研究与任务分析，设计了模型详情的 <strong>Information Architecture</strong>（信息架构）。该结构在平衡业务与用户需求的同时，将复杂的模型管理转化为直观工作流，降低认知负荷。",
     },
     goalsTitle: { en: "Goals", zh: "目标" },
     goals: [
@@ -99,7 +99,7 @@
         icon: OBJECTIVES_ICON + "theaters.svg",
         text: {
           en: "Enable users to clearly compare and select the most matched hardware",
-          zh: "帮助用户清晰对比并选择最匹配的硬件",
+          zh: "帮助用户清晰对比并选择最合适的硬件",
         },
       },
       {
@@ -192,7 +192,7 @@
 
     panel.challenge = {
       en: "How to organize the large amount of information on the right side?",
-      zh: "如何组织、展示右侧拥挤的信息？",
+      zh: "如何组织并呈现右侧信息过载区域？",
     };
     panel.solution.html = {
       en: "<p>Guided by card-sorting insights, I organized the information into four user-centric categories, which are presented across three distinct UI cards.</p>",
@@ -206,7 +206,7 @@
 
     panel.solution.html = {
       en: "<p>Sidebar card ordering stems from user research (card sorting). This alignment mirrors natural prioritization, reducing decision friction and cognitive load.</p><ul><li>Model details</li><li>Recommended hardware configuration</li><li>Model tree</li></ul>",
-      zh: "<p>侧栏卡片顺序源于用户研究（card sorting）。这种对齐方式反映用户的自然优先级，降低决策摩擦与认知负荷。</p><ul><li>Model details</li><li>Recommended hardware configuration</li><li>Model tree</li></ul>",
+      zh: "<p>侧栏卡片顺序源于用户研究（card sorting），更贴近用户的自然优先级，降低决策摩擦与认知负荷。</p><ul><li>Model details</li><li>Recommended hardware configuration</li><li>Model tree</li></ul>",
     };
   }
 
@@ -314,7 +314,7 @@
     };
     notes[3].body = {
       en: "Bar charts consolidate accuracy metrics across benchmarks in a scannable view.",
-      zh: "柱状图将各 benchmark 的精度指标整合为可扫读的视图。",
+      zh: "柱状图将各 benchmark 的精度指标整合为便于快速浏览的视图。",
     };
     notes[4].body = {
       en: "Clicking the legend toggles the performance data of the corresponding compression level on and off.",
@@ -337,4 +337,17 @@
   applyModelDetailsV2Compression();
   applyModelDetailsV2BenchmarkIntro();
   applyModelDetailsV2BenchmarkCognitiveLoad();
+
+  (function syncModelDetailsV3FromV2() {
+    const src = window.CASE_OPENSHIFT_DATA?.["model-details-v2"];
+    if (!src) return;
+    window.CASE_OPENSHIFT_DATA["model-details-v3"] = JSON.parse(JSON.stringify(src));
+    const target = window.CASE_OPENSHIFT_DATA["model-details-v3"];
+    target.id = "model-details-v3";
+    target.version = 3;
+    target.codeName = {
+      en: "Validated Model's Details Design V3",
+      zh: "Validated Models 详情页设计 V3",
+    };
+  })();
 })();

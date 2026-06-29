@@ -5,7 +5,7 @@
 window.KEYCLOAK_BLOG_ARTICLE = {
   blogTitle: {
     en: "How we redesigned the Keycloak UI to increase efficiency",
-    zh: "我们如何重设计 Keycloak UI 以提升效率",
+    zh: "我们如何重新设计 Keycloak UI 以提升效率",
   },
   published: { en: "February 20, 2023", zh: "2023年2月20日" },
   author: { en: "Xiankun Li", zh: "李现昆" },
@@ -58,7 +58,7 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       src: "assets/cases/keycloak/02-CompositeRole.png",
       alt: {
         en: "Relationship between users and roles, with the super-role being a composite of other roles",
-        zh: "用户与角色关系图，super-role 为复合其他角色的复合角色",
+        zh: "用户与角色关系图，super-role 为复合了其他角色的复合角色",
       },
       caption: {
         en: "The figure below describes the relationship between the roles and users (user groups). The \"super-role\" is a composite role. The composite roles can also be associated with other composite roles.",
@@ -69,7 +69,7 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       type: "paragraph",
       text: {
         en: "In the original UI, the composite role function could be hard for novice users to use, increasing the cost of learning. I'll break down why users may have found it confusing and how to optimize it.",
-        zh: "在原始界面中，复合角色功能对新手较难使用，学习成本较高。下文将分析用户感到困惑的原因，以及如何优化。",
+        zh: "在旧版界面中，复合角色功能对新手较难使用，学习成本较高。下文将分析困惑成因，并介绍优化思路。",
       },
     },
     {
@@ -91,9 +91,9 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       type: "blockquote",
       text: {
         en: "If I were an administrator, I would use the composite role function to associate various roles, including realm and client roles, so that I could manage these associated roles more easily. By matching users and the composite roles, I could manage many permissions and user access requirements.",
-        zh: "若我是管理员，我会用复合角色功能关联各类角色（含 realm 与 client 角色），以便更轻松地管理这些关联角色。通过将用户与复合角色匹配，我能管理大量权限与访问需求。",
+        zh: "若我是管理员，我会用复合角色功能关联各类角色（含 realm 与 client 角色），以便更轻松地管理这些关联角色。通过为用户分配复合角色，我能管理大量权限与访问需求。",
       },
-      cite: { en: "Common user", zh: "典型用户" },
+      cite: { en: "Common user", zh: "常见使用场景" },
     },
     {
       type: "paragraph",
@@ -118,7 +118,7 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       type: "paragraph",
       text: {
         en: "The animation below shows the procedure in the old UI. The process is a bit complicated. Some pain points may ruin the user experience.",
-        zh: "下方动图展示旧版界面中的操作流程，过程较为复杂，若干痛点会影响用户体验。",
+        zh: "下方动图展示旧版界面中的操作流程，过程较为复杂，多个痛点都会影响使用体验。",
       },
     },
     {
@@ -166,7 +166,7 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       type: "paragraph",
       text: {
         en: "Even as users became familiar with the UI over time, new problems hit them.",
-        zh: "即使用户逐渐熟悉界面，仍会遭遇新的问题。",
+        zh: "即使用户逐渐熟悉界面，仍会遇到新的问题。",
       },
     },
     {
@@ -204,14 +204,14 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       level: 2,
       text: {
         en: "Redesigning to optimize users' experience",
-        zh: "重设计以优化用户体验",
+        zh: "通过重新设计优化用户体验",
       },
     },
     {
       type: "paragraph",
       text: {
         en: "The above pain points diminished users' experience. Our team needed to optimize the interaction and find an elegant way to address issues. We made some changes based on users' psychology and habits after analyzing users' instincts. The main differences are listed below.",
-        zh: "上述痛点削弱了用户体验。团队需要优化交互并找到优雅的解决方案。在分析用户本能与习惯后，我们做出若干改动，主要差异如下。",
+        zh: "上述痛点削弱了用户体验。团队需要优化交互并找到更合适的解决方案。结合用户直觉与使用习惯，我们做出以下改动。",
       },
     },
     {
@@ -246,7 +246,7 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       level: 3,
       text: {
         en: "2. Make the call to action (CTA) clear",
-        zh: "2. 让行动号召（CTA）更清晰",
+        zh: "2. 让核心操作按钮更清晰",
       },
     },
     {
@@ -268,11 +268,11 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       src: "assets/cases/keycloak/07-ChangesCTA.png",
       alt: {
         en: "CTA changes",
-        zh: "CTA 改动",
+        zh: "操作按钮优化",
       },
       caption: {
         en: "CTA changes",
-        zh: "CTA 改动",
+        zh: "操作按钮优化",
       },
     },
     {
@@ -386,14 +386,14 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       type: "paragraph",
       text: {
         en: "We also invited 10 novice users to join our interviews after implementation. They had never used Keycloak before the interview. Participants tried the old and new UI versions. Each participant rated the two UIs based on their hands-on experience. The maximum evaluation score was 7 points.",
-        zh: "实现后，我们还邀请 10 名从未使用过 Keycloak 的新手参与访谈，分别体验旧版与新版并评分（满分 7 分）。",
+        zh: "新版上线后，我们还邀请 10 名从未使用过 Keycloak 的新手参与访谈，分别体验旧版与新版并评分（满分 7 分）。",
       },
     },
     {
       type: "paragraph",
       text: {
         en: "The results below show that the new design is more efficient than the old one. Novice users think the new design is more in tune with their instincts and habits than the old one. There are significant improvements in user usability and friendliness.",
-        zh: "下图表明新设计比旧版更高效，更符合新手直觉与习惯，在可用性与友好度上有显著提升。",
+        zh: "下图表明新设计比旧版更高效，更贴合新手直觉与习惯，在易用性与整体体验上有显著提升。",
       },
     },
     {
@@ -429,7 +429,7 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       type: "paragraph",
       text: {
         en: "Usability and ease of use are important factors in measuring user friendliness. In addition to fulfilling the functional requirements, users also need an effective user experience. In optimizing the composite role function, we achieved the following goals:",
-        zh: "可用性与易用性是衡量友好度的重要因素。除满足功能需求外，用户还需要有效的体验。在优化复合角色功能时，我们实现了以下目标：",
+        zh: "可用性与易用性是衡量体验质量的重要因素。除满足功能需求外，用户还需要顺畅有效的交互。在优化复合角色功能时，我们实现了以下目标：",
       },
     },
     {
@@ -453,7 +453,7 @@ window.KEYCLOAK_BLOG_ARTICLE = {
       type: "related",
       text: {
         en: "Check out Red Hat Portfolio Architecture Center for a wide variety of reference architectures you can use.",
-        zh: "访问 Red Hat Portfolio Architecture Center 获取各类参考架构。",
+        zh: "前往 Red Hat Portfolio Architecture Center 查看各类参考架构。",
       },
       href: "https://www.redhat.com/architect/portfolio-architecture",
     },

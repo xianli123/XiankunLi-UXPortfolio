@@ -9,7 +9,7 @@
     title: { en: "Define new roles and mapping", zh: "定义新角色与映射" },
     introHtml: {
       en: 'I summarized supporting insights and defined new roles based on early technical research and business requirements. I then discussed and iterated the role definitions with PM and engineering teams. We finally agreed to launch three core roles first, namely <strong>resource maintainer</strong>, <strong>resource updater</strong> and <strong>resource reader</strong>. The table below shows some examples of workbench new roles.',
-      zh: "我根据早期技术调研与业务需求综合调研洞察并定义新角色，并与 PM、开发团队讨论迭代角色定义。我们最终同意先上线三个核心角色：<strong>resource maintainer</strong>、<strong>resource updater</strong> 与 <strong>resource reader</strong>。下表展示部分 Workbench 新角色示例。",
+      zh: "我结合早期技术调研、业务需求与用户/竞品洞察定义新角色，并与 PM、开发团队讨论迭代角色定义。我们最终同意先上线三个核心角色：<strong>resource maintainer</strong>、<strong>resource updater</strong> 与 <strong>resource reader</strong>。下表展示部分 Workbench 新角色示例。",
     },
     headers: [
       {
@@ -46,11 +46,11 @@
             ],
             resources: {
               en: "Any workbench in a project(namespace)",
-              zh: "项目 (namespace) 中的任意 Workbench",
+              zh: "项目（namespace）中的任意 Workbench",
             },
             descriptionHtml: {
               en: "Users who have the <strong>Workbench maintainer</strong> role will be able to view and manage all the workbenches in this namespace.",
-              zh: "拥有 <strong>Workbench maintainer</strong> 角色的用户可查看并管理该 namespace 中的所有 Workbench。",
+              zh: "拥有 <strong>Workbench maintainer</strong> 角色的用户可查看并管理该命名空间中的所有 Workbench。",
             },
             priority: "high",
           },
@@ -72,11 +72,11 @@
             ],
             resources: {
               en: "Any workbench in a project(namespace)",
-              zh: "项目 (namespace) 中的任意 Workbench",
+              zh: "项目（namespace）中的任意 Workbench",
             },
             descriptionHtml: {
               en: "Users who have the <strong>Workbench updater</strong> role will be able to view all the workbenches in this namespace, open the workbench, start and stop the workbench, and modify the configuration of the workbench.",
-              zh: "拥有 <strong>Workbench updater</strong> 角色的用户可查看该 namespace 中所有 Workbench、打开、启停 Workbench 并修改其配置。",
+              zh: "拥有 <strong>Workbench updater</strong> 角色的用户可查看该命名空间中所有 Workbench，并打开、启停及修改其配置。",
             },
             priority: "high",
           },
@@ -92,7 +92,7 @@
             },
             descriptionHtml: {
               en: 'Users who have the <strong>Workbench updater</strong> role for a workbench named "Foo" will be able to view the workbench named "Foo" in this namespace, open the workbench, start and stop the workbench, and modify the configuration of the workbench.',
-              zh: '拥有针对名为 "Foo" 的 Workbench 的 <strong>Workbench updater</strong> 角色的用户，可在该 namespace 中查看、打开、启停并修改该 Workbench 的配置。',
+              zh: '拥有针对名为 "Foo" 的 Workbench 的 <strong>Workbench updater</strong> 角色的用户，可在该命名空间中查看、打开、启停并修改该 Workbench 的配置。',
             },
             priority: "low",
           },
@@ -111,11 +111,11 @@
             actions: [{ label: { en: "Read", zh: "Read" }, verbs: ["Get", "List", "Watch"] }],
             resources: {
               en: "Any workbench in a project(namespace)",
-              zh: "项目 (namespace) 中的任意 Workbench",
+              zh: "项目（namespace）中的任意 Workbench",
             },
             descriptionHtml: {
               en: "Users who have the <strong>Workbench reader</strong> role will be able to view all the workbenches in this namespace and open the workbenches",
-              zh: "拥有 <strong>Workbench reader</strong> 角色的用户可查看该 namespace 中所有 Workbench 并打开它们",
+              zh: "拥有 <strong>Workbench reader</strong> 角色的用户可查看该命名空间中所有 Workbench，并打开相应实例。",
             },
             priority: "high",
           },
@@ -128,7 +128,7 @@
             },
             descriptionHtml: {
               en: "Users who have the <strong>Workbench reader</strong> role will be able to view and open some specified workbenches in this namespace, but cannot start/stop running the workbenches.",
-              zh: "拥有 <strong>Workbench reader</strong> 角色的用户可查看并打开该 namespace 中部分指定 Workbench，但无法启停已运行的 Workbench。",
+              zh: "拥有 <strong>Workbench reader</strong> 角色的用户可查看并打开该命名空间中部分指定 Workbench，但无法启停已运行的 Workbench。",
             },
             priority: "low",
           },

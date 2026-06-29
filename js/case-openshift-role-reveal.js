@@ -9,7 +9,7 @@
   window.RBAC_ROLE_REVEAL_BLOCK = {
     type: "roleReveal",
     spacingTop: 72,
-    title: { en: "Reveal role details and assignees", zh: "展示角色详情与 Assignees" },
+    title: { en: "Reveal role details and assignees", zh: "展示角色详情与已分配对象" },
     intro: {
       en: "To determine the optimal pattern for displaying role details, I explored and iterated on multiple interaction approaches, then conducted a comparative analysis focusing on user experience, space efficiency, information hierarchy, and reusability. From multiple design explorations, I selected two representative solutions for detailed comparison as shown below.",
       zh: "为确定展示角色详情的最优模式，我探索并迭代多种交互方案，并从体验、空间效率、信息层级与可复用性等维度进行对比分析。经过多轮方案探索，我选取以下两种代表性方案进行详细对比。",
@@ -24,7 +24,7 @@
         },
         pros: [
           { en: "Showing details and list at the same time", zh: "可同时查看详情与列表" },
-          { en: "Not break users' workflow", zh: "不中断用户工作流" },
+          { en: "Not break users' workflow", zh: "不打断用户当前操作流程" },
         ],
         cons: [
           { en: "It occupies large screen space and compresses the main list", zh: "占用大量屏幕空间并压缩主列表" },
@@ -44,7 +44,7 @@
         pros: [
           { en: "Showing clear information hierarchy", zh: "信息层级清晰" },
           { en: "Providing a reusable component across scenarios", zh: "跨场景可复用的组件" },
-          { en: "Easy to maintain the user's attention", zh: "易于保持用户注意力" },
+          { en: "Easy to maintain the user's attention", zh: "更利于用户聚焦当前任务" },
         ],
         cons: [
           { en: "Slightly higher cost for cross-role comparisons", zh: "跨角色对比的操作成本略高" },
@@ -70,7 +70,7 @@
         },
         {
           en: "It is a reusable component, supporting future use cases with consistent patterns.",
-          zh: "作为可复用组件，以一致的模式支持未来用例。",
+          zh: "作为可复用组件，以一致的交互模式支持后续场景。",
         },
       ],
       diagram: ASSET + "interaction-flow.png",
@@ -79,7 +79,7 @@
     hifi: {
       title: { en: "Final hi-fi design", zh: "最终高保真设计" },
       image: ASSET + "hifi-final.png",
-      imageAlt: { en: "Role details and assignees modal views", zh: "角色详情与 Assignees 弹窗视图" },
+      imageAlt: { en: "Role details and assignees modal views", zh: "角色详情与已分配对象弹窗视图" },
     },
   };
 

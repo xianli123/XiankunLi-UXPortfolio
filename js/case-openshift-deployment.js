@@ -21,7 +21,7 @@
             },
           },
           {
-            title: { en: "What are the existing problems?", zh: "现有问题是什么？" },
+            title: { en: "What are the existing problems?", zh: "存在哪些问题？" },
             body: {
               en: "The original design relies only on vague icons, lacks workflow clues and effective error feedback. Users cannot perceive progress, identify failed steps, or troubleshoot issues quickly.",
               zh: "旧版设计仅依赖语义模糊的图标，缺少流程线索与有效错误反馈。用户无法感知进度、识别失败步骤或快速排查问题。",
@@ -117,7 +117,7 @@
               x: 443, y: 24, width: 961, height: 42, bg: "#ffebc7",
             },
             {
-              text: { en: "Apply model", zh: "应用模型" },
+              text: { en: "Apply model", zh: "集成调用模型" },
               x: 1404, y: 24, width: 172, height: 42, bg: "#eeeeee",
             },
           ],
@@ -132,7 +132,7 @@
             { text: { en: "No clear duration expectation", zh: "缺少明确的耗时预期" }, x: 555, y: 418, width: 235, height: 32 },
             { text: { en: "Insufficient error details", zh: "错误信息不足" }, x: 924, y: 292, width: 194, height: 32 },
             { text: { en: "Hard to realize the error in the table", zh: "难以在列表中识别异常状态" }, x: 840, y: 332, width: 278, height: 32 },
-            { text: { en: "Hard to read activity from table view", zh: "表格视图难以阅读活动状态" }, x: 1162, y: 329, width: 293, height: 32 },
+            { text: { en: "Hard to read activity from table view", zh: "表格视图难以看清运行进展" }, x: 1162, y: 329, width: 293, height: 32 },
             { text: { en: "No detailed help text for the status", zh: "状态缺少详细帮助文本" }, x: 1174, y: 369, width: 270, height: 32 },
             { text: { en: "No guidelines to fix issues", zh: "缺少修复问题的指引" }, x: 1052, y: 418, width: 207, height: 32 },
           ],
@@ -261,7 +261,7 @@
           },
           body: {
             en: "Implement a stage-based timeline with clear dividers and highlighted current progress based on the deployment logs. Enables users to grasp the full deployment journey at a glance.",
-            zh: "基于部署日志实现分阶段时间线，清晰分隔并高亮当前进度，让用户一眼掌握完整部署旅程。",
+            zh: "基于部署日志实现分阶段时间线，清晰分隔并高亮当前进度，让用户一眼看清完整部署流程。",
           },
           visual: {
             logs: IMG + "solutions/timeline-logs.svg",
@@ -343,7 +343,7 @@
             label: { en: "Unknown", zh: "未知" },
             body: {
               en: "Helper information depends on the underlying issue. The backend determines the specific cause and exposes it in the UI accordingly.",
-              zh: "帮助信息取决于后端问题的判断，后端确定具体原因后会在界面中做出相应提示。",
+              zh: "帮助文案会随后端判定的具体问题而变化，原因明确后界面会给出相应提示。",
             },
             icon: IMG + "breakdown/icons/label-unknown.svg",
           },
@@ -413,7 +413,7 @@
           },
           {
             en: "The events log reuses logs from OpenShift. On one hand, this ensures the event log remains concise and easy to read. On the other hand, it allows users to leverage their existing familiarity with OpenShift logs, creating a consistent experience. The most recent logs are displayed at the top.",
-            zh: "事件日志复用了 OpenShift 的日志。一方面，这确保事件日志保持简洁易读，另一方面，用户可以利用对 OpenShift 日志的现有熟悉度，获得一致的体验。最新的日志显示在顶部。",
+            zh: "事件日志沿用 OpenShift 的日志展示规范。一方面保持简洁易读，另一方面也复用用户既有的阅读习惯，体验一致。最新日志显示在顶部。",
           },
         ],
         visual: {
@@ -506,7 +506,7 @@
               label: { en: "Decision", zh: "决策" },
               text: {
                 en: "The integrated layout is deferred for now. It is marked as a nice-to-have feature, to be implemented in future iterations when technical support becomes available.",
-                zh: "整合布局暂缓，标记为增强型（nice-to-have）功能，待技术支撑成熟后再实现。",
+                zh: "整合布局暂缓，暂列为锦上添花功能，待技术支撑成熟后再实现。",
               },
             },
           ],
@@ -525,7 +525,7 @@
               label: { en: "Constraints", zh: "约束" },
               html: {
                 en: "<p>The backend cannot support one-click restart for model deployment, as it requires invoking massive resources on OpenShift.</p><ul><li>For the <strong>Restart / Redeploy</strong> action, technical limitations make full automatic redeployment unachievable.</li><li>For the <strong>Stop</strong> action, without a reliable one-click redeploy fallback, stopping deployment is a high-risk, destructive operation.</li></ul>",
-                zh: "<p>后端无法支持模型部署的一键重启，因其需在 OpenShift 上调用大量资源。</p><ul><li>对于<strong>重启/重新部署</strong>，技术限制使全自动重新部署无法实现。</li><li>对于<strong>停止</strong>，若无可靠的一键重新部署兜底，停止部署是高风险、不可逆操作。</li></ul>",
+                zh: "<p>后端无法支持模型部署的一键重启，因其需在 OpenShift 上调用大量资源。</p><ul><li>对于<strong>重启/重新部署</strong>，技术限制使全自动重新部署无法实现。</li><li>对于<strong>停止</strong>，若缺少可靠的一键重新部署回退方案，停止部署是高风险、不可逆操作。</li></ul>",
               },
             },
             {
@@ -581,7 +581,7 @@
           {
             text: {
               en: "Keeping the OpenShift-style event logs was a great call. I have already known how to read them, so there was zero learning curve for this feature.",
-              zh: "保留 OpenShift 风格的事件日志非常正确。我已熟悉这类日志的阅读方式，因此该功能几乎零学习成本。",
+              zh: "保留 OpenShift 风格的事件日志是明智之选。我已熟悉这类日志的阅读方式，因此几乎零学习成本。",
             },
             author: { en: "Data Scientist", zh: "数据科学家" },
             role: { en: "A user from an airline company", zh: "某航空公司用户" },
@@ -647,7 +647,7 @@
             body: {
               html: {
                 en: '<p>To handle complex multi-stage workflows, the core status tracking pattern includes expandable steps.</p><p>For example, the <em>Assign pod</em> step in the <strong>Workbench</strong> workflow is collapsible by default, keeping the high-level progress view clean. When expanded, it reveals nested subtasks. This balances clarity for casual users and deep visibility for advanced users, while maintaining the same consistent interaction pattern across different product areas.</p>',
-                zh: "<p>为处理复杂的多阶段工作流，主要步骤中包含可展开步骤。</p><p>例如，<strong>Workbench</strong> 工作流中的 <em>Assign pod</em> 步骤默认可折叠，保持高层进度视图简洁，展开后显示嵌套子任务。这兼顾了普通用户的清晰度与高级用户的深度可见性，并在不同产品区域保持一致交互模式。</p>",
+                zh: "<p>为处理复杂多阶段工作流，核心步骤支持展开查看。</p><p>例如，<strong>Workbench</strong> 工作流中的 <em>Assign pod</em> 步骤默认可折叠，保持高层进度视图简洁，展开后显示嵌套子任务。这兼顾了普通用户的清晰概览与进阶用户的细节需求，并在不同产品区域保持一致交互模式。</p>",
               },
             },
             inlineVisual: {
@@ -1047,7 +1047,12 @@
 
       return `
         <div class="fc-deploy-bd-labels">
-          <h3 class="fc-deploy-bd-labels__title">${esc(t(ld.title, lang))}</h3>
+          ${window.renderFcDbStepTitleOr?.(
+            "01",
+            ld.title,
+            lang,
+            `<h3 class="fc-deploy-bd-labels__title">${esc(t(ld.title, lang))}</h3>`
+          ) ?? `<h3 class="fc-deploy-bd-labels__title">${esc(t(ld.title, lang))}</h3>`}
           <p class="fc-deploy-bd-labels__subtitle">${esc(t(ld.subtitle, lang))}</p>
           <div class="fc-deploy-bd-labels__row">${cards}</div>
         </div>`;
@@ -1094,7 +1099,12 @@
         : "";
       return `
         <div class="fc-deploy-bd-modal">
-          <h3 class="fc-deploy-bd-modal__title">${esc(t(sm.title, lang))}</h3>
+          ${window.renderFcDbStepTitleOr?.(
+            "02",
+            sm.title,
+            lang,
+            `<h3 class="fc-deploy-bd-modal__title">${esc(t(sm.title, lang))}</h3>`
+          ) ?? `<h3 class="fc-deploy-bd-modal__title">${esc(t(sm.title, lang))}</h3>`}
           ${renderWalkthrough()}
           <p class="fc-deploy-bd-modal__intro">${esc(t(sm.intro, lang))}</p>
         </div>
@@ -1115,7 +1125,12 @@
       return `
         <div class="fc-deploy-bd-events">
           <div class="fc-deploy-bd-events__copy">
-            <h3 class="fc-deploy-bd-events__title">${esc(t(el.title, lang))}</h3>
+            ${window.renderFcDbStepTitleOr?.(
+              "03",
+              el.title,
+              lang,
+              `<h3 class="fc-deploy-bd-events__title">${esc(t(el.title, lang))}</h3>`
+            ) ?? `<h3 class="fc-deploy-bd-events__title">${esc(t(el.title, lang))}</h3>`}
             <div class="fc-deploy-bd-events__body">${paragraphs}</div>
           </div>
           ${visual}

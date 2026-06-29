@@ -54,11 +54,17 @@
       </section>`;
   }
 
+  function isCasePageV3() {
+    return document.body?.dataset?.caseVersion === "3";
+  }
+
   function renderKeycloakCase(cs) {
     const metaItems = [
       { label: t("work.metaRole"), value: cs.meta.role[lang] },
       { label: t("work.metaDuration"), value: cs.meta.duration[lang] },
-      { label: t("work.metaPlatform"), value: cs.meta.platform[lang] },
+      ...(isCasePageV3()
+        ? []
+        : [{ label: t("work.metaPlatform"), value: cs.meta.platform[lang] }]),
       { label: t("work.metaTeam"), value: cs.meta.team[lang] },
     ];
 
@@ -108,7 +114,8 @@
   }
 
   function renderCase() {
-    const caseId = document.body.dataset.caseId;
+    const caseId =
+      document.body.dataset.caseId || document.body.getAttribute("data-case-id");
     const root = document.getElementById("case-root");
     if (!caseId || !root) return;
 
@@ -118,18 +125,25 @@
       return;
     }
 
-    const blogTitle =
-      cs.template === "keycloak-blog" && window.KEYCLOAK_BLOG_ARTICLE?.blogTitle
-        ? tl(window.KEYCLOAK_BLOG_ARTICLE.blogTitle)
-        : tl(cs.title);
-    document.title = `${blogTitle} — ${t("meta.title")}`;
+    try {
+      const blogTitle =
+        cs.template === "keycloak-blog" && window.KEYCLOAK_BLOG_ARTICLE?.blogTitle
+          ? tl(window.KEYCLOAK_BLOG_ARTICLE.blogTitle)
+          : tl(cs.title);
+      document.title = `${blogTitle} — ${t("meta.title")}`;
 
-    if (cs.template === "openshift" && window.renderOpenShiftCase) {
-      root.innerHTML = window.renderOpenShiftCase(cs, lang);
-    } else if (cs.template === "keycloak-blog" && window.renderKeycloakBlogCase) {
-      root.innerHTML = window.renderKeycloakBlogCase(cs, lang, t);
-    } else {
-      root.innerHTML = renderKeycloakCase(cs);
+      if (cs.template === "openshift" && window.renderOpenShiftCase) {
+        root.innerHTML = window.renderOpenShiftCase(cs, lang);
+      } else if (cs.template === "keycloak-blog" && window.renderKeycloakBlogCase) {
+        root.innerHTML = window.renderKeycloakBlogCase(cs, lang, t);
+      } else if (cs.template === "openshift") {
+        root.innerHTML = `<p class="case-page__error">Case renderer failed to load.</p>`;
+      } else {
+        root.innerHTML = renderKeycloakCase(cs);
+      }
+    } catch (err) {
+      console.error("Case render failed:", err);
+      root.innerHTML = `<p class="case-page__error">Case study failed to render.</p>`;
     }
 
     const navCaseId = caseId.replace(/-v\d+$/, "-v1");
@@ -173,11 +187,13 @@
     });
   }
 
-  function redirectToV2IfNeeded() {
+  function redirectToDefaultVersionIfNeeded() {
     const caseId = document.body.dataset.caseId;
-    const pair = window.getCaseDetailVersionPair?.(caseId);
-    if (pair?.currentVersion === 1 && pair.v2?.href) {
-      window.location.replace(pair.v2.href);
+    const naming = window.getCaseDetailNaming?.(caseId);
+    if (!naming || naming.version >= 3) return false;
+    const v3Href = window.getCaseDetailDefaultHref?.(caseId);
+    if (v3Href) {
+      window.location.replace(v3Href);
       return true;
     }
     return false;
@@ -188,7 +204,7 @@
   }
 
   function init() {
-    if (redirectToV2IfNeeded()) return;
+    if (redirectToDefaultVersionIfNeeded()) return;
 
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     syncLangSwitch();

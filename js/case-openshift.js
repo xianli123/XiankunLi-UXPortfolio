@@ -91,6 +91,10 @@
       </header>`;
   }
 
+  function isCasePageV3() {
+    return document.body?.dataset?.caseVersion === "3";
+  }
+
   function renderMeta(meta, lang) {
     if (!meta) return "";
     const pill = meta.productLabel
@@ -99,11 +103,15 @@
     const items = [
       { label: "Role", value: t(meta.role, lang) },
       { label: "Duration", value: t(meta.duration, lang) },
-      {
-        label: "Platform",
-        value: `<span class="fc-meta__platform">${esc(t(meta.platform, lang))}${pill}</span>`,
-        html: true,
-      },
+      ...(isCasePageV3()
+        ? []
+        : [
+            {
+              label: "Platform",
+              value: `<span class="fc-meta__platform">${esc(t(meta.platform, lang))}${pill}</span>`,
+              html: true,
+            },
+          ]),
       { label: "Team", value: esc(t(meta.team, lang)) },
     ];
     return `
@@ -121,10 +129,11 @@
   }
 
   function renderProcessTag(step, lang) {
+    const label = esc(t(step.label, lang) || step.label);
     return `
       <span class="fc-process__tag">
         ${step.icon ? `<span class="fc-process__tag-icon"><img src="${ICON}${step.icon}" alt="" aria-hidden="true" width="24" height="24"></span>` : ""}
-        ${esc(t(step.label, lang) || step.label)}
+        <span class="fc-process__tag-label">${label}</span>
       </span>`;
   }
 
@@ -167,9 +176,19 @@
         </div>`;
     }
 
+    const processLabel = isCasePageV3()
+      ? t(
+          {
+            en: "As the lead designer, I owned:",
+            zh: "项目中的主要工作",
+          },
+          lang
+        )
+      : "Design process";
+
     return `
-      <div class="fc-process">
-        <p class="fc-process__label">Design process</p>
+      <div class="fc-process${isCasePageV3() ? " fc-process--v3" : ""}">
+        <p class="fc-process__label">${esc(processLabel)}</p>
         ${tagsHtml}
       </div>`;
   }
@@ -368,10 +387,11 @@
       .map((k) => `<li>${esc(t(k, lang))}</li>`)
       .join("");
 
-    return `
-      <section class="fc-section fc-model-research">
-        <h2 class="fc-section__title">${esc(t(pc.title, lang))}</h2>
-        <div class="fc-model-context">
+    const isModelDetailsV3 = document.body.dataset.caseId === "model-details-v3";
+    const projectContextHtml =
+      isModelDetailsV3 && window.renderModelProjectContextV3
+        ? window.renderModelProjectContextV3(pc, lang)
+        : `<div class="fc-model-context">
           <p class="fc-model-context__body">${htmlOrEsc(pc.body, lang)}</p>
           <div class="fc-model-context__cards">
             <div class="fc-model-context__card fc-model-context__card--challenge">
@@ -391,8 +411,18 @@
           <h3>${esc(t(pc.purpose.title, lang))}</h3>
           <p>${esc(t(pc.purpose.body, lang))}</p>
         </div>`
-        }
+        }`;
 
+    const objectivesHtml = window.renderModelObjectivesV2
+      ? window.renderModelObjectivesV2(obj, lang)
+      : `<h2 class="fc-section__title fc-model-research__gap--objectives">${esc(t(obj.title, lang))}</h2>
+        <div class="fc-model-objectives">${objectiveCards}</div>`;
+
+    const userResearchHtml =
+      isModelDetailsV3 && window.renderModelUserResearchV3
+        ? `<h2 class="fc-section__title fc-model-research__gap fc-model-research__gap--ur-v3">${esc(t(ur.title, lang))}</h2>
+        ${window.renderModelUserResearchV3(ur, lang)}`
+        : `
         <h2 class="fc-section__title fc-model-research__gap">${esc(t(ur.title, lang))}</h2>
         <h3 class="fc-section__subtitle">${esc(t(ur.personaTitle, lang))}</h3>
         <div class="fc-model-persona">
@@ -414,14 +444,18 @@
         <h3 class="fc-section__subtitle fc-model-journey__title">${esc(t(ur.journeyTitle, lang))}</h3>
         <div class="fc-model-journey">
           <div class="fc-model-journey__grid">${journeyCols}</div>
-        </div>
+        </div>`;
 
-        ${
-          window.renderModelObjectivesV2
-            ? window.renderModelObjectivesV2(obj, lang)
-            : `<h2 class="fc-section__title fc-model-research__gap--objectives">${esc(t(obj.title, lang))}</h2>
-        <div class="fc-model-objectives">${objectiveCards}</div>`
-        }
+    const researchBodyHtml = isModelDetailsV3
+      ? `${objectivesHtml}${userResearchHtml}`
+      : `${userResearchHtml}${objectivesHtml}`;
+
+    return `
+      <section class="fc-section fc-model-research">
+        <h2 class="fc-section__title">${esc(t(pc.title, lang))}</h2>
+        ${projectContextHtml}
+
+        ${researchBodyHtml}
       </section>`;
   }
 
@@ -456,6 +490,13 @@
     }
     const src2x = asset.src.replace(/\.png$/i, "@2x.png");
     return `<img src="${esc(asset.src)}" srcset="${esc(asset.src)} 1x, ${esc(src2x)} 2x" alt="${esc(alt || "")}" loading="lazy" width="${asset.width}" height="${asset.height}">`;
+  }
+
+  function renderV3StepTitle(step, title, lang, fallbackHtml) {
+    if (window.renderFcDbStepTitleOr) {
+      return window.renderFcDbStepTitleOr(step, title, lang, fallbackHtml);
+    }
+    return fallbackHtml;
   }
 
   function renderModelDesignPageHeader(h, lang) {
@@ -520,7 +561,12 @@
       <div class="fc-model-design__header-ia-band">
         <div class="fc-model-design__header-ia-inner">
           <div class="fc-model-design__header-ia-top">
-            <h3 class="fc-model-design__heading-lg fc-model-design__heading-lg--in-band">${esc(t(section.title, lang))}</h3>
+            ${renderV3StepTitle(
+              "01",
+              section.title,
+              lang,
+              `<h3 class="fc-model-design__heading-lg fc-model-design__heading-lg--in-band">${esc(t(section.title, lang))}</h3>`
+            )}
             ${mock}
           </div>
           <div class="fc-model-design__goals">${goals}</div>
@@ -697,7 +743,12 @@
       .join("");
     return `
       <div class="fc-model-design__block fc-model-design__block--performance">
-        <h3 class="fc-model-design__heading-lg fc-model-design__heading-lg--performance">${esc(t(section.title, lang))}</h3>
+        ${renderV3StepTitle(
+          "03",
+          section.title,
+          lang,
+          `<h3 class="fc-model-design__heading-lg fc-model-design__heading-lg--performance">${esc(t(section.title, lang))}</h3>`
+        )}
         <div class="fc-model-design__split fc-model-design__split--performance">
           <div class="fc-model-design__wireframe fc-model-design__wireframe--performance">
             ${renderModelPerformanceWireframe()}
@@ -993,7 +1044,12 @@
     if (!section) return "";
     return `
       <div class="fc-model-design__block">
-        <h3 class="fc-model-design__heading-lg">${esc(t(section.title, lang))}</h3>
+        ${renderV3StepTitle(
+          "02",
+          section.title,
+          lang,
+          `<h3 class="fc-model-design__heading-lg">${esc(t(section.title, lang))}</h3>`
+        )}
         <div class="fc-model-design__split fc-model-design__split--overview">
           <div class="fc-model-design__wireframe fc-model-design__wireframe--overview">
             ${renderModelOverviewWireframe()}
@@ -1627,10 +1683,30 @@
 
   function renderRoleAssignment(block, lang) {
     const gapClass = block.spacingTop ? ` fc-rbac-assign--gap-${block.spacingTop}` : "";
+    const v3Panel = block.layout === "v3-panel";
+    const v3Class = v3Panel ? " fc-rbac-assign--v3" : "";
     const assets = block.assets || {};
     const challenges = (block.challenges || [])
       .map((ch) => renderRbacAssignChallenge(ch, lang, assets))
       .join("");
+
+    if (v3Panel) {
+      return `
+      <div class="fc-rbac-assign${gapClass}${v3Class}">
+        <header class="fc-rbac-assign__intro fc-rbac-assign__intro--v3-title">
+          ${window.renderFcDbStepTitleOr?.(
+            "03",
+            block.title,
+            lang,
+            `<h3 class="fc-section__subtitle">${esc(t(block.title, lang))}</h3>`
+          ) ?? `<h3 class="fc-section__subtitle">${esc(t(block.title, lang))}</h3>`}
+        </header>
+        <div class="fc-rbac-assign-v3__panel">
+          <p class="fc-section__body fc-rbac-assign-v3__intro">${htmlOrEsc({ html: block.introHtml }, lang)}</p>
+          ${challenges}
+        </div>
+      </div>`;
+    }
 
     return `
       <div class="fc-rbac-assign${gapClass}">
@@ -2267,14 +2343,24 @@
         return renderSplit(block, lang);
       case "rbacProjectContextV2":
         return window.renderRbacProjectContextV2?.(block, lang) || "";
+      case "rbacProjectContextV3":
+        return window.renderRbacProjectContextV3?.(block, lang) || "";
       case "rbacTechResearchV2":
         return window.renderRbacTechResearchV2?.(block, lang) || "";
+      case "rbacTechResearchV3":
+        return window.renderRbacTechResearchV3?.(block, lang) || "";
+      case "rbacUserResearchV3":
+        return window.renderRbacUserResearchV3?.(block, lang) || "";
       case "rbacCompetitorResearchV2":
         return window.renderRbacCompetitorResearchV2?.(block, lang) || "";
       case "rbacObjectivesV2":
         return window.renderRbacObjectivesV2?.(block, lang) || "";
+      case "rbacObjectivesV3":
+        return window.renderRbacObjectivesV3?.(block, lang) || "";
       case "rbacInspirationV2":
         return window.renderRbacInspirationV2?.(block, lang) || "";
+      case "rbacInspirationV3":
+        return window.renderRbacInspirationV3?.(block, lang) || "";
       case "band":
         return renderBand(block, lang);
       case "content":
@@ -2283,6 +2369,8 @@
         return renderTable(block, lang);
       case "rolesMapping":
         return renderRolesMapping(block, lang);
+      case "rbacRolesMappingV3":
+        return window.renderRbacRolesMappingV3?.(block, lang) || "";
       case "roleReveal":
         return renderRoleReveal(block, lang);
       case "rbacRoleRevealV2":
@@ -2310,7 +2398,12 @@
       case "assignmentHifi":
         return renderAssignmentHifi(block, lang);
       case "usabilityTesting":
+        if (document.body.dataset.caseId === "rbac-v3" && window.renderUsabilityTestingV3) {
+          return window.renderUsabilityTestingV3(block, lang);
+        }
         return renderUsabilityTesting(block, lang);
+      case "usabilityTestingV3":
+        return window.renderUsabilityTestingV3?.(block, lang) || "";
       case "modelResearch":
         return renderModelResearch(block, lang);
       case "modelIaMap":
@@ -2331,6 +2424,8 @@
         return renderPainSolution(block, lang);
       case "eventTracking":
         return renderEventTracking(block, lang);
+      case "eventTrackingV3":
+        return window.renderEventTrackingV3?.(block, lang) || "";
       case "deploymentResearch":
         return window.renderDeploymentResearch?.(lang) || "";
       case "deploymentEvaluation":

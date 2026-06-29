@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 644" fill="none" aria-hidden="true">
+  <defs>
+    <marker id="w-grey" markerWidth="6" markerHeight="6" refX="5.5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#9ca3af"/></marker>
+    <marker id="w-blue" markerWidth="6" markerHeight="6" refX="5.5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#2097f6"/></marker>
+    <marker id="w-teal" markerWidth="6" markerHeight="6" refX="5.5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#14b8a6"/></marker>
+    <marker id="w-green" markerWidth="6" markerHeight="6" refX="5.5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#22c55e"/></marker>
+  </defs>
+  <g stroke-width="1.2" fill="none">
+    <g stroke="#9ca3af" marker-end="url(#w-grey)">
+      <path d="M224 108 H390"/><path d="M224 148 H390"/>
+      <path d="M224 188 H252 V218 H390"/><path d="M224 228 H252 V218"/>
+      <path d="M224 268 H252 V318 H390"/><path d="M224 308 H252 V318"/><path d="M224 348 H252 V318"/>
+    </g>
+    <path d="M232 172 H246 Q256 172 256 180 V224 Q256 232 246 232 H232" stroke="#9ca3af"/>
+    <path d="M232 252 H246 Q256 252 256 260 V334 Q256 342 246 342 H232" stroke="#9ca3af"/>
+    <text x="300" y="102" fill="#6b7280" font-size="12" font-family="Red Hat Text,sans-serif">Map</text>
+    <text x="300" y="142" fill="#6b7280" font-size="12" font-family="Red Hat Text,sans-serif">Map</text>
+    <text x="300" y="212" fill="#6b7280" font-size="12" font-family="Red Hat Text,sans-serif">Map</text>
+    <text x="300" y="312" fill="#6b7280" font-size="12" font-family="Red Hat Text,sans-serif">Map</text>
+    <path d="M576 92 H590 Q602 92 602 100 V156 Q602 164 590 164 H576" stroke="#2097f6"/>
+    <g stroke="#2097f6" marker-end="url(#w-blue)">
+      <path d="M602 128 Q650 128 688 126"/><path d="M576 218 Q640 218 688 216"/><path d="M576 318 Q640 318 688 316"/>
+    </g>
+    <text x="620" y="120" fill="#2097f6" font-size="12" font-family="Red Hat Text,sans-serif">Predefine</text>
+    <text x="620" y="210" fill="#2097f6" font-size="12" font-family="Red Hat Text,sans-serif">Predefine</text>
+    <text x="620" y="310" fill="#2097f6" font-size="12" font-family="Red Hat Text,sans-serif">Predefine</text>
+    <path d="M920 98 H934 Q946 98 946 106 V326 Q946 334 934 334 H920" stroke="#14b8a6"/>
+    <path d="M946 216 Q1000 216 1066 396" stroke="#14b8a6" marker-end="url(#w-teal)"/>
+    <text x="990" y="368" fill="#0d9488" font-size="12" font-family="Red Hat Text,sans-serif">Bind</text>
+    <g stroke="#22c55e" marker-end="url(#w-green)">
+      <path d="M1160 416 H1220 V288 H1260"/><path d="M1160 416 H1220 V358 H1260"/><path d="M1160 416 H1220 V428 H1260"/>
+    </g>
+    <text x="1224" y="408" fill="#16a34a" font-size="12" font-family="Red Hat Text,sans-serif">Assign</text>
+  </g>
+</svg>

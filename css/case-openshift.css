@@ -425,6 +425,7 @@
 .fc-process__tag {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   gap: calc(4 * var(--u));
   height: calc(32 * var(--u));
@@ -434,13 +435,18 @@
   background: var(--fc-blue-bg);
   font-size: calc(20 * var(--u));
   font-weight: 400;
-  line-height: calc(18 * var(--u));
+  line-height: 1;
   color: #151515;
   white-space: nowrap;
 }
 
+.fc-process__tag-label {
+  display: block;
+  line-height: 1;
+}
+
 .fc-process__tag-icon {
-  display: flex;
+  display: inline-flex;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
@@ -454,6 +460,34 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+body[data-case-version="3"] .fc-process {
+  display: flex;
+  flex-direction: column;
+  gap: calc(24 * var(--u));
+}
+
+body[data-case-version="3"] .fc-process__label {
+  margin: 0;
+}
+
+body[data-case-version="3"] .fc-process__tag {
+  background: transparent;
+}
+
+body[data-case-version="3"] .fc-process__tags--rbac,
+body[data-case-version="3"] .fc-process__tags--deploy,
+body[data-case-version="3"] .fc-process__tags--model,
+body[data-case-version="3"] .fc-process__row,
+body[data-case-version="3"] .fc-process__row--split,
+body[data-case-version="3"] .fc-process__row-group {
+  gap: calc(16 * var(--u));
+}
+
+html:lang(zh) .fc-process__tag-label,
+html:lang(zh-CN) .fc-process__tag-label {
+  transform: translateY(calc(-0.5 * var(--u)));
 }
 
 /* ── Figma section slices (pixel-faithful exports) ── */

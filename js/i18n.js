@@ -291,7 +291,7 @@ window.CASE_STUDIES = [
     version: 1,
     codeName: {
       en: "Keycloak Composite Role UI Redesign V1",
-      zh: "Keycloak Composite Role 界面重设计 V1",
+      zh: "Keycloak 复合角色界面重设计 V1",
     },
     template: "keycloak-blog",
     color: "#1F883D",
@@ -299,11 +299,11 @@ window.CASE_STUDIES = [
     product: { en: "Keycloak · Red Hat SSO", zh: "Keycloak · Red Hat SSO" },
     title: {
       en: "Keycloak Composite Role UI Redesign",
-      zh: "Keycloak Composite Role 界面重设计",
+      zh: "Keycloak 复合角色界面重设计",
     },
     tagline: {
       en: "Redesigning the composite role experience to reduce learning cost, surface associated roles in one view, and make core actions obvious for administrators.",
-      zh: "重设计 Composite Role 体验，降低学习成本，在一处展示所有关联角色，并让管理员的核心操作更加清晰。",
+      zh: "重新设计复合角色体验，降低学习成本，在一处展示所有关联角色，并让管理员的核心操作更加清晰。",
     },
     heroImage: "assets/cases/keycloak/02-CompositeRole.png",
     meta: {
@@ -333,7 +333,7 @@ window.CASE_STUDIES = [
         title: { en: "Project context", zh: "项目背景" },
         body: {
           en: "Keycloak is an open-source IAM solution and upstream for Red Hat Single Sign-On. Composite roles let administrators bundle realm and client roles so permissions can be managed in groups rather than one-by-one.",
-          zh: "Keycloak 是开源 IAM 方案，也是 Red Hat Single Sign-On 的上游。Composite Role 允许管理员将 realm 与 client 角色组合管理，而非逐个分配。",
+          zh: "Keycloak 是开源 IAM 方案，也是 Red Hat Single Sign-On 的上游。复合角色（Composite Role）让管理员成组管理 realm 与 client 角色，而非逐个分配。",
         },
         image: "assets/cases/keycloak/03-Associates.png",
         imageAlt: {
@@ -345,7 +345,7 @@ window.CASE_STUDIES = [
         title: { en: "Pain points in the original UI", zh: "旧版界面痛点" },
         body: {
           en: "The legacy UI used four boxes for different role types. New users could not understand how to assign roles — especially client roles that required filtering first. Even experienced users had to inspect realm and client roles separately to see everything assigned.",
-          zh: "旧版界面用四个框区分不同角色类型。新用户难以理解如何分配角色——尤其是需要先按 client 筛选的 client role。即使熟练用户也要分别查看 realm 与 client 角色才能掌握全部分配。",
+          zh: "旧版界面用四个框区分不同角色类型。新用户难以理解如何分配角色——尤其是需要先按 client 筛选的 client role。即使熟练用户也要分别查看 realm 与 client 角色，才能看清全部分配情况。",
         },
         images: [
           {
@@ -370,7 +370,7 @@ window.CASE_STUDIES = [
           zh: [
             "用统一表格展示关联角色，client role 带 client 名称前缀",
             "突出 Add role 与 Remove 两个核心操作",
-            "增加支持模糊搜索的检索能力",
+            "新增模糊搜索能力",
             "将 Associated roles 独立为 Tab，而非放在 Settings 下",
           ],
         },
@@ -422,7 +422,7 @@ window.CASE_STUDIES = [
         "Streamlined role assignment with searchable table views",
       ],
       zh: [
-        "界面更简洁一致，符合管理员认知",
+        "界面更简洁一致，更贴合管理员的心智模型",
         "核心操作更清晰，降低学习成本",
         "通过可搜索表格简化角色分配流程",
       ],
@@ -443,7 +443,16 @@ window.CASE_STUDIES = [
   v2.version = 2;
   v2.codeName = {
     en: "Keycloak Composite Role UI Redesign V2",
-    zh: "Keycloak Composite Role 界面重设计 V2",
+    zh: "Keycloak 复合角色界面重设计 V2",
   };
   window.CASE_STUDIES.push(v2);
+
+  const v3 = JSON.parse(JSON.stringify(v2));
+  v3.id = "keycloak-composite-role-v3";
+  v3.version = 3;
+  v3.codeName = {
+    en: "Keycloak Composite Role UI Redesign V3",
+    zh: "Keycloak 复合角色界面重设计 V3",
+  };
+  window.CASE_STUDIES.push(v3);
 })();

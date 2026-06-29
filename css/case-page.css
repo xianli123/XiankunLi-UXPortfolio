@@ -150,6 +150,19 @@ html:lang(zh) .case-page__main :is(
   .fc-usability__quote-text,
   .fc-usability__featured-text,
   .fc-deploy-testimonial__text,
+  .fc-rbac-ur-v3__quote,
+  .fc-rbac-ur-v3__quote p,
+  .rh-blog__quote p
+),
+html:lang(zh-CN) .case-page__main :is(
+  .fc-quote__text,
+  .fc-feedback-featured__quote p,
+  .fc-feedback__text,
+  .fc-usability__quote-text,
+  .fc-usability__featured-text,
+  .fc-deploy-testimonial__text,
+  .fc-rbac-ur-v3__quote,
+  .fc-rbac-ur-v3__quote p,
   .rh-blog__quote p
 ) {
   font-family: var(--font-en);
@@ -288,6 +301,7 @@ html:lang(zh) .case-page__main .fc :is(
   .fc-journey__steps,
   .fc-role-reveal__decision-grid,
   .fc-model-context__cards,
+  .fc-model-pc-v3__cards,
   .fc-metrics__grid
 ) {
   align-items: start;
@@ -300,7 +314,8 @@ html:lang(zh) .case-page__main .fc :is(
   .fc-role-card,
   .fc-issue-card,
   .fc-journey__card,
-  .fc-model-context__card
+  .fc-model-context__card,
+  .fc-model-pc-v3__card
 ) {
   min-height: unset;
   height: auto;

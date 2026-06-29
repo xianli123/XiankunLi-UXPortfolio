@@ -7,11 +7,12 @@
 **技术栈：** 静态 HTML / CSS / JavaScript（无构建工具）  
 **设计参考：** [Figma — Resume / Portfolio](https://www.figma.com/design/AfUwiYGdcEeyKOVrOoQ31o/Resume---Portfolio?node-id=3796-25071)
 
-### 最近工作速览（Agent 会话 · 2026-06-08）
+### 最近工作速览（Agent 会话 · 2026-06-29）
 
 | 章节 | 内容 |
 |------|------|
-| [§25.11](#2511-案例详情页--仅展示-v22026-06-08) | 详情页隐藏 V1、自动跳转 V2、移除顶栏版本切换 |
+| [§26](#26-案例页-v3-上线与默认路由2026-06-29) | 四案例 V3 详情页、RBAC / Model Details V3 新区块、V3 为默认入口并隐藏 V2 |
+| [§25.11](#2511-案例详情页--仅展示-v22026-06-08) | （已被 §26 取代）详情页隐藏 V1、自动跳转 V2、移除顶栏版本切换 |
 | [§25.10](#2510-首页-about--设计项目产品外链2026-06-08) | About「设计项目」产品名外链 + 悬停变蓝 |
 | [§25.9](#259-rbac-v2--中文版排版与文案微调2026-06-08) | RBAC V2 中文版：设计目标卡高度、技术调研引言/间距、竞品调研卡片高度 |
 | [§25](#25-案例页-v1v2-拆分与-openshift-ai-v2-页面2026-06-11) | 四案例 V1/V2 拆分、版本切换器、RBAC / Model Details / Deployment V2 实现 |
@@ -1403,6 +1404,120 @@ python3 -m http.server 8765
 # Model V2:    http://127.0.0.1:8765/cases/model-details-v2.html
 # Deployment V2: http://127.0.0.1:8765/cases/deployment-tracking-v2.html
 # Role assignment 图片比例、Hi-fi 标题中英文居中、Usability 无 Executive 块
+```
+
+---
+
+## 26. 案例页 V3 上线与默认路由（2026-06-29）
+
+在 §25 V2 稳定后，新增四个案例的 **V3 详情页**，并将 V3 设为对外默认版本。V1 / V2 HTML 与数据均保留，但访问 V1 或 V2 时会自动 `location.replace` 到同 slug 的 V3；V2 在 `CASE_DETAIL_NAMING` 中标记 `hidden: true`。
+
+**页面入口：**
+
+| 案例 | V3（默认） | V2（隐藏，自动跳转 V3） |
+|------|------------|-------------------------|
+| RBAC | `cases/rbac-v3.html` | `cases/rbac-v2.html` |
+| Model Details | `cases/model-details-v3.html` | `cases/model-details-v2.html` |
+| Deployment Tracking | `cases/deployment-tracking-v3.html` | `cases/deployment-tracking-v2.html` |
+| Keycloak | `cases/keycloak-v3.html` | `cases/keycloak-v2.html` |
+
+### 26.1 版本路由与首页链接
+
+| 文件 | 改动 |
+|------|------|
+| `js/case-index.js` | 工作卡片 `href` 由 `*-v1.html` 改为 `*-v3.html` |
+| `js/case-naming.js` | 补充 `*-v3` 命名；V2 条目 `hidden: true`；新增 `getCaseDetailDefaultHref()` |
+| `js/case-page.js` | `redirectToDefaultVersionIfNeeded()` — V1 / V2 访问时跳转 V3（取代 §25.11 的 `redirectToV2IfNeeded()`） |
+| `js/case-openshift-data.js` | `cloneOpenShiftCaseVersion()` 由 V2 克隆生成 `rbac-v3`、`model-details-v3`、`deployment-tracking-v3` |
+| `js/i18n.js` | Keycloak 运行时克隆 `keycloak-composite-role-v3` |
+
+### 26.2 RBAC V3 — Research 与 Design 新区块
+
+**脚本：** `js/case-openshift-rbac-v3.js`（在 `*-v2.js` 之后加载）· **样式：** `css/case-openshift-rbac-v2.css`（`body[data-case-id="rbac-v3"]` 作用域）  
+**入口：** `cases/rbac-v3.html`
+
+| 区块 | 渲染器 | 资源目录（示例） |
+|------|--------|------------------|
+| Project context | `renderRbacProjectContextV3` | `rbac/project-context-v2/`（图文卡复用） |
+| Tech research | `renderRbacTechResearchV3` | `rbac/research-v3/` |
+| User research | `renderRbacUserResearchV3` | persona / insight / quotes 新布局 |
+| Design objectives | `renderRbacObjectivesV3` | `rbac/objectives-v3/` |
+| Inspiration | `renderRbacInspirationV3` | V3 卡片与箭头装饰 |
+| Roles mapping | `renderRbacRolesMappingV3` | `rbac/roles-mapping-v3/` |
+| Event tracking | `renderEventTrackingV3` | `rbac/event-tracking-v3/` |
+| Usability testing | `renderUsabilityTestingV3` | `rbac/usability-v3/` |
+
+**`js/case-openshift.js`：** 在 `body[data-case-id="rbac-v3"]` 时按区块类型分发上述 V3 渲染器；V2 路径不变。
+
+### 26.3 Model Details V3 — Project context 与 User research
+
+**脚本：** `js/case-openshift-model-details-v3.js` · **样式：** `css/case-openshift-model-details-v2.css`（`body[data-case-id="model-details-v3"]`）  
+**入口：** `cases/model-details-v3.html`
+
+| 区块 | 实现 |
+|------|------|
+| Project context | `renderModelProjectContextV3`（Figma `6979:30511`）— MaaS 引言、工作流 SVG、`Validated Models` 结语、Challenges / Goals 双卡（白底黑边、红/绿 bullet） |
+| 区块顺序 | V3 仅：`Design objectives` 置于 `User research` **之前**（`renderModelResearch` 分支） |
+| User research | `renderModelUserResearchV3`（Figma `6991:30816`）— 左侧 persona（头像环、紫 pill 关键词）+ 右侧 2×2 用户故事卡（色条顶边、48px 图标） |
+| Challenges / Goals 卡 | bullet 正文 **24px**；卡与上方内容间距 **24px**；双卡宽 **720px**、**页面居中** |
+
+**资源：** `model-details/project-context-v3/workflow-diagram.svg`、`model-details/research/persona-alex.png`
+
+**V3 仍沿用 V2：** Hero、IA map、Design breakdown、Event tracking 等（通过 `*-v2.js` 补丁数据克隆至 `model-details-v3`）。
+
+### 26.4 Deployment Tracking V3 与 Keycloak V3
+
+| 案例 | 说明 |
+|------|------|
+| Deployment Tracking | `cases/deployment-tracking-v3.html` — 数据自 V2 克隆；与 RBAC / Model Details 共用 Design breakdown 编号标题组件 |
+| Keycloak | `cases/keycloak-v3.html` — 博客正文模板；V3 元信息区去掉 Platform 字段（`isCasePageV3()`） |
+
+### 26.5 Design breakdown 编号标题（V3 共用）
+
+| 文件 | 说明 |
+|------|------|
+| `js/case-db-step.js`（新） | `renderFcDbStepTitle()` — 圆形 step 徽章 + 标题；作用于 `rbac-v3`、`model-details-v3`、`deployment-tracking-v3` |
+| `css/case-db-step.css`（新） | `.fc-db-step` 布局与徽章样式 |
+| `assets/.../rbac/design-breakdown-v3/step-badge.svg` | 步骤编号底图 |
+
+### 26.6 涉及文件一览
+
+```
+cases/rbac-v3.html
+cases/model-details-v3.html
+cases/deployment-tracking-v3.html
+cases/keycloak-v3.html
+js/case-openshift-rbac-v3.js
+js/case-openshift-model-details-v3.js
+js/case-db-step.js
+css/case-db-step.css
+css/case-openshift-rbac-v2.css      # 大量 rbac-v3 作用域样式
+css/case-openshift-model-details-v2.css
+js/case-openshift.js
+js/case-index.js
+js/case-naming.js
+js/case-page.js
+assets/cases/openshift-ai/rbac/research-v3/
+assets/cases/openshift-ai/rbac/objectives-v3/
+assets/cases/openshift-ai/rbac/roles-mapping-v3/
+assets/cases/openshift-ai/rbac/event-tracking-v3/
+assets/cases/openshift-ai/rbac/usability-v3/
+assets/cases/openshift-ai/rbac/design-breakdown-v3/
+assets/cases/openshift-ai/model-details/project-context-v3/
+assets/cases/openshift-ai/model-details/user-research-v3/
+```
+
+### 26.7 验证
+
+```bash
+cd "Portfolio web"
+python3 -m http.server 8765
+# 首页工作卡片应直接进入 *-v3.html
+# 访问 *-v1.html 或 *-v2.html 应自动跳转同案例 V3
+# RBAC V3:          http://127.0.0.1:8765/cases/rbac-v3.html
+# Model Details V3: http://127.0.0.1:8765/cases/model-details-v3.html
+# Deployment V3:    http://127.0.0.1:8765/cases/deployment-tracking-v3.html
+# Keycloak V3:      http://127.0.0.1:8765/cases/keycloak-v3.html
 ```
 
 ---

@@ -76,7 +76,7 @@
     title: { en: "Customer insight", zh: "客户洞察" },
     intro: {
       en: "Real customers provide real user feedback, which we use to continuously improve the product experience.",
-      zh: "来自真实客户的用户反馈，帮助我们持续改进产品体验。",
+      zh: "来自真实客户的反馈，帮助我们持续改进产品体验。",
     },
     board: V2 + "customer-insight-board.png",
     boardWidth: 982,
@@ -229,7 +229,7 @@
 
     const problemsTitle =
       window.DEPLOYMENT_DATA?.research?.projectContext?.cards?.[1]?.title ||
-      { en: "What are the existing problems?", zh: "现有问题是什么？" };
+      { en: "What are the existing problems?", zh: "存在哪些问题？" };
 
     const issues = (d.issues || [])
       .map(
@@ -305,5 +305,18 @@
     EXTENSION_V2_TEXT.examples.forEach((patch, i) => {
       if (ext.examples[i]) ext.examples[i].body = patch.body;
     });
+  })();
+
+  (function syncDeploymentTrackingV3FromV2() {
+    const src = window.CASE_OPENSHIFT_DATA?.["deployment-tracking-v2"];
+    if (!src) return;
+    window.CASE_OPENSHIFT_DATA["deployment-tracking-v3"] = JSON.parse(JSON.stringify(src));
+    const target = window.CASE_OPENSHIFT_DATA["deployment-tracking-v3"];
+    target.id = "deployment-tracking-v3";
+    target.version = 3;
+    target.codeName = {
+      en: "AI Model Deployment Tracking V3",
+      zh: "AI 模型部署状态追踪 V3",
+    };
   })();
 })();

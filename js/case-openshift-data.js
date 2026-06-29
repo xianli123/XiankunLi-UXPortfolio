@@ -154,7 +154,7 @@
                 {
                   text: {
                     en: "Fine-grained permissions for data science teams: users can only run pre-created resources, with no access to edit configurations or sensitive data.",
-                    zh: "数据科学团队需要细粒度权限：用户只能运行预创建资源，无法编辑配置或访问敏感数据。",
+                    zh: "数据科学团队需要细粒度权限：用户只能使用已预先创建的资源，无法编辑配置或访问敏感数据。",
                   },
                   author: { en: "Tur** *****", zh: "Tur** *****" },
                   company: { en: "An airline company", zh: "某航空公司" },
@@ -204,7 +204,7 @@
                 },
                 {
                   en: "A RoleBinding typically includes three core components: the role to be assigned, the subject (user/group/service account) receiving the role, and the specific resources the role applies to. The image shows an example of a role binding in K8S.",
-                  zh: "RoleBinding 通常包含三个核心组件：要分配的角色、获得角色的主体（用户/组/服务账户），以及角色适用的具体资源。图示为 Kubernetes 中的 RoleBinding 示例。",
+                  zh: "RoleBinding 通常包含三个核心组件：要分配的角色、被授权对象（用户/组/服务账户），以及角色适用的具体资源。图示为 Kubernetes 中的 RoleBinding 示例。",
                 },
               ],
             },
@@ -214,9 +214,9 @@
               columns: 5,
               items: [
                 { en: "Aligns with Kubernetes-native RBAC, ensuring compatibility and future scalability.", zh: "对齐 Kubernetes 原生 RBAC，确保兼容性与未来可扩展性" },
-                { en: "Solves real user pain points (e.g., unclear permission details) with user-centric features.", zh: "以用户为中心的功能解决真实痛点（如权限详情不清晰）" },
+                { en: "Solves real user pain points (e.g., unclear permission details) with user-centric features.", zh: "通过以用户为中心的功能解决真实痛点（如权限详情不清晰）" },
                 { en: "Builds a secure, compliant foundation that meets enterprise requirements.", zh: "构建满足企业要求的安全合规基础" },
-                { en: "Establishes feasibility analysis for future new role definitions and introductions.", zh: "为未来新角色定义与引入建立可行性分析" },
+                { en: "Establishes feasibility analysis for future new role definitions and introductions.", zh: "为后续新增角色提供可行性依据" },
                 { en: "Simplifies complexity by translating technical verbs into intuitive actions for users.", zh: "将技术动词转化为直观操作，简化复杂度" },
               ],
             },
@@ -303,7 +303,7 @@
                       label: { en: "Assignment methods", zh: "分配方式" },
                       text: {
                         en: "Support for direct assignment, group-based inheritance, and co-administrator designation.",
-                        zh: "支持直接分配、组继承与共同管理员委派。",
+                        zh: "支持直接分配、组继承与协同管理员指定。",
                       },
                     },
                     {
@@ -323,7 +323,7 @@
               title: { en: "Inspiration from competitor analysis", zh: "竞品分析启发" },
               body: {
                 en: "During discussions with the product and business team, we agreed to split collected inspirations and required features into two phases: MVP phase and Post-MVP phase. This allows us to fully focus on users' core needs in the MVP stage and make better use of the engineering team's development efforts.",
-                zh: "与产品、业务团队讨论后，我们将收集的灵感与需求功能拆分为 MVP 与 Post-MVP 两阶段，以便在 MVP 阶段聚焦用户核心需求，并更高效地投入开发资源。",
+                zh: "与产品、业务团队讨论后，我们将收集的灵感与需求功能拆分为 MVP 与 Post-MVP 两阶段，以便在 MVP 阶段聚焦用户核心需求，并更高效地分配开发资源。",
               },
             },
             {
@@ -335,7 +335,7 @@
               },
               items: [
                 { num: "01", text: { en: "Build AI scenario-based role mapping on top of K8S RBAC", zh: "在 Kubernetes RBAC 之上构建 AI 场景角色映射" } },
-                { num: "02", text: { en: "Offer out-of-the-box AI-exclusive roles for OpenShift AI console", zh: "为 OpenShift AI 控制台提供开箱即用的 AI 专属角色" } },
+                { num: "02", text: { en: "Offer out-of-the-box AI-exclusive roles for OpenShift AI console", zh: "为 OpenShift AI 控制台提供开箱即用的 AI 预置角色" } },
                 { num: "03", text: { en: "Provide fine-grained permissions at the resource level", zh: "提供资源级细粒度权限" } },
                 { num: "04", text: { en: "Predefined roles categorized by plugin source", zh: "按插件来源分类的预定义角色" } },
                 { num: "05", text: { en: "Visualize permission rules within the OpenShift AI console", zh: "在 OpenShift AI 控制台内可视化权限规则" } },
@@ -364,12 +364,12 @@
           title: { en: "Design objectives", zh: "设计目标" },
           body: {
             en: "Based on customer insights, technical analysis, user research and competitive analysis, the core design objectives have been defined. Through discussions with PM, customer support and engineering teams, we have agreed to iterate and upgrade features in line with these established design goals.",
-            zh: "基于客户洞察、技术分析、用户研究与竞品分析，已定义核心设计目标。通过与 PM、客户支持团队及开发团队讨论，就按既定目标迭代升级功能达成一致。",
+            zh: "基于客户洞察、技术分析、用户研究与竞品分析，已定义核心设计目标。通过与 PM、客户支持团队及开发团队讨论，已就围绕既定目标迭代功能达成一致。",
           },
           cards: [
             { icon: "supervised-user-circle.svg", title: { en: "Granular control", zh: "细粒度控制" }, text: { en: "Enable fine-grained permission management for resources, allowing adminis to precisely control user permissions for view, edit, use, or delete actions.", zh: "为资源启用细粒度权限管理，使管理员能精确控制用户的查看、编辑、使用或删除权限。" } },
             { icon: "manage-accounts.svg", title: { en: "User management", zh: "用户管理" }, text: { en: "Streamlined role assignment processes, enabling the project admins to efficiently manage team permissions at scale.", zh: "简化角色分配流程，使项目管理员能高效管理大规模团队的权限。" } },
-            { icon: "security.svg", title: { en: "Enterprise-grade security", zh: "企业级安全" }, text: { en: "Built on Kubernetes native RBAC, ensuring secure, auditable, and extensible access control across namespaces.", zh: "基于 Kubernetes 原生 RBAC，确保跨 namespace 安全、可审计且可扩展的访问控制。" } },
+            { icon: "security.svg", title: { en: "Enterprise-grade security", zh: "企业级安全" }, text: { en: "Built on Kubernetes native RBAC, ensuring secure, auditable, and extensible access control across namespaces.", zh: "基于 Kubernetes 原生 RBAC，确保跨命名空间的安全、可审计且可扩展的访问控制。" } },
           ],
         },
         {
@@ -651,5 +651,18 @@
   cloneOpenShiftCaseVersion("deployment-tracking-v1", "deployment-tracking-v2", 2, {
     en: "AI Model Deployment Tracking V2",
     zh: "AI 模型部署状态追踪 V2",
+  });
+
+  cloneOpenShiftCaseVersion("rbac-v2", "rbac-v3", 3, {
+    en: "RBAC Design in AI Project V3",
+    zh: "AI 项目中的 RBAC 权限设计 V3",
+  });
+  cloneOpenShiftCaseVersion("model-details-v2", "model-details-v3", 3, {
+    en: "Validated Model's Details Design V3",
+    zh: "Validated Models 详情页设计 V3",
+  });
+  cloneOpenShiftCaseVersion("deployment-tracking-v2", "deployment-tracking-v3", 3, {
+    en: "AI Model Deployment Tracking V3",
+    zh: "AI 模型部署状态追踪 V3",
   });
 })();

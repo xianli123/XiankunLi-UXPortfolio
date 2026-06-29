@@ -172,7 +172,7 @@
     title: { en: "Design objectives", zh: "设计目标" },
     body: {
       en: "Through discussions with PM, customer support and engineering teams, we have agreed to iterate and upgrade features in line with these established design goals.",
-      zh: "通过与 PM、客户支持团队及工程团队讨论，我们已就按既定设计目标迭代升级功能达成一致。",
+      zh: "通过与 PM、客户支持团队及工程团队讨论，我们已就围绕既定设计目标迭代功能达成一致。",
     },
     cards: [
       {
@@ -199,7 +199,7 @@
         title: { en: "Enterprise-grade security", zh: "企业级安全" },
         text: {
           en: "Built on Kubernetes native RBAC, ensuring secure, auditable, and extensible access control across namespaces.",
-          zh: "基于 Kubernetes 原生 RBAC，确保跨 namespace 安全、可审计且可扩展的访问控制。",
+          zh: "基于 Kubernetes 原生 RBAC，确保跨命名空间的安全、可审计且可扩展的访问控制。",
         },
       },
     ],
@@ -267,7 +267,7 @@
       title: { en: "Role and role binding", zh: "Role 与 RoleBinding" },
       body: {
         en: "A RoleBinding typically includes three core components: the role to be assigned, the subject (user/group/service account) receiving the role, and the specific resources the role applies to. The image shows an example of a role binding in K8S.",
-        zh: "RoleBinding 通常包含三个核心组件：要分配的角色、获得角色的主体（用户/组/服务账户），以及角色适用的具体资源。图示为 Kubernetes 中的 RoleBinding 示例。",
+        zh: "RoleBinding 通常包含三个核心组件：要分配的角色、被授权对象（用户/组/服务账户），以及角色适用的具体资源。图示为 Kubernetes 中的 RoleBinding 示例。",
       },
       image: RESEARCH_IMG + "role-binding.png",
       imageAlt: { en: "Kubernetes RoleBinding example", zh: "Kubernetes RoleBinding 示例" },
@@ -293,7 +293,7 @@
           icon: "group-add.svg",
           text: {
             en: "Establishes feasibility analysis for future new role definitions and introductions.",
-            zh: "为未来新角色定义与引入建立可行性分析。",
+            zh: "为未来新增角色提供可行性依据。",
           },
         },
         {
@@ -445,7 +445,7 @@
           icon: "mvp-02.png",
           text: {
             en: "Offer out-of-the-box AI-exclusive roles for OpenShift AI console",
-            zh: "为 OpenShift AI 控制台提供开箱即用的 AI 专属角色",
+            zh: "为 OpenShift AI 控制台提供开箱即用的 AI 预置角色",
           },
         },
         {
@@ -686,7 +686,12 @@
       <div class="fc-role-reveal fc-rbac-rr-v2${gapClass}">
         <header class="fc-role-reveal__explore">
           <div class="fc-role-reveal__intro">
-            <h3 class="fc-section__subtitle">${esc(t(block.title, lang))}</h3>
+            ${window.renderFcDbStepTitleOr?.(
+              "02",
+              block.title,
+              lang,
+              `<h3 class="fc-section__subtitle">${esc(t(block.title, lang))}</h3>`
+            ) ?? `<h3 class="fc-section__subtitle">${esc(t(block.title, lang))}</h3>`}
             <p class="fc-section__body">${esc(t(block.intro, lang))}</p>
           </div>
           <div class="fc-rbac-rr-v2__concepts">${concepts}</div>
@@ -708,7 +713,7 @@
   const ROLE_REVEAL_V2 = {
     type: "rbacRoleRevealV2",
     spacingTop: 72,
-    title: { en: "Reveal role details and assignees", zh: "展示角色详情与 Assignees" },
+    title: { en: "Reveal role details and assignees", zh: "展示角色详情与已分配对象" },
     intro: {
       en: "To determine the optimal pattern for displaying role details, I explored and iterated on multiple interaction approaches. From multiple design explorations, I selected two representative solutions for detailed comparison as shown below.",
       zh: "为确定展示角色详情的最优模式，我探索并迭代了多种交互方案。经过多轮方案探索，我选取以下两种代表性方案进行详细对比。",
@@ -722,7 +727,7 @@
         },
         pros: [
           { en: "Showing details and list at the same time", zh: "可同时查看详情与列表" },
-          { en: "Not break users' workflow", zh: "不中断用户工作流" },
+          { en: "Not break users' workflow", zh: "不打断用户当前操作流程" },
         ],
         cons: [
           {
@@ -770,7 +775,7 @@
         },
         {
           en: "It is a reusable component, supporting future use cases with consistent patterns.",
-          zh: "作为可复用组件，以一致的模式支持未来用例。",
+          zh: "作为可复用组件，以一致的交互模式支持后续场景。",
         },
       ],
     },
@@ -779,7 +784,7 @@
       image: REVEAL_IMG + "hifi-final.png",
       imageAlt: {
         en: "Role details and assignees modal views",
-        zh: "角色详情与 Assignees 弹窗视图",
+        zh: "角色详情与已分配对象弹窗视图",
       },
     },
   };
@@ -828,11 +833,11 @@
     c0.visual = "typeaheadV2";
     c0.painHtml = {
       en: "OpenShift is <strong>unable to obtain the full user/group list</strong>, so project admins have to input user or group names manually. For existing granted users/groups, forced manual name entry raises extra administrative costs.",
-      zh: "OpenShift <strong>无法获取完整 user/group 列表</strong>，项目管理员只能手动输入用户或组名。对已授权主体重复手动输入会增加管理成本。",
+      zh: "OpenShift <strong>无法获取完整用户/组列表</strong>，项目管理员只能手动输入用户或组名。对已授权用户/组仍需重复手动输入，增加了管理成本。",
     };
     c0.solutionBody = {
       en: "Admins can either select pre-authorized users from suggestions or manually enter new user/group names as needed.",
-      zh: "管理员可从建议中选择已授权用户，或按需手动输入新 user/group。",
+      zh: "管理员可从建议中选择已授权用户，或按需手动输入新用户/组。",
     };
     delete c0.annotations;
     delete c0.solutionDescNarrow;
@@ -886,4 +891,17 @@
   applyRbacV2RolesMappingSummaries();
   applyRbacV2RoleAssignment();
   applyRbacV2Usability();
+
+  (function syncRbacV3FromV2() {
+    const src = window.CASE_OPENSHIFT_DATA?.["rbac-v2"];
+    if (!src) return;
+    window.CASE_OPENSHIFT_DATA["rbac-v3"] = JSON.parse(JSON.stringify(src));
+    const target = window.CASE_OPENSHIFT_DATA["rbac-v3"];
+    target.id = "rbac-v3";
+    target.version = 3;
+    target.codeName = {
+      en: "RBAC Design in AI Project V3",
+      zh: "AI 项目中的 RBAC 权限设计 V3",
+    };
+  })();
 })();

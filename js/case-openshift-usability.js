@@ -19,7 +19,7 @@
       title: { en: "Goals & business context", zh: "目标与业务背景" },
       body: {
         en: "RBAC is central to scalable governance on RHOAI. When features ship in bundles, end-to-end permission and guardrail experiences can feel disjointed. This study clarified admin expectations for project-level permission management before the decision point.",
-        zh: "RBAC 是 RHOAI 可扩展治理的核心。当功能以组合形式发布时，端到端权限与护栏体验可能显得割裂。本研究在决策点前验证了管理员对项目级权限管理的期望。",
+        zh: "RBAC 是 RHOAI 可扩展治理的核心。当功能以组合形式发布时，端到端权限与管控体验可能显得割裂。本研究在产品定案前验证了管理员对项目级权限管理的期望。",
       },
     },
     myRole: {
@@ -33,7 +33,7 @@
           icon: U + "icon-edit-calendar.svg",
           text: {
             en: "Participated in plan review, user session observation and research result synthesis",
-            zh: "参与方案评审、观察用户测试 session，并整理研究结果",
+            zh: "参与方案评审、观察用户测试场次，并整理研究结果",
           },
         },
         {
@@ -47,7 +47,7 @@
           icon: U + "icon-book.svg",
           text: {
             en: "Identified and recorded UI-related usability issues during research sessions",
-            zh: "在研究 session 中识别并记录 UI 可用性问题",
+            zh: "在测试过程中识别并记录 UI 可用性问题",
           },
         },
         {
@@ -61,7 +61,7 @@
           icon: U + "icon-upload-file.svg",
           text: {
             en: "Promoted key research insights to be incorporated into design iteration backlog",
-            zh: "推动关键研究洞察纳入设计迭代 backlog",
+            zh: "推动关键研究洞察纳入设计迭代待办清单",
           },
         },
       ],
@@ -75,7 +75,7 @@
       stats: [
         { value: "6", label: { en: "Sessions completed", zh: "完成测试场次" } },
         { value: "3", label: { en: "Core task scenarios", zh: "核心任务场景" } },
-        { value: "100%", label: { en: "Completeness rating", zh: "完整度评分" } },
+        { value: "100%", label: { en: "Completeness rating", zh: "整体完成度" } },
         { value: "5", label: { en: "Recommendations", zh: "优化建议" } },
       ],
       tasksTitle: { en: "Core prototype tasks", zh: "核心原型任务" },
@@ -90,17 +90,17 @@
       title: { en: "What participants praised", zh: "参与者好评" },
       intro: {
         en: "The synthesis concluded the prototype tested well overall—most tasks were completed with little or no prompting. Below is praise participants voiced explicitly, grouped by UI area.",
-        zh: "综合结论：原型整体表现良好，多数任务在少量或无提示下完成。以下为参与者按 UI 区域明确表达的肯定。",
+        zh: "综合结论：原型整体表现良好，多数任务在少量或无提示下完成。以下按界面区域整理了参与者的明确好评。",
       },
       featured: {
         stat: "100%",
-        statLabel: { en: "Completeness rating", zh: "完整度评分" },
+        statLabel: { en: "Completeness rating", zh: "整体完成度" },
         text: {
           en: "Overall this is close to shippable—the remaining work is discoverability and form polish, not rethinking the core concept.",
           zh: "整体已接近可发布——剩余工作是可发现性与表单细节打磨，而非重新思考核心概念。",
         },
         author: { en: "Jeff H*****", zh: "Jeff H*****" },
-        role: { en: "Provincial gov team lead", zh: "Provincial gov team lead" },
+        role: { en: "Provincial gov team lead", zh: "省级政府团队负责人" },
         photo: U + "featured-photo.png",
       },
       cards: [
@@ -110,7 +110,7 @@
             zh: "角色列表密度适中，<strong>我能快速扫到所需信息</strong>。",
           },
           author: { en: "Mar***", zh: "Mar***" },
-          role: { en: "Energy sector incident response", zh: "Energy sector incident response" },
+          role: { en: "Energy sector incident response", zh: "能源行业事件响应" },
         },
         {
           html: {
@@ -118,7 +118,7 @@
             zh: "<strong>列出 Read、List、Watch 等操作</strong>比我们使用的其他系统更清晰。",
           },
           author: { en: "Shr****", zh: "Shr****" },
-          role: { en: "Azure security / IAM", zh: "Azure security / IAM" },
+          role: { en: "Azure security / IAM", zh: "Azure 安全/IAM" },
         },
         {
           html: {
@@ -126,7 +126,7 @@
             zh: "<strong>按类别聚合角色</strong>（Workbench、Pipeline 等）符合我们对平台的认知。",
           },
           author: { en: "Ary***", zh: "Ary***" },
-          role: { en: "IT Admin", zh: "IT Admin" },
+          role: { en: "IT Admin", zh: "IT 管理员" },
         },
         {
           html: {
@@ -147,15 +147,15 @@
             zh: "「Manage permissions」感觉像在管理已有权限——缺少明显添加入口，建议优化文案。",
           },
           author: { en: "Shr****", zh: "Shr****" },
-          role: { en: "Azure security / IAM", zh: "Azure security / IAM" },
+          role: { en: "Azure security / IAM", zh: "Azure 安全/IAM" },
         },
         {
           text: {
             en: "Page bottom alert is not necessary. I prefer to place it in the confirmation popup box.",
-            zh: "页面底部 alert 不必要，更希望放在确认弹窗中。",
+            zh: "页面底部的提示条（alert）没有必要，更希望放在确认弹窗中。",
           },
           author: { en: "Ary***", zh: "Ary***" },
-          role: { en: "IT Admin", zh: "IT Admin" },
+          role: { en: "IT Admin", zh: "IT 管理员" },
         },
         {
           html: {
@@ -163,7 +163,7 @@
             zh: "在 <strong>Permissions</strong> 表中提供唯一标识（如 email/username 列）有助于避免同名误操作。",
           },
           author: { en: "Jef*", zh: "Jef*" },
-          role: { en: "Provincial gov team lead", zh: "Provincial gov team lead" },
+          role: { en: "Provincial gov team lead", zh: "省级政府团队负责人" },
         },
         {
           text: {
@@ -171,7 +171,7 @@
             zh: "展示个人角色有助于理解职责与可访问资源。",
           },
           author: { en: "Mar***", zh: "Mar***" },
-          role: { en: "Energy sector incident response", zh: "Energy sector incident response" },
+          role: { en: "Energy sector incident response", zh: "能源行业事件响应" },
         },
         {
           text: {
@@ -179,12 +179,12 @@
             zh: "希望探索普通用户提交权限请求、相关人员处理的常见场景及可行方案。",
           },
           author: { en: "Mar***", zh: "Mar***" },
-          role: { en: "Energy sector incident response", zh: "Energy sector incident response" },
+          role: { en: "Energy sector incident response", zh: "能源行业事件响应" },
         },
       ],
     },
     nextStep: {
-      title: { en: "Next step ...", zh: "下一步 ..." },
+      title: { en: "Next step ...", zh: "下一步" },
       body: {
         en: "After the usability testing, we shared all findings with product managers and engineering teams. The test results proved that the design has addressed core user pain points and fully matched user demands. Only minor details remain to be optimized, which will not affect the official release of core functions. We will adopt a small-win strategy to gradually implement all user-suggested improvements.",
         zh: "可用性测试后，我们将全部发现同步给 PM 与开发团队。结果证明设计已解决核心痛点并满足用户需求。仅余细节优化，不影响核心功能正式发布。我们将采用小步迭代策略逐步落地用户建议。",
